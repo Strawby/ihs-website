@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My JS Site</title>
+  <meta name="description" content="A tiny JavaScript site deployed with GitHub Pages." />
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#">My JS Site</a>
+      <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Ship a site in minutes</h1>
+      <p>Vanilla HTML/CSS/JS. Deployed on GitHub Pages.</p>
+      <button id="actionBtn">Click me</button>
+    </section>
+
+    <section class="cards" id="cards"></section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> You. All rights reserved.</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
