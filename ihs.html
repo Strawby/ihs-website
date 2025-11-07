@@ -24,7 +24,7 @@
   </script>
   <style>
     :root{
-      --bg: #0b1220;          /* page background */
+      --bg: #0b1220;          /* page background (fallback if video hidden) */
       --panel: #0f172a;       /* card background */
       --text: #e5e7eb;        /* primary text */
       --muted: #9ca3af;       /* secondary text */
@@ -54,47 +54,41 @@
     nav a:hover{background:rgba(255,255,255,.06)}
     .menu-btn{display:none}
 
-    /* --- HERO with safer layering --- */
+    /* --- Sitewide background video --- */
+    .site-bg{
+      position:fixed;
+      inset:0;
+      z-index:-1;          /* under all content */
+      overflow:hidden;
+    }
+    .site-bg__video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      pointer-events:none;
+    }
+    .site-bg__overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(4,10,20,.45), rgba(4,10,20,.65));
+      pointer-events:none;
+    }
+    @media (prefers-reduced-motion: reduce){
+      .site-bg__video{display:none}
+    }
+
+    /* --- Hero (no inline video; content floats above site background) --- */
     .hero{
       position:relative;
       min-height:60vh;
       padding:72px 0 36px;
       overflow:hidden;
     }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-20% -10% auto;
-      aspect-ratio:1/1;
-      background:
-        radial-gradient(600px 300px at 20% 10%, rgba(14,165,233,.35), transparent 60%),
-        radial-gradient(600px 300px at 80% 10%, rgba(34,211,238,.2), transparent 60%);
-      filter:blur(20px);
-      z-index:0; /* sits with the video layer */
-      pointer-events:none;
-    }
-    .hero .bg-video{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:0;            /* base layer */
-      pointer-events:none;
-    }
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, rgba(4,10,20,.35), rgba(4,10,20,.55));
-      z-index:1;            /* overlay above video */
-      pointer-events:none;
-    }
-    /* All hero content above overlay */
-    .hero > *:not(.bg-video){
-      position:relative;
-      z-index:2;
-    }
+    /* Optional: remove hero-only glow/overlay since we now have a global overlay */
+    .hero::before{display:none}
+    .hero::after{display:none}
 
     .hero h1{font-size:clamp(2rem, 3vw + 1.2rem, 3.2rem);line-height:1.15;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(1rem, .6vw + .8rem, 1.2rem)}
@@ -106,7 +100,6 @@
     .muted{color:var(--muted)}
 
     .features{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
-
     .split{grid-template-columns:repeat(2,1fr)}
     @media (max-width: 860px){ .split{grid-template-columns:1fr} }
 
@@ -131,14 +124,19 @@
       nav ul{position:absolute;right:4vw;top:60px;background:var(--panel);padding:10px;border-radius:12px;border:1px solid hsl(210 50% 90%/.1);box-shadow:var(--shadow);display:none}
       nav ul.open{display:flex;flex-direction:column}
     }
-
-    /* Respect user preference to reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      .hero .bg-video{display:none}
-    }
   </style>
 </head>
 <body>
+
+  <!-- Sitewide background -->
+  <div class="site-bg" aria-hidden="true">
+    <video class="site-bg__video" autoplay muted loop playsinline poster="media/hero.jpg">
+      <source src="media/hero.mp4" type="video/mp4" />
+      <source src="media/hero.webm" type="video/webm" />
+    </video>
+    <div class="site-bg__overlay"></div>
+  </div>
+
   <header>
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Go to top">
@@ -159,12 +157,6 @@
 
   <main id="top">
     <section class="hero container">
-      <!-- Background video -->
-      <video class="bg-video" autoplay muted loop playsinline aria-hidden="true" poster="media/hero.jpg">
-        <source src="media/hero.mp4" type="video/mp4" />
-        <source src="media/hero.webm" type="video/webm" />
-      </video>
-
       <span class="chip">🚀 Fast, responsive, accessible</span>
       <h1>Make a great first impression with a modern one-page site</h1>
       <p>Drop in your logo, update the text, and publish. Everything here is mobile-friendly, keyboard-navigable, and built with clean, semantic HTML.</p>
@@ -275,9 +267,7 @@
           <h3>Get in touch</h3>
           <p class="muted">Prefer email? <a href="mailto:you@example.com">you@example.com</a><br/>Or call (555) 123-4567</p>
           <p class="muted">123 Main Street, Hometown, CO</p>
-          <p>
-            <a class="btn ghost" href="#top">Back to top ↑</a>
-          </p>
+          <p><a class="btn ghost" href="#top">Back to top ↑</a></p>
         </div>
       </div>
     </section>
