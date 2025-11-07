@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your Brand — Welcome</title>
-  <meta name="description" content="A clean, fast, accessible one‑page website template you can customize in minutes." />
+  <meta name="description" content="A clean, fast, accessible one-page website template you can customize in minutes." />
   <link rel="icon" href="/favicon.ico" />
   <meta property="og:title" content="Your Brand" />
-  <meta property="og:description" content="A clean, fast, accessible one‑page website template." />
+  <meta property="og:description" content="A clean, fast, accessible one-page website template." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=1200" />
@@ -54,8 +54,48 @@
     nav a:hover{background:rgba(255,255,255,.06)}
     .menu-btn{display:none}
 
-    .hero{isolation:isolate;padding:72px 0 36px;position:relative;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:-20% -10% auto;aspect-ratio:1/1;background:radial-gradient(600px 300px at 20% 10%, rgba(14,165,233,.35), transparent 60%), radial-gradient(600px 300px at 80% 10%, rgba(34,211,238,.2), transparent 60%);filter:blur(20px);z-index:-1}
+    /* --- HERO with safer layering --- */
+    .hero{
+      position:relative;
+      min-height:60vh;
+      padding:72px 0 36px;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-20% -10% auto;
+      aspect-ratio:1/1;
+      background:
+        radial-gradient(600px 300px at 20% 10%, rgba(14,165,233,.35), transparent 60%),
+        radial-gradient(600px 300px at 80% 10%, rgba(34,211,238,.2), transparent 60%);
+      filter:blur(20px);
+      z-index:0; /* sits with the video layer */
+      pointer-events:none;
+    }
+    .hero .bg-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;            /* base layer */
+      pointer-events:none;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(4,10,20,.35), rgba(4,10,20,.55));
+      z-index:1;            /* overlay above video */
+      pointer-events:none;
+    }
+    /* All hero content above overlay */
+    .hero > *:not(.bg-video){
+      position:relative;
+      z-index:2;
+    }
+
     .hero h1{font-size:clamp(2rem, 3vw + 1.2rem, 3.2rem);line-height:1.15;margin:.2em 0}
     .hero p{color:var(--muted);font-size:clamp(1rem, .6vw + .8rem, 1.2rem)}
     .hero .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
@@ -91,10 +131,11 @@
       nav ul{position:absolute;right:4vw;top:60px;background:var(--panel);padding:10px;border-radius:12px;border:1px solid hsl(210 50% 90%/.1);box-shadow:var(--shadow);display:none}
       nav ul.open{display:flex;flex-direction:column}
     }
-      /* background video in hero */
-    .hero .bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(4,10,20,.35), rgba(4,10,20,.55));z-index:-1}
-    @media (prefers-reduced-motion: reduce){ .hero .bg-video{display:none} }
+
+    /* Respect user preference to reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .hero .bg-video{display:none}
+    }
   </style>
 </head>
 <body>
@@ -118,14 +159,15 @@
 
   <main id="top">
     <section class="hero container">
-      <!-- Background video: replace src with your own file path -->
-    <video class="bg-video" autoplay muted loop playsinline aria-hidden="true" poster="media/hero.jpg">
-      <source src="media/hero.mp4" type="video/mp4" />
-      <source src="media/hero.webm" type="video/webm" />
-    </video>
+      <!-- Background video -->
+      <video class="bg-video" autoplay muted loop playsinline aria-hidden="true" poster="media/hero.jpg">
+        <source src="media/hero.mp4" type="video/mp4" />
+        <source src="media/hero.webm" type="video/webm" />
+      </video>
+
       <span class="chip">🚀 Fast, responsive, accessible</span>
-      <h1>Make a great first impression with a modern one‑page site</h1>
-      <p>Drop in your logo, update the text, and publish. Everything here is mobile‑friendly, keyboard‑navigable, and built with clean, semantic HTML.</p>
+      <h1>Make a great first impression with a modern one-page site</h1>
+      <p>Drop in your logo, update the text, and publish. Everything here is mobile-friendly, keyboard-navigable, and built with clean, semantic HTML.</p>
       <div class="cta">
         <a class="btn primary" href="#contact">Get Started</a>
         <a class="btn ghost" href="#features">See Features</a>
@@ -136,15 +178,15 @@
       <h2>Features</h2>
       <div class="grid features">
         <article class="card">
-          <h3>Lightning‑fast</h3>
+          <h3>Lightning-fast</h3>
           <p class="muted">No frameworks required. Pure HTML/CSS/JS keeps things snappy and simple to host anywhere.</p>
         </article>
         <article class="card">
           <h3>Accessible by default</h3>
-          <p class="muted">Semantic markup, visible focus states, proper contrast, and keyboard‑friendly navigation.</p>
+          <p class="muted">Semantic markup, visible focus states, proper contrast, and keyboard-friendly navigation.</p>
         </article>
         <article class="card">
-          <h3>SEO‑ready</h3>
+          <h3>SEO-ready</h3>
           <p class="muted">Metadata, OpenGraph tags, and structured data are already wired in.</p>
         </article>
         <article class="card">
@@ -157,7 +199,7 @@
     <section class="container panels grid split" id="about">
       <div class="card">
         <h2>About Your Brand</h2>
-        <p class="muted">Write two or three short paragraphs about what you do, who it helps, and why people trust you. Keep it human, specific, and benefit‑led.</p>
+        <p class="muted">Write two or three short paragraphs about what you do, who it helps, and why people trust you. Keep it human, specific, and benefit-led.</p>
         <ul>
           <li>✔️ Years of experience</li>
           <li>✔️ Clear, fair pricing</li>
@@ -231,7 +273,7 @@
         </form>
         <div class="card">
           <h3>Get in touch</h3>
-          <p class="muted">Prefer email? <a href="mailto:you@example.com">you@example.com</a><br/>Or call (555) 123‑4567</p>
+          <p class="muted">Prefer email? <a href="mailto:you@example.com">you@example.com</a><br/>Or call (555) 123-4567</p>
           <p class="muted">123 Main Street, Hometown, CO</p>
           <p>
             <a class="btn ghost" href="#top">Back to top ↑</a>
