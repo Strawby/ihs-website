@@ -22,15 +22,6 @@ body {
     position: relative;
   min-height: 100%;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(160deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.85) 80%);
-  pointer-events: none;
-  z-index: -1;
-}
 .container { max-width: 960px; margin: 0 auto; padding: 0 2rem 2rem; }
 .site-header {
   position: sticky;
