@@ -129,16 +129,8 @@ body {
   .hero {
     margin: 0 calc(50% - 50vw) 2rem;
     padding: clamp(2rem, 10vw, 3.5rem) clamp(1rem, 7vw, 2.5rem);
+    min-height: clamp(480px, 100vh, 760px);
     gap: clamp(2.5rem, 12vw, 4rem);
-  }
-
-  .hero-media {
-    top: clamp(4.5rem, 12vw, 6rem);
-    width: min(640px, 92vw);
-  }
-
-  .hero-video {
-    height: clamp(240px, 70vh, 440px);
   }
 
   .hero-panels {
@@ -155,22 +147,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(3rem, 8vh, 5rem);
+  justify-content: center;
+  gap: clamp(2.5rem, 7vh, 4.5rem);
   text-align: center;
+  min-height: clamp(540px, 100vh, 880px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(11,18,32,.35) 0%, rgba(11,18,32,.65) 80%);
+  z-index: -1;
 }
 .hero-media {
-  position: sticky;
-  top: clamp(5.5rem, 9vw, 7.5rem);
-  width: min(960px, 90vw);
-  border-radius: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,.28);
-  z-index: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
 }
 .hero-video {
   display: block;
   width: 100%;
-  height: clamp(340px, 60vh, 560px);
+  height: 100%;
   object-fit: cover;
 }
 .hero-panels {
@@ -181,7 +182,7 @@ body {
   gap: clamp(1.5rem, 3vw, 2.75rem);
   width: 100%;
   max-width: 520px;
-  margin-top: clamp(4rem, 14vh, 8rem);
+  margin-top: 0;
   z-index: 1;
 }
 .hero-panel {
