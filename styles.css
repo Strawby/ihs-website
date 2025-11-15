@@ -22,9 +22,24 @@ body {
 }
 .container { max-width: 960px; margin: 0 auto; padding: 0 2rem 2rem; }
 .site-header { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(8px); }
-.nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 1rem; }
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers the Home link */
+  padding: .75rem 1rem;
+  position: relative;      /* lets you anchor the button to the right */
+}
 .brand { color: var(--fg); text-decoration: none; font-weight: 700; letter-spacing: .25px; }
-.nav button { background: var(--card); color: var(--fg); border: 1px solid #22304a; padding: .5rem .75rem; border-radius: .75rem; cursor: pointer; }
+.nav button {
+  position: absolute;
+  right: 1rem;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid #22304a;
+  padding: .5rem .75rem;
+  border-radius: .75rem;
+  cursor: pointer;
+}
 .nav button:focus-visible { outline: none; box-shadow: var(--ring); }
 .hero {
   position: relative;
