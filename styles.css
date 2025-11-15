@@ -19,6 +19,17 @@ html,body { height: 100% }
 body {
   margin: 0; font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   background: var(--bg); color: var(--fg);
+    position: relative;
+  min-height: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.85) 80%);
+  pointer-events: none;
+  z-index: -1;
 }
 .container { max-width: 960px; margin: 0 auto; padding: 0 2rem 2rem; }
 .site-header {
