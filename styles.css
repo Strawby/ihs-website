@@ -31,7 +31,7 @@ body {
 }
 .brand { color: var(--fg); text-decoration: none; font-weight: 700; letter-spacing: .25px; }
 .brand img {
-  height: 10px;
+  height: 25px;
   width: auto;
   display: block;
 }
