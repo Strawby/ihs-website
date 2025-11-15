@@ -30,6 +30,11 @@ body {
   position: relative;      /* lets you anchor the button to the right */
 }
 .brand { color: var(--fg); text-decoration: none; font-weight: 700; letter-spacing: .25px; }
+.brand img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
 .nav button {
   position: absolute;
   right: 1rem;
