@@ -131,7 +131,7 @@ body {
   .hero {
     margin: 0 calc(50% - 50vw) 2rem;
     padding: clamp(2rem, 10vw, 3.5rem) clamp(1rem, 7vw, 2.5rem);
-    min-height: clamp(480px, 100vh, 760px);
+    min-height: max(480px, 100vh);
     gap: clamp(2.5rem, 12vw, 4rem);
   }
 
@@ -152,7 +152,7 @@ body {
   justify-content: center;
   gap: clamp(2.5rem, 7vh, 4.5rem);
   text-align: center;
-  min-height: clamp(540px, 100vh, 880px);
+  min-height: max(540px, 100vh);
   overflow: hidden;
   isolation: isolate;
 }
