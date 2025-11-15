@@ -22,21 +22,21 @@ body {
 }
 .container { max-width: 960px; margin: 0 auto; padding: 0 2rem 2rem; }
 .site-header { position: sticky; top: 0; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(8px); }
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centers the Home link */
-  padding: .75rem 1rem;
-  position: relative;      /* lets you anchor the button to the right */
+.brand { 
+  color: var(--fg); 
+  text-decoration: none; 
+  font-weight: 700; 
+  letter-spacing: .25px; 
 }
-.brand { color: var(--fg); text-decoration: none; font-weight: 700; letter-spacing: .25px; }
 .brand img {
   height: 90px;
   width: auto;
   display: block;
+  margin: 0 auto; 
+  display: inline-flex; 
+  align-items: center;
 }
 .nav button {
-  position: absolute;
   right: 1rem;
   background: var(--card);
   color: var(--fg);
@@ -62,6 +62,7 @@ body {
   letter-spacing: 0.12em;
   font-weight: 600;
   color: var(--fg);
+  flex: 1;
 }
 
 .nav-links a {
@@ -80,6 +81,8 @@ body {
 
 .nav-links--right {
   margin-left: auto;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .nav-button {
