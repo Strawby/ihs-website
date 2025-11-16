@@ -1,0 +1,86 @@
+diff --git a/index.html b/index.html
+index ac62534129b03dabc414b0ae59872d819d8788d1..7db261edd471a1b7570580ae6bf6df5d24a4e593 100644
+--- a/index.html
++++ b/index.html
+@@ -20,67 +20,67 @@
+   </div>
+ 
+   <a class="brand" href="/">
+     <img src="media/ihs-logo-big.png" alt="Indian Hot Springs" />
+   </a>
+ 
+   <div class="nav-links nav-links--right">
+     <a href="#pricing">Pricing</a>
+     <a href="#hours">Hours</a>
+     <a href="#about">About Us</a>
+     <a class="nav-button" href="#book">Book Now</a>
+     <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+   </div>
+ 
+ </nav>
+   </header>
+ 
+   <main class="container">
+        <section class="hero" id="home">
+       <div class="hero-media">
+         <video class="hero-video" src="media/hero.mp4" autoplay muted loop playsinline></video>
+       </div>
+       <div class="page-filter" aria-hidden="true"></div>
+ 
+       <div class="hero-panels" aria-label="Highlights from the resort">
+-        <article class="hero-panel hero-panel--feature">
+-          <div class="feature-media">
++        <article class="hero-panel hero-panel--feature hero-panel--with-media">
++          <div class="panel-media">
+             <img src="media/ihs-pool-1.jpg" alt="Lush indoor hot springs pool" />
+-                      </div>
++          </div>
+ 
+-          <div class="feature-content">
++          <div class="panel-content">
+             <h1>get away without going too far</h1>
+-              <p>
+-                  When you walk into our atrium and see the banana trees surrounding a 
+-                  turquoise mineral-water pool, you’ll forget you’re only 30 minutes away 
+-                  from Denver. A historic and cherished place, Indian Hot Springs is a 
+-                  destination for our naturally heated botanic swimming pool, caves, outdoor 
+-                  tubs, spa treatments, and accommodations. Weekends are a great time to bring 
+-                  the family, and weekdays are perfect for sneaking away from the city for 
+-                  much-needed relaxation.
+-              </p>
+-            <a class="panel-cta" href="#hot-springs">Explore the pool</a>
++            <p>
++              When you walk into our atrium and see the banana trees surrounding a
++              turquoise mineral-water pool, you’ll forget you’re only 30 minutes away
++              from Denver. A historic and cherished place, Indian Hot Springs is a
++              destination for our naturally heated botanic swimming pool, caves, outdoor
++              tubs, spa treatments, and accommodations. Weekends are a great time to bring
++              the family, and weekdays are perfect for sneaking away from the city for
++              much-needed relaxation.
++            </p>
++            <a class="panel-cta panel-cta--feature" href="#hot-springs">Explore the pool</a>
+           </div>
+         </article>
+ 
+         <article class="hero-panel hero-panel--with-media">
+           <div class="panel-media">
+             <img src="media/ihs-caves-1.jpg" alt="Geothermal caves at Indian Hot Springs" />
+           </div>
+           <div class="panel-content">
+             <h2>Get Under the Earth’s Edge</h2>
+             <p>
+               Step into the dimly-lit sanctuary of the caves at Indian Hot Springs and surrender 
+               to a world below-the-surface. Carved deep into the mountain side, these geothermal 
+               caverns wrap you in warm mineral-rich water and near-sauna air, offering quietude 
+               and primal renewal just minutes from Denver. With the sound of steady drips and 
+               soft echoing stones, you’ll forget the bustle of daily life. Here, phones stay 
+               locked, conversation fades—restore your body in hot pools, recline on tile benches, 
+               rise refreshed. Whether you go midday for serene escape or in the gentle hush of 
+               evening for a private recharge, the caves promise a wholly different kind of detox.
+             </p>
+           </div>
+         </article>
+ 
+         <article class="hero-panel hero-panel--with-media">
+           <div class="panel-media">
+             <img src="media/ihs-cabin-1.jpg" alt="Rustic cabin accommodations at Indian Hot Springs" />
