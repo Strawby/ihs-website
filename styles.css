@@ -236,8 +236,8 @@ body {
 .hero-panel--with-media {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(150px, 0.7fr) 1.3fr;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: minmax(220px, 0.95fr) 1.05fr;
+  gap: clamp(1.25rem, 3vw, 3rem);
   align-items: center;
 }
 
