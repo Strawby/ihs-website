@@ -219,8 +219,8 @@ body {
   letter-spacing: .04em;
   text-transform: uppercase;
 }
-.hero-panel h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-.hero-panel h2 { font-size: clamp(1.2rem, 2.4vw, 1.6rem); }
+.hero-panel h1,
+.hero-panel h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .hero-panel p {
   margin: 0;
   color: rgba(242, 248, 244, .85);
