@@ -180,6 +180,10 @@ body {
   letter-spacing: 0;
   font-weight: 500;
   padding: .35rem 0;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  color: inherit;
 }
 
 .nav-menu-link:hover,
