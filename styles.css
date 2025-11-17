@@ -175,6 +175,13 @@ body {
   border-bottom: 1px solid transparent;
 }
 
+.nav-menu .nav-toggle {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: .35rem 0;
+}
+
 .nav-menu-link:hover,
 .nav-menu-link:focus-visible {
   border-bottom-color: var(--brand);
