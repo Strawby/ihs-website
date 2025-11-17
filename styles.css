@@ -175,6 +175,12 @@ body {
   border-bottom: 1px solid transparent;
 }
 
+.nav-menu-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
 .nav-menu .nav-toggle {
   text-transform: none;
   letter-spacing: 0;
