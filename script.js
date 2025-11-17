@@ -6,28 +6,55 @@ const root = document.documentElement;
 const THEME_KEY = "site-theme";
 const stored = localStorage.getItem(THEME_KEY);
 if (stored === "light") root.classList.add("light");
-$("#themeToggle").addEventListener("click", () => {
-  root.classList.toggle("light");
-  localStorage.setItem(THEME_KEY, root.classList.contains("light") ? "light" : "dark");
-});
-
-// Demo interaction
-$("#year").textContent = new Date().getFullYear();
-$("#actionBtn").addEventListener("click", () => {
-  addCards([
-    { title: "Zero build step", text: "Just HTML/CSS/JS—no bundlers." },
-    { title: "Fast deploys", text: "Git push and you're live." },
-    { title: "Custom domain", text: "Add a CNAME and enable HTTPS." }
-  ]);
-});
-
-// Render helper
-function addCards(items) {
-  const wrap = $("#cards");
-  wrap.innerHTML = items.map(({title, text}) => `
-    <article class="card" role="listitem">
-      <h3>${title}</h3>
-      <p>${text}</p>
-    </article>
-  `).join("");
+const themeToggle = $("#themeToggle");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    root.classList.toggle("light");
+    localStorage.setItem(
+      THEME_KEY,
+      root.classList.contains("light") ? "light" : "dark"
+    );
+  });
 }
+
+// Global footer year
+$("#year").textContent = new Date().getFullYear();
+
+// Accessible nav menu toggles
+const navToggles = document.querySelectorAll(".nav-toggle");
+const closeMenus = (exception) => {
+  navToggles.forEach((btn) => {
+    if (btn === exception) return;
+    btn.setAttribute("aria-expanded", "false");
+    const menu = btn.nextElementSibling;
+    if (menu) menu.hidden = true;
+  });
+};
+
+navToggles.forEach((toggle) => {
+  const menu = toggle.nextElementSibling;
+  if (!menu) return;
+
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      toggle.setAttribute("aria-expanded", "false");
+      menu.hidden = true;
+    } else {
+      closeMenus(toggle);
+      toggle.setAttribute("aria-expanded", "true");
+      menu.hidden = false;
+    }
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".nav-item")) {
+    closeMenus();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMenus();
+});
