@@ -23,8 +23,19 @@ $("#year").textContent = new Date().getFullYear();
 // Accessible nav menu toggles
 const navToggles = document.querySelectorAll(".nav-toggle");
 const closeMenus = (exception) => {
+  const exceptionItem = exception?.closest(".nav-item");
   navToggles.forEach((btn) => {
+    const btnItem = btn.closest(".nav-item");
     if (btn === exception) return;
+    
+    if (
+      exceptionItem &&
+      btnItem &&
+      (btnItem.contains(exceptionItem) || exceptionItem.contains(btnItem))
+    ) {
+      return;
+    }
+
     btn.setAttribute("aria-expanded", "false");
     const menu = btn.nextElementSibling;
     if (menu) menu.hidden = true;
