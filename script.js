@@ -69,3 +69,35 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenus();
 });
+
+// Gradually blur hero video on scroll
+const heroVideo = $(".hero-video");
+if (heroVideo) {
+  const heroSection = heroVideo.closest(".hero");
+  const maxBlur = 8; // px
+  let ticking = false;
+
+  const updateBlur = () => {
+    const heroHeight = heroSection?.offsetHeight || window.innerHeight;
+    const progress = Math.min(
+      Math.max(window.scrollY / (heroHeight * 0.9), 0),
+      1
+    );
+    const blur = progress * maxBlur;
+    root.style.setProperty("--hero-blur", `${blur.toFixed(2)}px`);
+    ticking = false;
+  };
+
+  updateBlur();
+
+  document.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(updateBlur);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+}
