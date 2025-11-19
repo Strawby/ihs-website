@@ -157,10 +157,6 @@ body {
   z-index: 20;
 }
 
-.nav-menu[hidden] {
-  display: none !important;
-}
-
 .nav-item--nested > .nav-menu {
   top: 0;
   left: calc(100% + .75rem);
