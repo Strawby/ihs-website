@@ -157,6 +157,10 @@ body {
   z-index: 20;
 }
 
+.nav-menu[hidden] {
+  display: none !important;
+}
+
 .nav-item--nested > .nav-menu {
   top: 0;
   left: calc(100% + .75rem);
@@ -169,6 +173,23 @@ body {
   font-weight: 500;
   padding: .35rem 0;
   border-bottom: 1px solid transparent;
+}
+
+.nav-menu-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.nav-menu .nav-toggle {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: .35rem 0;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+  color: inherit;
 }
 
 .nav-menu-link:hover,
