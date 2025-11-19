@@ -5,6 +5,7 @@
   --brand: #4f9cff;
   --card: #121a2b;
   --ring: 0 0 0 3px rgba(79,156,255,.35);
+  --hero-blur: 0px;
 }
 :root.light {
   --bg: #f7f9fc;
@@ -313,6 +314,9 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(var(--hero-blur));
+  transform: scale(1.03);
+  will-change: filter;
 }
 .hero-panels {
   position: relative;
