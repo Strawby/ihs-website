@@ -101,3 +101,8 @@ if (heroVideo) {
     { passive: true }
   );
 }
+
+document.querySelectorAll('[data-footer]').forEach(async (slot) => {
+  const html = await fetch('/partials/footer.html').then((r) => r.text());
+  slot.innerHTML = html;
+});
