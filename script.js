@@ -102,7 +102,12 @@ if (heroVideo) {
   );
 }
 
+const footerUrl = new URL(
+  "partials/footer.html",
+  document.currentScript?.src || window.location.href
+);
+
 document.querySelectorAll('[data-footer]').forEach(async (slot) => {
-  const html = await fetch('/partials/footer.html').then((r) => r.text());
+  const html = await fetch(footerUrl).then((r) => r.text());
   slot.innerHTML = html;
 });
