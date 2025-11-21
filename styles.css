@@ -390,7 +390,7 @@ body {
 
 .hero-panel--feature .panel-cta,
 .panel-cta--feature {
-  align-self: flex-start;
+  align-self: center;
 }
 
 .panel-cta {
