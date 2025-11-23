@@ -18,7 +18,12 @@ if (themeToggle) {
 }
 
 // Global footer year
-$("#year").textContent = new Date().getFullYear();
+const setYear = (ctx = document) => {
+  const yearEl = $("#year", ctx);
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+};
+
+setYear();
 
 // Accessible nav menu toggles
 const navToggles = document.querySelectorAll(".nav-toggle");
