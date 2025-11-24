@@ -1,13 +1,15 @@
 <footer class="site-footer" aria-labelledby="footer-heading">
   <div class="footer-inner">
-    <div class="footer-heading">
-      <p class="footer-kicker">Hours &amp; Contact</p>
-      <h2 id="footer-heading">Plan Your Visit</h2>
+    <!-- Top heading -->
+    <div class="footer-heading-row">
+      <h2 id="footer-heading" class="footer-title">Hours</h2>
     </div>
 
-    <div class="footer-grid">
+    <!-- Hours grid -->
+    <div class="footer-hours">
+      <!-- Weekdays -->
       <section class="footer-section" aria-label="Weekday hours">
-        <h3>Monday – Friday</h3>
+        <h3 class="hours-section-title">Monday – Friday</h3>
         <dl class="hours-list">
           <div class="hours-row">
             <dt>Private Baths</dt>
@@ -32,15 +34,12 @@
               <span class="hours-time">8:30am – 9:00pm</span>
             </dd>
           </div>
-          <div class="hours-row">
-            <dt>Spa</dt>
-            <dd>10:00am – 7:00pm</dd>
-          </div>
         </dl>
       </section>
 
+      <!-- Weekends -->
       <section class="footer-section" aria-label="Weekend hours">
-        <h3>Saturday – Sunday</h3>
+        <h3 class="hours-section-title">Saturday – Sunday</h3>
         <dl class="hours-list">
           <div class="hours-row">
             <dt>Private Baths</dt>
@@ -62,35 +61,64 @@
             <dt>Pool (Adult Swim)</dt>
             <dd>7:30pm – 9:30pm</dd>
           </div>
-          <div class="hours-row">
-            <dt>Caves</dt>
-            <dd>
-              <span class="hours-note">Swim Attire mandatory</span>
-              <span class="hours-time">8:30am – 10:30am</span>
-              <span class="hours-time">11:00am – 1:00pm</span>
-              <span class="hours-time">1:30pm – 3:30pm</span>
-              <span class="hours-time">4:00pm – 6:00pm</span>
-              <span class="hours-time">6:30pm – 8:30pm</span>
-            </dd>
-          </div>
-          <div class="hours-row">
-            <dt>Spa</dt>
-            <dd>10:00am – 7:00pm</dd>
-          </div>
         </dl>
       </section>
 
-      <section class="footer-section footer-contact" aria-label="Contact information">
-        <h3>Stay in Touch</h3>
-        <p class="contact-line"><a href="tel:3039896666">303.989.6666</a></p>
-        <p class="contact-line">302 Soda Creek Road, Idaho Springs, CO 80452</p>
-        <p class="contact-line"><a href="mailto:info@indianhotsprings.com">info@indianhotsprings.com</a></p>
-        <p class="contact-line"><a href="https://www.instagram.com/indianhotsprings" target="_blank" rel="noreferrer">@indianhotsprings</a></p>
-        <div class="footer-meta">
-          <p>© <span id="year">2025</span> Indian Hot Springs. All Rights Reserved</p>
-          <p>Created by SJK Designs</p>
+      <!-- Caves + Spa notes column -->
+      <section class="footer-section footer-section--legend" aria-label="Caves and spa details">
+        <div class="legend-group">
+          <h3 class="hours-section-title">Caves</h3>
+          <p class="legend-line">
+            <span class="legend-label">Weekdays</span>
+            <span class="legend-value">Swim Attire optional</span>
+          </p>
+          <p class="legend-line">
+            <span class="legend-label">Weekends</span>
+            <span class="legend-value">Swim Attire mandatory</span>
+          </p>
+          <p class="legend-times">
+            8:30am – 10:30am<br>
+            11:00am – 1:00pm<br>
+            1:30pm – 3:30pm<br>
+            4:00pm – 6:00pm<br>
+            6:30pm – 8:30pm
+          </p>
+        </div>
+
+        <div class="legend-group">
+          <h3 class="hours-section-title">Spa</h3>
+          <p class="legend-line">10:00am – 7:00pm</p>
         </div>
       </section>
+    </div>
+
+    <!-- Contact row -->
+    <div class="footer-contact">
+      <div class="footer-contact-main">
+        <p class="contact-item">
+          <span aria-hidden="true">☎</span>
+          <a href="tel:3039896666">303.989.6666</a>
+        </p>
+        <p class="contact-item">
+          <span aria-hidden="true">📍</span>
+          302 Soda Creek Road, Idaho Springs, CO 80452
+        </p>
+        <p class="contact-item">
+          <span aria-hidden="true">✉</span>
+          <a href="mailto:info@indianhotsprings.com">info@indianhotsprings.com</a>
+        </p>
+        <p class="contact-item">
+          <span aria-hidden="true">📷</span>
+          <a href="https://www.instagram.com/indianhotsprings" target="_blank" rel="noreferrer">
+            @indianhotsprings
+          </a>
+        </p>
+      </div>
+
+      <div class="footer-meta">
+        <p>© <span id="year">2025</span> Indian Hot Springs. All Rights Reserved</p>
+        <p>Created by SJK Designs</p>
+      </div>
     </div>
   </div>
 </footer>
