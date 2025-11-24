@@ -508,7 +508,7 @@ body {
 
 .footer-hours {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.7fr);
   gap: 2.5rem;
 }
 
@@ -562,25 +562,28 @@ body {
   display: block;
 }
 
+.hours-multi {
+  display: grid;
+  gap: 0.15rem;
+  text-align: right;
+}
+
+.hours-row--stacked {
+  align-items: flex-start;
+}
+
 /* Caves / Spa column */
 
-.footer-section--legend {
-  gap: 1.5rem;
+.footer-section--legend,
+.footer-section--spa {
+  gap: 0.5rem;
 }
 
-.legend-group {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.legend-line {
+.legend-note {
   margin: 0;
-  font-size: 0.9rem;
-}
-
-.legend-label {
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-right: 0.35rem;
+  text-decoration: underline;
 }
 
 .legend-times {
