@@ -29,10 +29,14 @@
           </div>
           <div class="hours-row">
             <dt>Caves</dt>
-            <dd>
+            <dd class="hours-multi">
               <span class="hours-note">Swim Attire optional</span>
               <span class="hours-time">8:30am – 9:00pm</span>
             </dd>
+          </div>
+            <div class="hours-row">
+            <dt>Spa</dt>
+            <dd>10:00am – 7:00pm</dd>
           </div>
         </dl>
       </section>
@@ -49,9 +53,9 @@
             <dt>Outdoor Tubs</dt>
             <dd>8:00am – 9:00pm</dd>
           </div>
-          <div class="hours-row">
+          <div class="hours-row hours-row--stacked">
             <dt>Pool &amp; Club Mud</dt>
-            <dd>
+            <dd class="hours-multi">
               <span class="hours-time">7:30am – 10:00am</span>
               <span class="hours-time">10:30am – 2:00pm</span>
               <span class="hours-time">3:00pm – 6:30pm</span>
@@ -64,33 +68,23 @@
         </dl>
       </section>
 
-      <!-- Caves + Spa notes column -->
-      <section class="footer-section footer-section--legend" aria-label="Caves and spa details">
-        <div class="legend-group">
-          <h3 class="hours-section-title">Caves</h3>
-          <p class="legend-line">
-            <span class="legend-label">Weekdays</span>
-            <span class="legend-value">Swim Attire optional</span>
-          </p>
-          <p class="legend-line">
-            <span class="legend-label">Weekends</span>
-            <span class="legend-value">Swim Attire mandatory</span>
-          </p>
-          <p class="legend-times">
-            8:30am – 10:30am<br>
-            11:00am – 1:00pm<br>
-            1:30pm – 3:30pm<br>
-            4:00pm – 6:00pm<br>
-            6:30pm – 8:30pm
-          </p>
-        </div>
-
-        <div class="legend-group">
-          <h3 class="hours-section-title">Spa</h3>
-          <p class="legend-line">10:00am – 7:00pm</p>
-        </div>
+      <!-- Caves weekend schedule -->
+      <section class="footer-section footer-section--legend" aria-label="Caves schedule">
+        <h3 class="hours-section-title">Caves</h3>
+        <p class="legend-note">Swim Attire mandatory</p>
+        <p class="legend-times">
+          8:30am – 10:30am<br>
+          11:00am – 1:00pm<br>
+          1:30pm – 3:30pm<br>
+          4:00pm – 6:00pm<br>
+          6:30pm – 8:30pm
+        </p>
       </section>
-    </div>
+
+      <!-- Spa schedule -->
+      <section class="footer-section footer-section--spa" aria-label="Spa hours">
+        <h3 class="hours-section-title">Spa</h3>
+        <p class="legend-note">10:00am – 7:00pm</p>
 
     <!-- Contact row -->
     <div class="footer-contact">
