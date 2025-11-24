@@ -459,7 +459,180 @@ body {
 .card:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.15); }
 .card h3 { margin: 0 0 .25rem; font-size: 1.05rem; }
 .card p { margin: 0; color: var(--muted); }
-.site-footer { text-align: center; padding: 2rem; color: var(--muted); }
+/* Footer */
+
+.site-footer {
+  background: #245f43;
+  color: #f6f3e8;
+  margin-top: 3rem;
+  padding: 2.75rem 2rem 1.75rem;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-heading-row {
+  border-bottom: 1px solid rgba(246, 243, 232, 0.18);
+  padding-bottom: 0.75rem;
+}
+
+.footer-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Hours grid */
+
+.footer-hours {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 2.5rem;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hours-section-title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.hours-list {
+  margin: 0;
+  padding: 0.5rem 0 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.hours-row dt {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hours-row dd {
+  margin: 0;
+  text-align: right;
+}
+
+.hours-note {
+  display: block;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.hours-time {
+  display: block;
+}
+
+/* Caves / Spa column */
+
+.footer-section--legend {
+  gap: 1.5rem;
+}
+
+.legend-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.legend-line {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.legend-label {
+  font-weight: 600;
+  margin-right: 0.35rem;
+}
+
+.legend-times {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+}
+
+/* Contact row */
+
+.footer-contact {
+  border-top: 1px solid rgba(246, 243, 232, 0.18);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer-contact-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.contact-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-meta {
+  text-align: right;
+  opacity: 0.85;
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Footer responsive */
+
+@media (max-width: 900px) {
+  .footer-hours {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-contact {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-meta {
+    text-align: left;
+  }
+}
+
 
 .pool-page {
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 4.5rem;
