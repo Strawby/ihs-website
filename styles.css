@@ -545,6 +545,7 @@ body {
 
 .hours-row {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
   font-size: 0.95rem;
@@ -558,6 +559,10 @@ body {
 .hours-row dd {
   margin: 0;
   text-align: right;
+}
+
+.hours-row dd:not(.hours-multi) {
+  white-space: nowrap;
 }
 
 .hours-note {
