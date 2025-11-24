@@ -577,9 +577,8 @@ body {
   align-items: flex-start;
 }
 
-/* Caves / Spa column */
+/* Spa column */
 
-.footer-section--legend,
 .footer-section--spa {
   gap: 0.5rem;
 }
@@ -589,11 +588,6 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: underline;
-}
-
-.legend-times {
-  margin: 0.35rem 0 0;
-  font-size: 0.9rem;
 }
 
 /* Contact row */
