@@ -508,7 +508,7 @@ body {
 
 .footer-hours {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2.5rem;
 }
 
@@ -575,12 +575,6 @@ body {
 
 .hours-row--stacked {
   align-items: flex-start;
-}
-
-/* Spa column */
-
-.footer-section--spa {
-  gap: 0.5rem;
 }
 
 .legend-note {
