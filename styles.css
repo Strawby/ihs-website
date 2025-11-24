@@ -6,6 +6,9 @@
   --card: #121a2b;
   --ring: 0 0 0 3px rgba(79,156,255,.35);
   --hero-blur: 0px;
+  --footer-bg: #103528;
+  --footer-fg: #f3f7f2;
+  --footer-border: rgba(243, 247, 242, 0.16);
 }
 :root.light {
   --bg: #f7f9fc;
@@ -14,6 +17,9 @@
   --brand: #2563eb;
   --card: #ffffff;
   --ring: 0 0 0 3px rgba(37,99,235,.25);
+  --footer-bg: #e7f0ff;
+  --footer-fg: #0b1220;
+  --footer-border: rgba(11, 18, 32, 0.12);
 }
 * { box-sizing: border-box }
 html,body { height: 100% }
@@ -462,8 +468,8 @@ body {
 /* Footer */
 
 .site-footer {
-  background: #1e5a45;
-  color: #f6f3e8;
+  background: var(--footer-bg);
+  color: var(--footer-fg);
   margin-top: 3rem;
   padding: 2.75rem 2rem 1.75rem;
 }
@@ -487,7 +493,7 @@ body {
 }
 
 .footer-heading-row {
-  border-bottom: 1px solid rgba(246, 243, 232, 0.18);
+  border-bottom: 1px solid var(--footer-border);
   padding-bottom: 0.75rem;
 }
 
@@ -585,7 +591,7 @@ body {
 /* Contact row */
 
 .footer-contact {
-  border-top: 1px solid rgba(246, 243, 232, 0.18);
+  border-top: 1px solid var(--footer-border);
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
