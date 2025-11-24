@@ -508,8 +508,13 @@ body {
 
 .footer-hours {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.7fr);
   gap: 2.5rem;
+}
+
+.footer-section-group {
+  display: grid;
+  gap: 2rem;
 }
 
 .footer-section {
