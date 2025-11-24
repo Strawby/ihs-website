@@ -523,6 +523,11 @@ body {
   gap: 0.85rem;
 }
 
+.footer-section + .footer-section {
+  border-left: 1px solid var(--footer-border);
+  padding-left: 1.5rem;
+}
+
 .hours-section-title {
   margin: 0;
   text-transform: uppercase;
@@ -628,6 +633,14 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .footer-section + .footer-section {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--footer-border);
+    padding-top: 1.25rem;
+    margin-top: 0.25rem;
+  }
+  
   .footer-meta {
     text-align: center;
   }
