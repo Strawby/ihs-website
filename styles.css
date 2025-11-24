@@ -616,10 +616,11 @@ body {
 }
 
 .footer-meta {
-  text-align: right;
+  flex: 1 1 100%;
+  text-align: center;
   opacity: 0.85;
-  display: grid;
-  gap: 0.25rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* Footer responsive */
@@ -635,7 +636,7 @@ body {
   }
 
   .footer-meta {
-    text-align: left;
+    text-align: center;
   }
 }
 
