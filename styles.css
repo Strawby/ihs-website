@@ -566,15 +566,18 @@ body {
 /* Hours grid */
 
 .footer-hours {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  display: flex;
+  justify-content: center;
+  width: 100%;
   gap: 2.5rem;
   text-align: center;
 }
 
 .footer-section-group {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+  width: min(100%, 980px);
 }
 
 .footer-section {
@@ -710,7 +713,7 @@ body {
 
 @media (max-width: 900px) {
   .footer-hours {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .footer-section + .footer-section {
