@@ -553,6 +553,7 @@ body {
 .footer-heading-row {
   border-bottom: 1px solid var(--footer-border);
   padding-bottom: 0.75rem;
+  text-align: center;
 }
 
 .footer-title {
@@ -568,6 +569,7 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2.5rem;
+  text-align: center;
 }
 
 .footer-section-group {
@@ -579,6 +581,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  align-items: center;
 }
 
 .footer-section + .footer-section {
@@ -600,11 +603,13 @@ body {
   padding: 0.5rem 0 0;
   display: grid;
   gap: 0.4rem;
+  width: 100%;
 }
 
 .hours-list--split {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem 2rem;
+  justify-items: center;
 }
 
 .hours-list--split .hours-column {
@@ -618,6 +623,7 @@ body {
   justify-content: space-between;
   gap: 1rem;
   font-size: 0.95rem;
+  width: 100%;
 }
 
 .hours-row dt {
