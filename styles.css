@@ -544,6 +544,16 @@ body {
   gap: 0.4rem;
 }
 
+.hours-list--split {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem 2rem;
+}
+
+.hours-list--split .hours-column {
+  display: grid;
+  gap: 0.4rem;
+}
+
 .hours-row {
   display: flex;
   flex-direction: row;
