@@ -578,6 +578,17 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   width: min(100%, 980px);
+  position: relative;
+}
+
+.footer-section-group::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  margin: 0 auto;
+  background: var(--footer-border);
+  pointer-events: none;
 }
 
 .footer-section {
@@ -585,12 +596,6 @@ body {
   flex-direction: column;
   gap: 0.85rem;
   align-items: center;
-}
-
-.footer-section + .footer-section {
-  border-top: 1px solid var(--footer-border);
-  padding-top: 1.5rem;
-  margin-top: 0.25rem;
 }
 
 .hours-section-title {
@@ -714,6 +719,10 @@ body {
 @media (max-width: 900px) {
   .footer-hours {
     flex-direction: column;
+  }
+
+  .footer-section-group::after {
+    display: none;
   }
 
   .footer-section + .footer-section {
