@@ -1,0 +1,99 @@
+diff --git a/script.js b/script.js
+index ada6c8657c9f95dee9ecedf1a190a4f37fd22858..6154a54669d3c65425cc9b67447b0ea018893b5a 100644
+--- a/script.js
++++ b/script.js
+@@ -1,35 +1,53 @@
+ // Tiny site behavior
+ const $ = (sel, ctx = document) => ctx.querySelector(sel);
+ const root = document.documentElement;
+-const resolvePartialUrl = (path) =>
+-  new URL(path, document.currentScript?.src || window.location.href);
++const scriptUrl = document.currentScript?.src || window.location.href;
++const siteBase = new URL(".", scriptUrl);
++const toSiteUrl = (path) => new URL(path.replace(/^\/+/, ""), siteBase);
++const resolvePartialUrl = (path) => new URL(path, siteBase);
++const rewriteRootRelativeUrls = (ctx = document) => {
++  ctx.querySelectorAll("[href^='/']").forEach((el) => {
++    const href = el.getAttribute("href");
++    if (!href || href.startsWith("//")) return;
++
++    el.href = toSiteUrl(href).toString();
++  });
++
++  ctx.querySelectorAll("[src^='/']").forEach((el) => {
++    const src = el.getAttribute("src");
++    if (!src || src.startsWith("//")) return;
++
++    el.src = toSiteUrl(src).toString();
++  });
++};
+ 
+ // Theme toggle (light/dark) with persistence
+ const THEME_KEY = "site-theme";
+ const stored = localStorage.getItem(THEME_KEY);
+ if (stored === "light") root.classList.add("light");
++rewriteRootRelativeUrls();
+ const initThemeToggle = (ctx = document) => {
+   const themeToggle = $("#themeToggle", ctx);
+   if (!themeToggle || themeToggle.dataset.enhanced) return;
+ 
+   themeToggle.dataset.enhanced = "true";
+   themeToggle.addEventListener("click", () => {
+     root.classList.toggle("light");
+     localStorage.setItem(
+       THEME_KEY,
+       root.classList.contains("light") ? "light" : "dark"
+     );
+   });
+ };
+ 
+ // Global footer year
+ const setYear = (ctx = document) => {
+   const yearEl = $("#year", ctx);
+   if (yearEl) yearEl.textContent = new Date().getFullYear();
+ };
+ 
+ // Accessible nav menu toggles
+ const getNavToggles = () => Array.from(document.querySelectorAll(".nav-toggle"));
+ const closeMenus = (exception) => {
+   const exceptionItem = exception?.closest(".nav-item");
+   getNavToggles().forEach((btn) => {
+@@ -106,36 +124,38 @@ if (heroVideo) {
+   document.addEventListener(
+     "scroll",
+     () => {
+       if (!ticking) {
+         requestAnimationFrame(updateBlur);
+         ticking = true;
+       }
+     },
+     { passive: true }
+   );
+ }
+ 
+ const injectPartial = async (selector, url, onReady) => {
+   const html = await fetch(url).then((r) => r.text());
+ 
+   document.querySelectorAll(selector).forEach((slot) => {
+     slot.innerHTML = html;
+     onReady?.(slot);
+   });
+ };
+ 
+ const headerUrl = resolvePartialUrl("partials/header.html");
+ const footerUrl = resolvePartialUrl("partials/footer.html");
+ 
+ injectPartial("[data-header]", headerUrl, (slot) => {
++  rewriteRootRelativeUrls(slot);
+   initNavigation(slot);
+   initThemeToggle(slot);
+ });
+ 
+ injectPartial("[data-footer]", footerUrl, (slot) => {
++  rewriteRootRelativeUrls(slot);
+   setYear(slot);
+ });
+ 
+ initNavigation();
+ initThemeToggle();
+ setYear();
