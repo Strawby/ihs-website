@@ -9,6 +9,7 @@
   --footer-bg: #103528;
   --footer-fg: #f3f7f2;
   --footer-border: rgba(243, 247, 242, 0.16);
+  --header-height: 120px;
 }
 
 :root.light {
@@ -38,7 +39,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   position: relative;
-  min-height: 100%;
+  min-height: 100%;+  
+  padding-top: var(--header-height);
 }
 
 .container {
@@ -48,11 +50,15 @@ body {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(8px);
   z-index: 10;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .brand {
@@ -260,6 +266,9 @@ body {
 }
 
 @media (max-width: 900px) {
+	:root {
+    --header-height: 210px;
+  }
   .nav {
     grid-template-columns: auto;
     justify-items: center;
