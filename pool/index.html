@@ -83,12 +83,109 @@
       </article>
     </section>
 
+	  <section class="pool-section pool-gallery-section" aria-label="Pool photo gallery">
+      <div class="section-header">
+        <h2>Gallery</h2>
+        <p class="section-summary">Step inside the steamy dome and get a feel for the tropical pool experience before you arrive.</p>
+      </div>
+      <div class="pool-gallery" data-pool-gallery>
+        <p class="muted" data-gallery-status>Loading photos…</p>
+      </div>
+    </section>
+	  
     <div class="pool-cta">
       <a class="panel-cta" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book Pool for Weekends</a>
     </div>
   </main>
   <div data-footer></div>
     <script src="../script.js"></script>
+	<script>
+      const poolGallery = document.querySelector("[data-pool-gallery]");
+      if (poolGallery) {
+        const status = poolGallery.querySelector("[data-gallery-status]");
+        const mediaBase = new URL("../media/pool/", window.location.href);
+        const allowedExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
+
+        const buildUrl = (name) => new URL(name, mediaBase).toString();
+        const unique = (list) => Array.from(new Set(list));
+
+        const fetchManifestImages = async () => {
+          const response = await fetch(new URL("manifest.json", mediaBase), {
+            cache: "no-store",
+          });
+          if (!response.ok) throw new Error("No manifest available");
+          const data = await response.json();
+          if (Array.isArray(data)) return data;
+          if (Array.isArray(data.files)) return data.files;
+          return [];
+        };
+
+        const parseDirectoryListing = (html) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, "text/html");
+          return Array.from(doc.querySelectorAll("a"))
+            .map((link) => link.getAttribute("href") || "")
+            .filter((href) =>
+              allowedExtensions.some((ext) => href.toLowerCase().endsWith(ext))
+            )
+            .map((href) => href.split("/").filter(Boolean).pop())
+            .filter(Boolean);
+        };
+
+        const fetchDirectoryImages = async () => {
+          const response = await fetch(mediaBase, { cache: "no-store" });
+          if (!response.ok) throw new Error("Unable to list directory");
+          const html = await response.text();
+          const images = parseDirectoryListing(html);
+          if (!images.length) throw new Error("No images found");
+          return images;
+        };
+
+        const createGalleryItem = (name) => {
+          const figure = document.createElement("figure");
+          figure.className = "pool-gallery__item";
+
+          const img = document.createElement("img");
+          img.loading = "lazy";
+          img.src = buildUrl(name);
+          img.alt = "Mineral water swimming pool";
+
+          figure.append(img);
+          return figure;
+        };
+
+        const renderImages = (images) => {
+          if (status) status.remove();
+          unique(images).forEach((name) => {
+            poolGallery.append(createGalleryItem(name));
+          });
+        };
+
+        const handleEmpty = () => {
+          if (status) {
+            status.textContent = "No photos available right now.";
+          }
+        };
+
+        const initPoolGallery = async () => {
+          try {
+            const images =
+              (await fetchManifestImages().catch(() => fetchDirectoryImages())) || [];
+
+            if (!images.length) {
+              handleEmpty();
+              return;
+            }
+
+            renderImages(images);
+          } catch (error) {
+            handleEmpty();
+          }
+        };
+
+        initPoolGallery();
+      }
+    </script>
 </body>
 </html>
 
