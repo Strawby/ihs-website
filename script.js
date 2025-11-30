@@ -28,6 +28,15 @@ const setYear = (ctx = document) => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 };
 
+// Sync body offset with header height
+const updateHeaderOffset = () => {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const { height } = header.getBoundingClientRect();
+  root.style.setProperty("--header-height", `${height}px`);
+};
+
 // Accessible nav menu toggles
 const getNavToggles = () => Array.from(document.querySelectorAll(".nav-toggle"));
 const closeMenus = (exception) => {
@@ -71,6 +80,49 @@ const enhanceNavToggle = (toggle) => {
 
 const initNavigation = (ctx = document) => {
   ctx.querySelectorAll(".nav-toggle").forEach(enhanceNavToggle);
+};
+// Mobile burger menu
+const initBurgerMenu = (ctx = document) => {
+  const nav = ctx.querySelector(".nav");
+  const burger = ctx.querySelector(".nav-burger");
+  if (!nav || !burger || burger.dataset.enhanced) return;
+
+  const closeBurger = () => {
+    if (!nav.classList.contains("nav--open")) return;
+    nav.classList.remove("nav--open");
+    burger.setAttribute("aria-expanded", "false");
+    updateHeaderOffset();
+  };
+
+  const toggleBurger = () => {
+    const isOpen = nav.classList.toggle("nav--open");
+    burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    updateHeaderOffset();
+  };
+
+  burger.dataset.enhanced = "true";
+  burger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleBurger();
+  });
+
+  nav.addEventListener("click", (event) => {
+    if (event.target.closest(".nav-link, .nav-menu-link")) {
+      closeBurger();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target)) closeBurger();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeBurger();
+    } else {
+      updateHeaderOffset();
+    }
+  });
 };
 
 document.addEventListener("click", (event) => {
@@ -130,6 +182,8 @@ const footerUrl = resolvePartialUrl("partials/footer.html");
 injectPartial("[data-header]", headerUrl, (slot) => {
   initNavigation(slot);
   initThemeToggle(slot);
+  initBurgerMenu(slot);
+  updateHeaderOffset();
 });
 
 injectPartial("[data-footer]", footerUrl, (slot) => {
@@ -139,3 +193,6 @@ injectPartial("[data-footer]", footerUrl, (slot) => {
 initNavigation();
 initThemeToggle();
 setYear();
+updateHeaderOffset();
+initBurgerMenu();
+window.addEventListener("resize", updateHeaderOffset);
