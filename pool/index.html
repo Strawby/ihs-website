@@ -92,7 +92,20 @@
         <p class="muted" data-gallery-status>Loading photos…</p>
       </div>
     </section>
-	  
+	  <div class="lightbox" data-gallery-lightbox hidden>
+      <button class="lightbox__backdrop" type="button" aria-label="Close full-size image" data-lightbox-close></button>
+      <figure class="lightbox__content">
+        <button
+          class="lightbox__close"
+          type="button"
+          aria-label="Close full-size image"
+          data-lightbox-close
+        >
+          ×
+        </button>
+        <img src="" alt="" loading="lazy" data-lightbox-image />
+      </figure>
+    </div>
     <div class="pool-cta">
       <a class="panel-cta" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book Pool for Weekends</a>
     </div>
@@ -101,6 +114,9 @@
     <script src="../script.js"></script>
 	<script>
       const poolGallery = document.querySelector("[data-pool-gallery]");
+	  const lightbox = document.querySelector("[data-gallery-lightbox]");
+      const lightboxImage = lightbox?.querySelector("[data-lightbox-image]");
+      const lightboxCloseTriggers = lightbox?.querySelectorAll("[data-lightbox-close]") || [];
       if (poolGallery) {
         const status = poolGallery.querySelector("[data-gallery-status]");
         const mediaBase = new URL("../media/pool/", window.location.href);
@@ -160,6 +176,41 @@
             poolGallery.append(createGalleryItem(name));
           });
         };
+
+        const closeLightbox = () => {
+          if (!lightbox || !lightboxImage) return;
+          lightbox.setAttribute("hidden", "");
+          lightbox.classList.remove("lightbox--open");
+          lightboxImage.src = "";
+          lightboxImage.alt = "";
+          document.body.classList.remove("no-scroll");
+        };
+
+        const openLightbox = (source, altText) => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = source;
+          lightboxImage.alt = altText || "Mineral water swimming pool";
+          lightbox.removeAttribute("hidden");
+          lightbox.classList.add("lightbox--open");
+          document.body.classList.add("no-scroll");
+        };
+
+        lightboxCloseTriggers.forEach((trigger) => {
+          trigger.addEventListener("click", closeLightbox);
+        });
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeLightbox();
+          }
+        });
+
+        poolGallery.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLImageElement)) return;
+          event.preventDefault();
+          openLightbox(target.src, target.alt);
+        });
 
         const handleEmpty = () => {
           if (status) {
