@@ -75,6 +75,10 @@ body {
   display: block;\
 }
 
+.nav-brand--mobile {
+  display: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -353,6 +357,15 @@ body {
     align-self: flex-end;
   }
 
+  .nav-brand--mobile {
+    display: flex;
+    align-self: center;
+  }
+
+  .nav-inner > .brand {
+    display: none;
+  }
+  
   .nav.nav--collapsible .nav-links,
   .nav.nav--collapsible .nav-links--right {
     justify-content: flex-start;
