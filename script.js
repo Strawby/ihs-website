@@ -168,8 +168,23 @@ const injectPartial = async (selector, url, onReady) => {
 
 const headerUrl = resolvePartialUrl("partials/header.html");
 const footerUrl = resolvePartialUrl("partials/footer.html");
+const siteBasePath = new URL("..", headerUrl);
+
+const resolveSitePath = (path) => new URL(path, siteBasePath).pathname;
+const applyRelativePaths = (ctx = document) => {
+  ctx.querySelectorAll("[data-path]").forEach((el) => {
+    const path = el.getAttribute("data-path");
+    if (path) el.setAttribute("href", resolveSitePath(path));
+  });
+
+  ctx.querySelectorAll("img[data-src]").forEach((img) => {
+    const src = img.getAttribute("data-src");
+    if (src) img.setAttribute("src", resolveSitePath(src));
+  });
+};
 
 injectPartial("[data-header]", headerUrl, (slot) => {
+  applyRelativePaths(slot);
   initNavigation(slot);
   initThemeToggle(slot);
   initHamburger(slot);

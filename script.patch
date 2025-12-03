@@ -1,0 +1,60 @@
+diff --git a/script.js b/script.js
+index 404fb134b572ebb6c6a1b8f5c6687212c1db79c5..06b46c93063f24f6a436847e4cbabf21423ae65f 100644
+--- a/script.js
++++ b/script.js
+@@ -146,40 +146,55 @@ if (heroVideo) {
+   updateBlur();
+ 
+   document.addEventListener(
+     "scroll",
+     () => {
+       if (!ticking) {
+         requestAnimationFrame(updateBlur);
+         ticking = true;
+       }
+     },
+     { passive: true }
+   );
+ }
+ 
+ const injectPartial = async (selector, url, onReady) => {
+   const html = await fetch(url).then((r) => r.text());
+ 
+   document.querySelectorAll(selector).forEach((slot) => {
+     slot.innerHTML = html;
+     onReady?.(slot);
+   });
+ };
+ 
+ const headerUrl = resolvePartialUrl("partials/header.html");
+ const footerUrl = resolvePartialUrl("partials/footer.html");
++const siteBasePath = new URL("..", headerUrl);
++
++const resolveSitePath = (path) => new URL(path, siteBasePath).pathname;
++const applyRelativePaths = (ctx = document) => {
++  ctx.querySelectorAll("[data-path]").forEach((el) => {
++    const path = el.getAttribute("data-path");
++    if (path) el.setAttribute("href", resolveSitePath(path));
++  });
++
++  ctx.querySelectorAll("img[data-src]").forEach((img) => {
++    const src = img.getAttribute("data-src");
++    if (src) img.setAttribute("src", resolveSitePath(src));
++  });
++};
+ 
+ injectPartial("[data-header]", headerUrl, (slot) => {
++  applyRelativePaths(slot);
+   initNavigation(slot);
+   initThemeToggle(slot);
+   initHamburger(slot);
+ });
+ 
+ injectPartial("[data-footer]", footerUrl, (slot) => {
+   setYear(slot);
+ });
+ 
+ initNavigation();
+ initThemeToggle();
+ initHamburger();
+ setYear();
