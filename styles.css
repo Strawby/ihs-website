@@ -91,11 +91,19 @@ body {
   border: 0;
 }
 
-.nav {
+.nav { 
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: .75rem 2rem;
+}
+
+.nav-top {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 }
 
 .nav-inner {
@@ -334,6 +342,10 @@ body {
     position: relative;
   }
 
+  .nav-top {
+    display: flex;
+  }
+
   .nav-inner {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -354,7 +366,7 @@ body {
 
   .nav-hamburger {
     display: inline-flex;
-    align-self: flex-end;
+    align-self: center;
   }
 
   .nav-brand--mobile {
