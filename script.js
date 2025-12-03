@@ -73,6 +73,48 @@ const initNavigation = (ctx = document) => {
   ctx.querySelectorAll(".nav-toggle").forEach(enhanceNavToggle);
 };
 
+const initHamburger = (ctx = document) => {
+  const nav = ctx.querySelector(".nav");
+  const hamburger = ctx.querySelector(".nav-hamburger");
+  const navInner = ctx.querySelector(".nav-inner");
+
+  if (!nav || !hamburger || !navInner || nav.dataset.hamburgerEnhanced)
+    return;
+
+  nav.dataset.hamburgerEnhanced = "true";
+  nav.classList.add("nav--collapsible");
+
+  const setOpen = (open) => {
+    nav.classList.toggle("nav--open", open);
+    hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+    hamburger.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
+    );
+    if (!open) closeMenus();
+  };
+
+  setOpen(false);
+
+  hamburger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const willOpen = !nav.classList.contains("nav--open");
+    setOpen(willOpen);
+  });
+
+  navInner.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+};
+
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".nav-item")) {
     closeMenus();
@@ -130,6 +172,7 @@ const footerUrl = resolvePartialUrl("partials/footer.html");
 injectPartial("[data-header]", headerUrl, (slot) => {
   initNavigation(slot);
   initThemeToggle(slot);
+  initHamburger(slot);
 });
 
 injectPartial("[data-footer]", footerUrl, (slot) => {
@@ -138,4 +181,5 @@ injectPartial("[data-footer]", footerUrl, (slot) => {
 
 initNavigation();
 initThemeToggle();
+initHamburger();
 setYear();
