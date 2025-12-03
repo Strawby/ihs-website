@@ -327,6 +327,7 @@ body {
     align-items: stretch;
     padding: 1rem 1.25rem;
     row-gap: .5rem;
+    position: relative;
   }
 
   .nav-inner {
@@ -337,15 +338,24 @@ body {
 
   .nav.nav--collapsible .nav-inner {
     display: none;
+    width: 100%;
   }
 
   .nav.nav--collapsible.nav--open .nav-inner {
     display: grid;
+    justify-items: start;
+    text-align: left;
+    align-items: start;
   }
 
   .nav-hamburger {
     display: inline-flex;
     align-self: flex-end;
+  }
+
+  .nav.nav--collapsible .nav-links,
+  .nav.nav--collapsible .nav-links--right {
+    justify-content: flex-start;
   }
 
   .nav-links,
