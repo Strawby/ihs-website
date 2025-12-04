@@ -183,6 +183,106 @@ const applyRelativePaths = (ctx = document) => {
   });
 };
 
+const normalizeGalleryManifest = (data) => {
+  if (Array.isArray(data)) return data;
+  if (Array.isArray(data?.images)) return data.images;
+  return [];
+};
+
+const initPoolGallery = async (ctx = document) => {
+  const gallery = ctx.querySelector("[data-pool-gallery]");
+  const lightbox = ctx.querySelector("[data-gallery-lightbox]");
+  if (!gallery || !lightbox) return;
+
+  const manifestUrl = resolveSitePath("media/pool/manifest.json");
+  let items = [];
+
+  try {
+    const response = await fetch(manifestUrl, { cache: "force-cache" });
+    if (!response.ok) throw new Error("Unable to fetch gallery manifest");
+    const manifest = await response.json();
+    items = normalizeGalleryManifest(manifest).filter(
+      (src) => typeof src === "string" && src.trim()
+    );
+  } catch (error) {
+    gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+    return;
+  }
+
+  if (!items.length) {
+    gallery.innerHTML = '<p class="muted">Check back soon for more pool photos.</p>';
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+  let activeIndex = 0;
+
+  const overlay = lightbox;
+  const overlayImg = overlay.querySelector("img");
+  const prevButton = overlay.querySelector(".lightbox-nav--prev");
+  const nextButton = overlay.querySelector(".lightbox-nav--next");
+  const closeButton = overlay.querySelector(".lightbox-close");
+
+  const updateOverlay = (index) => {
+    activeIndex = (index + items.length) % items.length;
+    if (overlayImg) {
+      overlayImg.src = resolveSitePath(items[activeIndex]);
+      overlayImg.alt = `Pool photo ${activeIndex + 1} of ${items.length}`;
+    }
+  };
+
+  const setOverlayVisible = (visible) => {
+    overlay.hidden = !visible;
+    overlay.setAttribute("aria-hidden", visible ? "false" : "true");
+    document.body.style.overflow = visible ? "hidden" : "";
+  };
+
+  const openOverlay = (index) => {
+    updateOverlay(index);
+    setOverlayVisible(true);
+    closeButton?.focus({ preventScroll: true });
+  };
+
+  const closeOverlay = () => setOverlayVisible(false);
+
+  const showNext = () => updateOverlay(activeIndex + 1);
+  const showPrev = () => updateOverlay(activeIndex - 1);
+
+  items.forEach((src, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "gallery-thumb";
+    button.dataset.index = String(index);
+
+    const img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = "Pool photo thumbnail";
+    img.src = resolveSitePath(src);
+
+    button.appendChild(img);
+    button.addEventListener("click", () => openOverlay(index));
+    fragment.appendChild(button);
+  });
+
+  gallery.innerHTML = "";
+  gallery.appendChild(fragment);
+
+  nextButton?.addEventListener("click", showNext);
+  prevButton?.addEventListener("click", showPrev);
+  closeButton?.addEventListener("click", closeOverlay);
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeOverlay();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (overlay.hidden) return;
+    if (event.key === "Escape") closeOverlay();
+    if (event.key === "ArrowRight") showNext();
+    if (event.key === "ArrowLeft") showPrev();
+  });
+};
+
 injectPartial("[data-header]", headerUrl, (slot) => {
   applyRelativePaths(slot);
   initNavigation(slot);
@@ -198,3 +298,4 @@ initNavigation();
 initThemeToggle();
 initHamburger();
 setYear();
+initPoolGallery();

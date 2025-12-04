@@ -1,0 +1,64 @@
+diff --git a/pool/index.html b/pool/index.html
+index 749bab1c856e9fad54f3ec8d89cf3874f50b9de4..988911312b506aa3453fc1bdeb48589b036b5e2d 100644
+--- a/pool/index.html
++++ b/pool/index.html
+@@ -61,34 +61,59 @@
+       </article>
+ 
+       <article class="info-card">
+         <h3>Pricing</h3>
+         <ul class="pool-list pool-list--tight">
+           <li>Monday - Thursday: $30 per person</li>
+           <li>Friday: $35 per person</li>
+           <li>Saturday - Sunday: $35 per person per time slot</li>
+           <li>Towels available to rent for $5.00</li>
+           <li>Key locks available for $4.00</li>
+           <li>Lockers on site</li>
+           <li>Free admission for kids 2 and under with valid adult admission</li>
+         </ul>
+       </article>
+ 
+       <article class="info-card">
+         <h3>Discounts</h3>
+         <ul class="pool-list pool-list--tight">
+           <li><strong>Everyday:</strong> Enjoy $10 off admission when soaking before 10:00am</li>
+           <li><strong>Monday - Thursday:</strong> $10 discount for caves with purchase of pool admission</li>
+           <li>No discounts are applicable on weekends and holidays</li>
+         </ul>
+       </article>
+     </section>
+ 
++    <section class="pool-section pool-gallery" aria-label="Pool photo gallery">
++      <div class="section-header">
++        <p class="section-kicker">Pool gallery</p>
++        <h2>See inside the dome</h2>
++        <p class="section-summary">Browse snapshots from around the mineral water swimming pool. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
++      </div>
++
++      <div class="media-gallery" data-pool-gallery>
++        <p class="muted">Loading photos...</p>
++      </div>
++    </section>
++
++    <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Pool photo">
++      <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
++      <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
++        <span aria-hidden="true">&#10094;</span>
++      </button>
++      <div class="lightbox-frame">
++        <img src="" alt="Pool gallery photo" />
++      </div>
++      <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
++        <span aria-hidden="true">&#10095;</span>
++      </button>
++    </div>
++
+     <div class="pool-cta">
+       <a class="panel-cta" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book Pool for Weekends</a>
+     </div>
+   </main>
+   <div data-footer></div>
+     <script src="../script.js"></script>
+ </body>
+ </html>
+ 

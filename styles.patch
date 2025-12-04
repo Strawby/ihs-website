@@ -1,0 +1,171 @@
+diff --git a/styles.css b/styles.css
+index 04a360acf92e777719ca830dad08cb354df8e562..46f4a86b55e29a11cbdb5180119b339340a153bc 100644
+--- a/styles.css
++++ b/styles.css
+@@ -956,35 +956,166 @@ body {
+ .info-card h3 {
+   margin: 0;
+   font-size: 1.2rem;
+ }
+ 
+ .info-subsection {
+   display: grid;
+   gap: 0.35rem;
+ }
+ 
+ .info-subsection h4 {
+   margin: 0;
+   font-size: 1rem;
+ }
+ 
+ .muted {
+   color: var(--muted);
+   margin: 0;
+ }
+ 
+ .pool-cta {
+   display: flex;
+   justify-content: center;
+ }
+ 
++.pool-gallery {
++  gap: 1.75rem;
++}
++
++.media-gallery {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
++  gap: 1rem;
++}
++
++.gallery-thumb {
++  border: 1px solid #1f2c45;
++  padding: 0;
++  border-radius: 1rem;
++  overflow: hidden;
++  background: color-mix(in srgb, var(--card) 90%, black);
++  cursor: pointer;
++  position: relative;
++  aspect-ratio: 4 / 3;
++  box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 10px 25px rgba(0,0,0,.2);
++  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
++}
++
++.gallery-thumb:hover,
++.gallery-thumb:focus-visible {
++  transform: translateY(-2px);
++  border-color: #30456a;
++  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.28);
++}
++
++.gallery-thumb img {
++  width: 100%;
++  height: 100%;
++  display: block;
++  object-fit: cover;
++}
++
++.lightbox {
++  position: fixed;
++  inset: 0;
++  background: rgba(7, 11, 18, 0.92);
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 0.75rem;
++  padding: clamp(1rem, 4vw, 2rem);
++  z-index: 1000;
++}
++
++.lightbox[hidden] {
++  display: none;
++}
++
++.lightbox-frame {
++  max-width: min(1024px, 96vw);
++  max-height: min(740px, 88vh);
++  border-radius: 1rem;
++  overflow: hidden;
++  box-shadow: 0 24px 50px rgba(0,0,0,.45);
++  border: 1px solid rgba(255,255,255,0.08);
++  background: #0c1626;
++}
++
++.lightbox-frame img {
++  display: block;
++  width: 100%;
++  height: 100%;
++  object-fit: contain;
++}
++
++.lightbox-close {
++  position: absolute;
++  top: clamp(0.5rem, 3vw, 1.25rem);
++  right: clamp(0.5rem, 3vw, 1.25rem);
++  background: rgba(0, 0, 0, 0.35);
++  color: #fff;
++  border: 1px solid rgba(255,255,255,0.25);
++  border-radius: 50%;
++  width: 44px;
++  height: 44px;
++  font-size: 1.5rem;
++  cursor: pointer;
++  display: grid;
++  place-items: center;
++  box-shadow: 0 8px 18px rgba(0,0,0,.35);
++}
++
++.lightbox-nav {
++  background: rgba(0, 0, 0, 0.4);
++  color: #fff;
++  border: 1px solid rgba(255,255,255,0.25);
++  width: 52px;
++  height: 52px;
++  border-radius: 50%;
++  cursor: pointer;
++  display: grid;
++  place-items: center;
++  font-size: 1.5rem;
++  transition: transform 120ms ease, background 120ms ease;
++}
++
++.lightbox-nav:hover,
++.lightbox-close:hover,
++.lightbox-nav:focus-visible,
++.lightbox-close:focus-visible {
++  transform: translateY(-2px);
++  background: rgba(0, 0, 0, 0.55);
++}
++
++.lightbox-nav--prev {
++  order: 0;
++}
++
++.lightbox-nav--next {
++  order: 2;
++}
++
+ @media (max-width: 700px) {
+   .pool-page {
+     padding-inline: 0.25rem;
+   }
+ 
+   .pool-section,
+   .info-card {
+     padding: 1.1rem;
+   }
++
++  .lightbox {
++    align-items: stretch;
++  }
++
++  .lightbox-frame {
++    max-height: 70vh;
++  }
++
++  .lightbox-nav,
++  .lightbox-close {
++    width: 42px;
++    height: 42px;
++  }
+ }
