@@ -189,47 +189,18 @@ const normalizeGalleryManifest = (data) => {
   return [];
 };
 
-const initPoolGallery = async (ctx = document) => {
-  const gallery = ctx.querySelector("[data-pool-gallery]");
-  const lightbox = ctx.querySelector("[data-gallery-lightbox]");
-  if (!gallery || !lightbox) return;
+const initMediaGalleries = async (ctx = document) => {
+  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
+  const overlay = ctx.querySelector("[data-gallery-lightbox]");
+  if (!overlay || !galleries.length) return;
 
-  const manifestUrl = resolveSitePath("media/pool/manifest.json");
-  let items = [];
-
-  try {
-    const response = await fetch(manifestUrl, { cache: "force-cache" });
-    if (!response.ok) throw new Error("Unable to fetch gallery manifest");
-    const manifest = await response.json();
-    items = normalizeGalleryManifest(manifest).filter(
-      (src) => typeof src === "string" && src.trim()
-    );
-  } catch (error) {
-    gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
-    return;
-  }
-
-  if (!items.length) {
-    gallery.innerHTML = '<p class="muted">Check back soon for more pool photos.</p>';
-    return;
-  }
-
-  const fragment = document.createDocumentFragment();
-  let activeIndex = 0;
-
-  const overlay = lightbox;
   const overlayImg = overlay.querySelector("img");
   const prevButton = overlay.querySelector(".lightbox-nav--prev");
   const nextButton = overlay.querySelector(".lightbox-nav--next");
   const closeButton = overlay.querySelector(".lightbox-close");
-
-  const updateOverlay = (index) => {
-    activeIndex = (index + items.length) % items.length;
-    if (overlayImg) {
-      overlayImg.src = resolveSitePath(items[activeIndex]);
-      overlayImg.alt = `Pool photo ${activeIndex + 1} of ${items.length}`;
-    }
-  };
+  let activeIndex = 0;
+  let activeItems = [];
+  let activeLabel = "Gallery photo";
 
   const setOverlayVisible = (visible) => {
     overlay.hidden = !visible;
@@ -237,7 +208,19 @@ const initPoolGallery = async (ctx = document) => {
     document.body.style.overflow = visible ? "hidden" : "";
   };
 
-  const openOverlay = (index) => {
+  const updateOverlay = (index) => {
+    if (!activeItems.length) return;
+    activeIndex = (index + activeItems.length) % activeItems.length;
+    if (overlayImg) {
+      overlayImg.src = resolveSitePath(activeItems[activeIndex]);
+      overlayImg.alt = `${activeLabel} ${activeIndex + 1} of ${activeItems.length}`;
+    }
+  };
+
+  const openOverlay = (items, index, label) => {
+    activeItems = items;
+    activeLabel = label || "Gallery photo";
+    overlay.setAttribute("aria-label", activeLabel);
     updateOverlay(index);
     setOverlayVisible(true);
     closeButton?.focus({ preventScroll: true });
@@ -245,27 +228,67 @@ const initPoolGallery = async (ctx = document) => {
 
   const closeOverlay = () => setOverlayVisible(false);
 
-  const showNext = () => updateOverlay(activeIndex + 1);
-  const showPrev = () => updateOverlay(activeIndex - 1);
+  const showNext = () => {
+    if (!activeItems.length) return;
+    updateOverlay(activeIndex + 1);
+  };
 
-  items.forEach((src, index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "gallery-thumb";
-    button.dataset.index = String(index);
+  const showPrev = () => {
+    if (!activeItems.length) return;
+    updateOverlay(activeIndex - 1);
+  };
 
-    const img = document.createElement("img");
-    img.loading = "lazy";
-    img.alt = "Pool photo thumbnail";
-    img.src = resolveSitePath(src);
+  const loadGalleryItems = async (manifestPath) => {
+    if (!manifestPath) return [];
+    const manifestUrl = resolveSitePath(manifestPath);
+    const response = await fetch(manifestUrl, { cache: "force-cache" });
+    if (!response.ok) throw new Error("Unable to fetch gallery manifest");
+    const manifest = await response.json();
+    return normalizeGalleryManifest(manifest).filter(
+      (src) => typeof src === "string" && src.trim()
+    );
+  };
 
-    button.appendChild(img);
-    button.addEventListener("click", () => openOverlay(index));
-    fragment.appendChild(button);
-  });
+  await Promise.all(
+    galleries.map(async (gallery) => {
+      const manifestPath = gallery.getAttribute("data-gallery-manifest");
+      const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
+      let items = [];
 
-  gallery.innerHTML = "";
-  gallery.appendChild(fragment);
+      try {
+        items = await loadGalleryItems(manifestPath);
+      } catch (error) {
+        gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+        return;
+      }
+
+      if (!items.length) {
+        gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+
+      items.forEach((src, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "gallery-thumb";
+        button.dataset.index = String(index);
+
+        const img = document.createElement("img");
+        img.loading = "lazy";
+        img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
+        img.src = resolveSitePath(src);
+
+        button.appendChild(img);
+        button.addEventListener("click", () => openOverlay(items, index, galleryLabel));
+        fragment.appendChild(button);
+      });
+
+      gallery.innerHTML = "";
+      gallery.appendChild(fragment);
+    })
+  );
 
   nextButton?.addEventListener("click", showNext);
   prevButton?.addEventListener("click", showPrev);
@@ -298,4 +321,4 @@ initNavigation();
 initThemeToggle();
 initHamburger();
 setYear();
-initPoolGallery();
+initMediaGalleries();
