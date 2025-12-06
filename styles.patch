@@ -1,20 +1,8 @@
 diff --git a/styles.css b/styles.css
-index 46f4a86b55e29a11cbdb5180119b339340a153bc..646c5f7a0a10d7b9ab35f3b90137038c222c0caf 100644
+index 646c5f7a0a10d7b9ab35f3b90137038c222c0caf..cc4f1a8c06298e031192ef376c1cdc9e6ba4dba5 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -423,72 +423,86 @@ body {
-   }
- }
- 
- .hero {
-   position: relative;
-   margin: 0 calc(50% - 50vw) 3rem;
-   padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 8vw, 6rem);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   gap: clamp(2.5rem, 7vh, 4.5rem);
+@@ -435,50 +435,54 @@ body {
    text-align: center;
    min-height: max(540px, 100vh);
    overflow: hidden;
@@ -28,18 +16,22 @@ index 46f4a86b55e29a11cbdb5180119b339340a153bc..646c5f7a0a10d7b9ab35f3b90137038c
    height: 100vh;
    z-index: -2;
    pointer-events: none;
-+  overflow: hidden;
-+}
-+
-+.hero-media img,
-+.hero-media video {
-+  position: absolute;
-+  inset: 0;
-+  width: 100%;
-+  height: 100%;
-+  object-fit: cover;
+   overflow: hidden;
  }
  
+ .hero-media img,
+ .hero-media video {
+   position: absolute;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+ 
++.hero-media--fallback .hero-video {
++  display: none;
++}
++
  .page-filter {
    position: fixed;
    inset: 0;
@@ -54,41 +46,79 @@ index 46f4a86b55e29a11cbdb5180119b339340a153bc..646c5f7a0a10d7b9ab35f3b90137038c
  
  .hero-video {
    display: block;
--  width: 100%;
--  height: 100%;
--  object-fit: cover;
    filter: blur(var(--hero-blur));
    transform: scale(1.03);
    will-change: filter;
-+  z-index: 1;
-+}
-+
-+.hero-image {
-+  display: block;
-+  filter: blur(var(--hero-blur));
-+  transform: scale(1.03);
- }
- 
- .hero-panels {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: clamp(1.5rem, 3vw, 2.75rem);
-   width: 100%;
-   max-width: min(960px, 100%);
-   margin-top: clamp(4rem, 15vh, 8rem);
    z-index: 1;
  }
  
- .hero-panel {
-   background: linear-gradient(145deg, #1f8f73 0%, #1a6f62 100%);
-   color: #f2f8f4;
-   padding: clamp(1.75rem, 3vw, 2.5rem);
-   border-radius: 1.5rem;
-   box-shadow: 0 18px 45px rgba(0,0,0,.25);
-   display: flex;
+ .hero-image {
+   display: block;
+   filter: blur(var(--hero-blur));
+   transform: scale(1.03);
+ }
+@@ -889,50 +893,64 @@ body {
    flex-direction: column;
-   gap: 1rem;
-   align-items: flex-start;
-   text-align: left;
+   gap: 2.5rem;
+ }
+ 
+ .pool-hero {
+   display: grid;
+   gap: 0.75rem;
+   max-width: 920px;
+ }
+ 
+ .pool-kicker {
+   text-transform: uppercase;
+   letter-spacing: 0.16em;
+   font-weight: 700;
+   color: var(--brand);
+   font-size: 0.85rem;
+ }
+ 
+ .pool-lede {
+   display: grid;
+   gap: 0.75rem;
+   color: var(--muted);
+   line-height: 1.7;
+ }
+ 
++.pool-hero-figure {
++  margin: 0;
++  border-radius: 1rem;
++  overflow: hidden;
++  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
++}
++
++.pool-hero-figure img {
++  width: 100%;
++  height: 100%;
++  display: block;
++  object-fit: cover;
++}
++
+ .pool-section {
+   background: var(--card);
+   border: 1px solid #22304a;
+   border-radius: 1.25rem;
+   padding: clamp(1.5rem, 3vw, 2.25rem);
+   display: grid;
+   gap: 1.25rem;
+   box-shadow: 0 16px 36px rgba(0,0,0,.2);
+ }
+ 
+ .section-header {
+   display: grid;
+   gap: 0.25rem;
+ }
+ 
+ .section-kicker {
+   text-transform: uppercase;
+   letter-spacing: 0.1em;
+   font-weight: 700;
+   color: var(--brand);
+   font-size: 0.9rem;
+   margin: 0;
+ }
+ 
+ .section-summary {

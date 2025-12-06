@@ -1,8 +1,8 @@
 diff --git a/pool/index.html b/pool/index.html
-index 3dcf5bef57b25ba7d3d260786a7eaac9eb6aac80..5c54f6a8e2e752f436c8feb2bf5fe9e94a1ae2ea 100644
+index db8752d8d3140c2b976ee32d763cd8f4348c85b7..7f1567620e4329c9f32a47057ed019c3c753ab4b 100644
 --- a/pool/index.html
 +++ b/pool/index.html
-@@ -1,39 +1,40 @@
+@@ -1,47 +1,49 @@
  ﻿<!doctype html>
  <html lang="en">
  <head>
@@ -15,17 +15,21 @@ index 3dcf5bef57b25ba7d3d260786a7eaac9eb6aac80..5c54f6a8e2e752f436c8feb2bf5fe9e9
  <body>
    	<div data-header></div>
    <main class="container pool-page">
-       <div class="hero-media">
--      <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline></video>
-+      <img class="hero-image" src="../media/pool/ihs-pool.jpg" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
-+      <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool.jpg"></video>
+-      <div class="hero-media">
+-      <img class="hero-image" src="../media/pool/ihs-pool-1.jpg" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
++    <div class="hero-media">
+       <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool-1.jpg"></video>
      </div>
      <div class="page-filter" aria-hidden="true"></div>
      <header class="pool-hero">
        <p class="pool-kicker">unplug your device, recharge yourself</p>
  
        <div class="pool-lede">
-            </div>
+-           </div>
++        <figure class="pool-hero-figure">
++          <img src="../media/pool/ihs-pool-1.jpg" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
++        </figure>
++      </div>
      </header>
  
      <section class="pool-section">
@@ -44,3 +48,10 @@ index 3dcf5bef57b25ba7d3d260786a7eaac9eb6aac80..5c54f6a8e2e752f436c8feb2bf5fe9e9
          <li>A minimal amount of chlorine is used to ensure safety</li>
          <li>Glass and coolers are not permitted. (Please use our dining hall)</li>
          <li>Children under the age of 14 must be accompanied or supervised by an adult since there are no lifeguards on duty</li>
+         <li>Snack area inside natatorium</li>
+         <li>Plants available for purchase</li>
+       </ul>
+     </section>
+ 
+     <section class="pool-section pool-grid" aria-label="Pool hours and pricing">
+       <article class="info-card">

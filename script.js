@@ -125,10 +125,11 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenus();
 });
 
-// Gradually blur hero video on scroll
+// Gradually blur hero video on scroll and fall back to image if video fails
 const heroVideo = $(".hero-video");
 if (heroVideo) {
   const heroSection = heroVideo.closest(".hero");
+  const heroMedia = heroVideo.closest(".hero-media");
   const maxBlur = 8; // px
   let ticking = false;
 
@@ -142,6 +143,13 @@ if (heroVideo) {
     root.style.setProperty("--hero-blur", `${blur.toFixed(2)}px`);
     ticking = false;
   };
+
+  const showHeroFallback = () => {
+    heroMedia?.classList.add("hero-media--fallback");
+  };
+
+  heroVideo.addEventListener("error", showHeroFallback);
+  heroVideo.addEventListener("stalled", showHeroFallback);
 
   updateBlur();
 
