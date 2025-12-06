@@ -241,7 +241,7 @@ const initMediaGalleries = async (ctx = document) => {
   const loadGalleryItems = async (manifestPath) => {
     if (!manifestPath) return [];
     const manifestUrl = resolveSitePath(manifestPath);
-    const response = await fetch(manifestUrl, { cache: "force-cache" });
+    const response = await fetch(manifestUrl, { cache: "no-cache" });
     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
     const manifest = await response.json();
     return normalizeGalleryManifest(manifest).filter(
