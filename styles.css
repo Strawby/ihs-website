@@ -445,6 +445,16 @@ body {
   height: 100vh;
   z-index: -2;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-media img,
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .page-filter {
@@ -461,12 +471,16 @@ body {
 
 .hero-video {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   filter: blur(var(--hero-blur));
   transform: scale(1.03);
   will-change: filter;
+  z-index: 1;
+}
+
+.hero-image {
+  display: block;
+  filter: blur(var(--hero-blur));
+  transform: scale(1.03);
 }
 
 .hero-panels {
