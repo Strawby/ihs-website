@@ -401,6 +401,11 @@ body {
     width: auto;
     align-self: flex-start;
   }
+  .nav.nav--collapsible #themeToggle {
+    width: auto;
+    align-self: flex-start;
+    display: inline-flex;
+  }
   
   .nav-item,
   .nav-item--nested {
