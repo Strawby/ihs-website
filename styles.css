@@ -405,6 +405,7 @@ body {
     width: auto;
     align-self: flex-start;
     display: inline-flex;
+	margin-left: 0;
   }
   
   .nav-item,
