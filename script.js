@@ -197,10 +197,10 @@ const normalizeGalleryManifest = (data) => {
   return [];
 };
 
-const initMediaGalleries = async (ctx = document) => {
-  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
+const initLightbox = (ctx = document) => {
   const overlay = ctx.querySelector("[data-gallery-lightbox]");
-  if (!overlay || !galleries.length) return;
+  if (!overlay) return null;
+  if (overlay.dataset.enhanced) return overlay._lightboxController;
 
   const overlayImg = overlay.querySelector("img");
   const prevButton = overlay.querySelector(".lightbox-nav--prev");
@@ -225,8 +225,13 @@ const initMediaGalleries = async (ctx = document) => {
     }
   };
 
-  const openOverlay = (items, index, label) => {
-    activeItems = items;
+  const openOverlay = (items, index = 0, label) => {
+    const normalizedItems = Array.isArray(items) ? items : [items];
+    activeItems = normalizedItems.filter(
+      (src) => typeof src === "string" && src.trim()
+    );
+    if (!activeItems.length) return;
+
     activeLabel = label || "Gallery photo";
     overlay.setAttribute("aria-label", activeLabel);
     updateOverlay(index);
@@ -245,6 +250,30 @@ const initMediaGalleries = async (ctx = document) => {
     if (!activeItems.length) return;
     updateOverlay(activeIndex - 1);
   };
+
+  nextButton?.addEventListener("click", showNext);
+  prevButton?.addEventListener("click", showPrev);
+  closeButton?.addEventListener("click", closeOverlay);
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeOverlay();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (overlay.hidden) return;
+    if (event.key === "Escape") closeOverlay();
+    if (event.key === "ArrowRight") showNext();
+    if (event.key === "ArrowLeft") showPrev();
+  });
+
+  overlay.dataset.enhanced = "true";
+  overlay._lightboxController = { open: openOverlay };
+  return overlay._lightboxController;
+};
+
+const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
+  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
+  if (!lightbox || !galleries.length) return;
 
   const loadGalleryItems = async (manifestPath) => {
     if (!manifestPath) return [];
@@ -289,7 +318,9 @@ const initMediaGalleries = async (ctx = document) => {
         img.src = resolveSitePath(src);
 
         button.appendChild(img);
-        button.addEventListener("click", () => openOverlay(items, index, galleryLabel));
+        button.addEventListener("click", () =>
+          lightbox.open(items, index, galleryLabel)
+        );
         fragment.appendChild(button);
       });
 
@@ -297,20 +328,21 @@ const initMediaGalleries = async (ctx = document) => {
       gallery.appendChild(fragment);
     })
   );
+};
 
-  nextButton?.addEventListener("click", showNext);
-  prevButton?.addEventListener("click", showPrev);
-  closeButton?.addEventListener("click", closeOverlay);
+const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
+  const trigger = ctx.querySelector("[data-hero-lightbox]");
+  if (!lightbox || !trigger || trigger.dataset.enhanced) return;
 
-  overlay.addEventListener("click", (event) => {
-    if (event.target === overlay) closeOverlay();
-  });
+  trigger.dataset.enhanced = "true";
+  const img = trigger.querySelector("img");
+  const src = img?.getAttribute("src");
+  const alt = img?.getAttribute("alt")?.trim();
+  const label = alt || "Pool photo";
 
-  document.addEventListener("keydown", (event) => {
-    if (overlay.hidden) return;
-    if (event.key === "Escape") closeOverlay();
-    if (event.key === "ArrowRight") showNext();
-    if (event.key === "ArrowLeft") showPrev();
+  trigger.addEventListener("click", () => {
+    if (!src) return;
+    lightbox.open([src], 0, label);
   });
 };
 
@@ -329,4 +361,6 @@ initNavigation();
 initThemeToggle();
 initHamburger();
 setYear();
-initMediaGalleries();
+const lightbox = initLightbox();
+initMediaGalleries(document, lightbox);
+initPoolHeroLightbox(document, lightbox);
