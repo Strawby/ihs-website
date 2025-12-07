@@ -1,0 +1,43 @@
+diff --git a/pool/index.html b/pool/index.html
+index 7c1e82224739ed5230fd4c88862452b9bf3b326c..2fe2119f9ef2a83bcbdc1967aa47b30c17ab7b4c 100644
+--- a/pool/index.html
++++ b/pool/index.html
+@@ -1,37 +1,37 @@
+ ﻿<!doctype html>
+ <html lang="en">
+ <head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Mineral Water Swimming Pool | Indian Hot Springs</title>
+   <meta name="description" content="Step into tropical turquoise waters inside our mineral water swimming pool. Review hours, pricing, and how to plan your soak at Indian Hot Springs." />
+   <link rel="stylesheet" href="../styles.css" />
+ </head>
+ <body>
+   	<div data-header></div>
+-  <main class="container pool-page">
++  <main class="container pool-page pool-main">
+       <section class="pool-section" aria-labelledby="pool-page-title">
+       <div class="section-header">
+         <h1 id="pool-page-title">Mineral Water Swimming Pool</h1>
+ 		<p class="pool-kicker">unplug your device, recharge yourself</p>
+       </div>
+     </section>
+     <div class="hero-media">
+       <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool-1.jpg"></video>
+     </div>
+     <div class="page-filter" aria-hidden="true"></div>
+     <header class="pool-hero">
+       <div class="pool-lede">
+         <figure class="pool-hero-figure">
+           <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of guests enjoying the mineral water swimming pool beneath the dome">
+             <img src="../media/pool/ihs-pool-1.jpg" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
+           </button>
+         </figure>
+       </div>
+     </header>
+ 
+     <section class="pool-section">
+ 	
+       <div class="section-header">
+           <p class="section-summary">You may think that it's impossible to have a tropical getaway in the middle of the mountains. Thanks to our staff botanist, and a magical sparkling dome, the main swimming pool gives off tropical vacation vibes all year long.</p>
+         <p class="section-summary">The hot mineral waters have been used to heal for centuries and you'll feel the benefits with whatever soaking style you choose&mdash;whether it's a slow paddle, a steady walk, or claiming a spot on one of the many built-in benches. While you're letting the tropical turquoise waters work their wonders, make sure to gaze around the edge and marvel at the banana trees, ferns, and flowers&mdash;many of which you won't find anywhere else in Colorado.</p>

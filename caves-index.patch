@@ -1,0 +1,74 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/caves/index.html b/caves/index.html
+index 49913da9e1fa2db3e127bf5f69ac512e93737bcd..6c73dbd8583a2744566135cab026bef9e513c7e5 100644
+--- a/caves/index.html
++++ b/caves/index.html
+@@ -1,57 +1,61 @@
+ <!doctype html>
+ <html lang="en">
+ <head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Men's & Women's Caves | Indian Hot Springs</title>
+   <meta name="description" content="Immerse yourself in the quiet, gender-specific caves and geothermal pools carved into the rock at Indian Hot Springs." />
+   <link rel="stylesheet" href="../styles.css" />
+ </head>
+ <body>
+   <div data-header></div>
+ 
+   <main class="container pool-page caves-page">
++    <section class="pool-section" aria-labelledby="caves-page-title">
++      <div class="section-header">
++        <h1 id="caves-page-title">Men's &amp; Women's Caves</h1>
++        <p class="pool-kicker">connect to the earth and reconnect to yourself</p>
++      </div>
++    </section>
++
+     <div class="hero-media">
+       <video class="hero-video" src="../media/caves/caves_hero.mp4" autoplay muted loop playsinline></video>
+     </div>
+     <div class="page-filter" aria-hidden="true"></div>
+     <header class="pool-hero">
+-      <p class="pool-kicker">connect to the earth and reconnect to yourself</p>
+-
+       <div class="pool-lede">
+-	  <figure class="pool-hero-figure">
++          <figure class="pool-hero-figure">
+           <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of guests relaxing in the geothermal caves">
+             <img src="../media/caves/ihs-caves-1.jpg" alt="Guests relaxing in the geothermal caves" />
+           </button>
+         </figure>
+       </div>
+     </header>
+ 
+     <section class="pool-section">
+       <div class="section-header">
+-        <h1>Men's &amp; Women's Caves</h1>
+         <p class="section-summary">Are you dying to have an adventure but also, whew, adventures kind of sound like a lot of work? The pools in our caves will make you feel like you’re traversing through time and connecting with the earth&mdash;minus the effort of spelunking.</p>
+         <p class="section-summary">The cave passages were driven into the rock in the early 1900s to create this underground oasis that’s a designated quiet zone to ensure relaxation and reflection for each visitor. Each walk-in tub allows you to study the nooks and crannies in the surrounding cave walls, and each area is gender specific.</p>
+         <h2>Plan Your Soak</h2>
+         <p class="section-summary">Everything you need to enjoy the geothermal caves, from reservations to on-site amenities.</p>
+       </div>
+       <ul class="pool-list">
+         <li>Average temperature 108 - 113&deg;F, varies with the geothermal well flow</li>
+         <li>A minimal amount of chlorine is used to ensure safety</li>
+         <li>Reservation recommended on weekends</li>
+         <li>Give yourself enough time prior to your reservation</li>
+         <li>Gender specific caves</li>
+         <li>Caves are a designated quiet area, cameras and cell phones are prohibited</li>
+         <li>Must be 18 years of age or older</li>
+         <li>Swim attire optional on weekdays</li>
+         <li>Swim attire mandatory on weekends &amp; holidays</li>
+       </ul>
+     </section>
+ 
+     <section class="pool-section pool-grid" aria-label="Caves hours and pricing">
+       <article class="info-card">
+         <h3>Hours</h3>
+         <div class="info-subsection">
+           <h4>Monday - Friday</h4>
+           <p class="muted">Swim attire optional</p>
+           <p class="muted">8:30am - 9:00pm</p>
+ 
+EOF
+)

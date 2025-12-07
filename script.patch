@@ -1,8 +1,8 @@
 diff --git a/script.js b/script.js
-index 6fb65bf8be7d0bce9eac86e67ba602225e241749..2b9a7e5f82ca6efe73e9a135e7668cb5b87e933f 100644
+index 112a37ecfe4c0c14dceaf16b28aaacc17d723913..60597fbad22b52e8a396f2f83c997ff0b78154c0 100644
 --- a/script.js
 +++ b/script.js
-@@ -167,135 +167,158 @@ const injectPartial = async (selector, url, onReady) => {
+@@ -175,158 +175,188 @@ const injectPartial = async (selector, url, onReady) => {
  };
  
  const headerUrl = resolvePartialUrl("partials/header.html");
@@ -28,54 +28,21 @@ index 6fb65bf8be7d0bce9eac86e67ba602225e241749..2b9a7e5f82ca6efe73e9a135e7668cb5
    return [];
  };
  
--const initPoolGallery = async (ctx = document) => {
--  const gallery = ctx.querySelector("[data-pool-gallery]");
--  const lightbox = ctx.querySelector("[data-gallery-lightbox]");
--  if (!gallery || !lightbox) return;
-+const initMediaGalleries = async (ctx = document) => {
-+  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
-+  const overlay = ctx.querySelector("[data-gallery-lightbox]");
-+  if (!overlay || !galleries.length) return;
+-const initMediaGalleries = async (ctx = document) => {
+-  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
++const initLightbox = (ctx = document) => {
+   const overlay = ctx.querySelector("[data-gallery-lightbox]");
+-  if (!overlay || !galleries.length) return;
++  if (!overlay) return null;
++  if (overlay.dataset.enhanced) return overlay._lightboxController;
  
--  const manifestUrl = resolveSitePath("media/pool/manifest.json");
--  let items = [];
--
--  try {
--    const response = await fetch(manifestUrl, { cache: "force-cache" });
--    if (!response.ok) throw new Error("Unable to fetch gallery manifest");
--    const manifest = await response.json();
--    items = normalizeGalleryManifest(manifest).filter(
--      (src) => typeof src === "string" && src.trim()
--    );
--  } catch (error) {
--    gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
--    return;
--  }
--
--  if (!items.length) {
--    gallery.innerHTML = '<p class="muted">Check back soon for more pool photos.</p>';
--    return;
--  }
--
--  const fragment = document.createDocumentFragment();
--  let activeIndex = 0;
--
--  const overlay = lightbox;
    const overlayImg = overlay.querySelector("img");
    const prevButton = overlay.querySelector(".lightbox-nav--prev");
    const nextButton = overlay.querySelector(".lightbox-nav--next");
    const closeButton = overlay.querySelector(".lightbox-close");
--
--  const updateOverlay = (index) => {
--    activeIndex = (index + items.length) % items.length;
--    if (overlayImg) {
--      overlayImg.src = resolveSitePath(items[activeIndex]);
--      overlayImg.alt = `Pool photo ${activeIndex + 1} of ${items.length}`;
--    }
--  };
-+  let activeIndex = 0;
-+  let activeItems = [];
-+  let activeLabel = "Gallery photo";
+   let activeIndex = 0;
+   let activeItems = [];
+   let activeLabel = "Gallery photo";
  
    const setOverlayVisible = (visible) => {
      overlay.hidden = !visible;
@@ -83,20 +50,24 @@ index 6fb65bf8be7d0bce9eac86e67ba602225e241749..2b9a7e5f82ca6efe73e9a135e7668cb5
      document.body.style.overflow = visible ? "hidden" : "";
    };
  
--  const openOverlay = (index) => {
-+  const updateOverlay = (index) => {
+   const updateOverlay = (index) => {
+     if (!activeItems.length) return;
+     activeIndex = (index + activeItems.length) % activeItems.length;
+     if (overlayImg) {
+       overlayImg.src = resolveSitePath(activeItems[activeIndex]);
+       overlayImg.alt = `${activeLabel} ${activeIndex + 1} of ${activeItems.length}`;
+     }
+   };
+ 
+-  const openOverlay = (items, index, label) => {
+-    activeItems = items;
++  const openOverlay = (items, index = 0, label) => {
++    const normalizedItems = Array.isArray(items) ? items : [items];
++    activeItems = normalizedItems.filter((src) => typeof src === "string" && src.trim());
 +    if (!activeItems.length) return;
-+    activeIndex = (index + activeItems.length) % activeItems.length;
-+    if (overlayImg) {
-+      overlayImg.src = resolveSitePath(activeItems[activeIndex]);
-+      overlayImg.alt = `${activeLabel} ${activeIndex + 1} of ${activeItems.length}`;
-+    }
-+  };
 +
-+  const openOverlay = (items, index, label) => {
-+    activeItems = items;
-+    activeLabel = label || "Gallery photo";
-+    overlay.setAttribute("aria-label", activeLabel);
+     activeLabel = label || "Gallery photo";
+     overlay.setAttribute("aria-label", activeLabel);
      updateOverlay(index);
      setOverlayVisible(true);
      closeButton?.focus({ preventScroll: true });
@@ -104,98 +75,118 @@ index 6fb65bf8be7d0bce9eac86e67ba602225e241749..2b9a7e5f82ca6efe73e9a135e7668cb5
  
    const closeOverlay = () => setOverlayVisible(false);
  
--  const showNext = () => updateOverlay(activeIndex + 1);
--  const showPrev = () => updateOverlay(activeIndex - 1);
-+  const showNext = () => {
-+    if (!activeItems.length) return;
-+    updateOverlay(activeIndex + 1);
-+  };
+   const showNext = () => {
+     if (!activeItems.length) return;
+     updateOverlay(activeIndex + 1);
+   };
  
--  items.forEach((src, index) => {
--    const button = document.createElement("button");
--    button.type = "button";
--    button.className = "gallery-thumb";
--    button.dataset.index = String(index);
-+  const showPrev = () => {
-+    if (!activeItems.length) return;
-+    updateOverlay(activeIndex - 1);
-+  };
+   const showPrev = () => {
+     if (!activeItems.length) return;
+     updateOverlay(activeIndex - 1);
+   };
  
--    const img = document.createElement("img");
--    img.loading = "lazy";
--    img.alt = "Pool photo thumbnail";
--    img.src = resolveSitePath(src);
-+  const loadGalleryItems = async (manifestPath) => {
-+    if (!manifestPath) return [];
-+    const manifestUrl = resolveSitePath(manifestPath);
-+    const response = await fetch(manifestUrl, { cache: "force-cache" });
-+    if (!response.ok) throw new Error("Unable to fetch gallery manifest");
-+    const manifest = await response.json();
-+    return normalizeGalleryManifest(manifest).filter(
-+      (src) => typeof src === "string" && src.trim()
-+    );
-+  };
++  nextButton?.addEventListener("click", showNext);
++  prevButton?.addEventListener("click", showPrev);
++  closeButton?.addEventListener("click", closeOverlay);
++
++  overlay.addEventListener("click", (event) => {
++    if (event.target === overlay) closeOverlay();
++  });
++
++  document.addEventListener("keydown", (event) => {
++    if (overlay.hidden) return;
++    if (event.key === "Escape") closeOverlay();
++    if (event.key === "ArrowRight") showNext();
++    if (event.key === "ArrowLeft") showPrev();
++  });
++
++  overlay.dataset.enhanced = "true";
++  overlay._lightboxController = { open: openOverlay };
++  return overlay._lightboxController;
++};
++
++const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
++  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
++  if (!lightbox || !galleries.length) return;
++
+   const loadGalleryItems = async (manifestPath) => {
+     if (!manifestPath) return [];
+     const manifestUrl = resolveSitePath(manifestPath);
+     const response = await fetch(manifestUrl, { cache: "no-cache" });
+     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
+     const manifest = await response.json();
+     return normalizeGalleryManifest(manifest).filter(
+       (src) => typeof src === "string" && src.trim()
+     );
+   };
  
--    button.appendChild(img);
--    button.addEventListener("click", () => openOverlay(index));
--    fragment.appendChild(button);
+   await Promise.all(
+     galleries.map(async (gallery) => {
+       const manifestPath = gallery.getAttribute("data-gallery-manifest");
+       const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
+       let items = [];
+ 
+       try {
+         items = await loadGalleryItems(manifestPath);
+       } catch (error) {
+         gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+         return;
+       }
+ 
+       if (!items.length) {
+         gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
+         return;
+       }
+ 
+       const fragment = document.createDocumentFragment();
+ 
+       items.forEach((src, index) => {
+         const button = document.createElement("button");
+         button.type = "button";
+         button.className = "gallery-thumb";
+         button.dataset.index = String(index);
+ 
+         const img = document.createElement("img");
+         img.loading = "lazy";
+         img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
+         img.src = resolveSitePath(src);
+ 
+         button.appendChild(img);
+-        button.addEventListener("click", () => openOverlay(items, index, galleryLabel));
++        button.addEventListener("click", () => lightbox.open(items, index, galleryLabel));
+         fragment.appendChild(button);
+       });
+ 
+       gallery.innerHTML = "";
+       gallery.appendChild(fragment);
+     })
+   );
++};
+ 
+-  nextButton?.addEventListener("click", showNext);
+-  prevButton?.addEventListener("click", showPrev);
+-  closeButton?.addEventListener("click", closeOverlay);
++const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
++  const trigger = ctx.querySelector("[data-hero-lightbox]");
++  if (!lightbox || !trigger || trigger.dataset.enhanced) return;
+ 
+-  overlay.addEventListener("click", (event) => {
+-    if (event.target === overlay) closeOverlay();
 -  });
-+  await Promise.all(
-+    galleries.map(async (gallery) => {
-+      const manifestPath = gallery.getAttribute("data-gallery-manifest");
-+      const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
-+      let items = [];
-+
-+      try {
-+        items = await loadGalleryItems(manifestPath);
-+      } catch (error) {
-+        gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
-+        return;
-+      }
-+
-+      if (!items.length) {
-+        gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
-+        return;
-+      }
++  trigger.dataset.enhanced = "true";
++  const img = trigger.querySelector("img");
++  const src = img?.getAttribute("src");
++  const alt = img?.getAttribute("alt")?.trim();
++  const label = alt || "Pool photo";
  
--  gallery.innerHTML = "";
--  gallery.appendChild(fragment);
-+      const fragment = document.createDocumentFragment();
-+
-+      items.forEach((src, index) => {
-+        const button = document.createElement("button");
-+        button.type = "button";
-+        button.className = "gallery-thumb";
-+        button.dataset.index = String(index);
-+
-+        const img = document.createElement("img");
-+        img.loading = "lazy";
-+        img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
-+        img.src = resolveSitePath(src);
-+
-+        button.appendChild(img);
-+        button.addEventListener("click", () => openOverlay(items, index, galleryLabel));
-+        fragment.appendChild(button);
-+      });
-+
-+      gallery.innerHTML = "";
-+      gallery.appendChild(fragment);
-+    })
-+  );
- 
-   nextButton?.addEventListener("click", showNext);
-   prevButton?.addEventListener("click", showPrev);
-   closeButton?.addEventListener("click", closeOverlay);
- 
-   overlay.addEventListener("click", (event) => {
-     if (event.target === overlay) closeOverlay();
-   });
- 
-   document.addEventListener("keydown", (event) => {
-     if (overlay.hidden) return;
-     if (event.key === "Escape") closeOverlay();
-     if (event.key === "ArrowRight") showNext();
-     if (event.key === "ArrowLeft") showPrev();
+-  document.addEventListener("keydown", (event) => {
+-    if (overlay.hidden) return;
+-    if (event.key === "Escape") closeOverlay();
+-    if (event.key === "ArrowRight") showNext();
+-    if (event.key === "ArrowLeft") showPrev();
++  trigger.addEventListener("click", () => {
++    if (!src) return;
++    lightbox.open([src], 0, label);
    });
  };
  
@@ -214,5 +205,7 @@ index 6fb65bf8be7d0bce9eac86e67ba602225e241749..2b9a7e5f82ca6efe73e9a135e7668cb5
  initThemeToggle();
  initHamburger();
  setYear();
--initPoolGallery();
-+initMediaGalleries();
+-initMediaGalleries();
++const lightbox = initLightbox();
++initMediaGalleries(document, lightbox);
++initPoolHeroLightbox(document, lightbox);
