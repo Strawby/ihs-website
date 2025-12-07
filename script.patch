@@ -1,211 +1,97 @@
 diff --git a/script.js b/script.js
-index 112a37ecfe4c0c14dceaf16b28aaacc17d723913..60597fbad22b52e8a396f2f83c997ff0b78154c0 100644
+index ebad139b6c9b8b9fc1931cdb4599e33854ad96bd..ad0deb8e7648f46c8698277405099900f0b406f2 100644
 --- a/script.js
 +++ b/script.js
-@@ -175,158 +175,188 @@ const injectPartial = async (selector, url, onReady) => {
+@@ -108,72 +108,92 @@ const initHamburger = (ctx = document) => {
+ 
+   document.addEventListener("click", (event) => {
+     if (!nav.contains(event.target)) setOpen(false);
+   });
+ 
+   document.addEventListener("keydown", (event) => {
+     if (event.key === "Escape") setOpen(false);
+   });
+ };
+ 
+ document.addEventListener("click", (event) => {
+   if (!event.target.closest(".nav-item")) {
+     closeMenus();
+   }
+ });
+ 
+ document.addEventListener("keydown", (event) => {
+   if (event.key === "Escape") closeMenus();
+ });
+ 
+ // Gradually blur hero video on scroll and fall back to image if video fails
+ const heroVideo = $(".hero-video");
+ if (heroVideo) {
+   const heroSection = heroVideo.closest(".hero");
+   const heroMedia = heroVideo.closest(".hero-media");
++  const compactNavQuery = window.matchMedia("(max-width: 900px)");
+   const maxBlur = 8; // px
+   let ticking = false;
+ 
+   const updateBlur = () => {
+     const heroHeight = heroSection?.offsetHeight || window.innerHeight;
+     const progress = Math.min(
+       Math.max(window.scrollY / (heroHeight * 0.9), 0),
+       1
+     );
+     const blur = progress * maxBlur;
+     root.style.setProperty("--hero-blur", `${blur.toFixed(2)}px`);
+     ticking = false;
+   };
+ 
+   const showHeroFallback = () => {
+     heroMedia?.classList.add("hero-media--fallback");
+   };
+ 
+   heroVideo.addEventListener("error", showHeroFallback);
+   heroVideo.addEventListener("stalled", showHeroFallback);
+ 
++  const syncHeroVideoToViewport = () => {
++    const shouldHideVideo = compactNavQuery.matches;
++
++    heroMedia?.classList.toggle("hero-media--static", shouldHideVideo);
++
++    if (shouldHideVideo) {
++      if (!heroVideo.paused) heroVideo.pause();
++    } else if (heroVideo.paused) {
++      heroVideo.play().catch(() => {});
++    }
++  };
++
+   updateBlur();
++  syncHeroVideoToViewport();
++
++  if (compactNavQuery.addEventListener) {
++    compactNavQuery.addEventListener("change", syncHeroVideoToViewport);
++  } else {
++    compactNavQuery.addListener(syncHeroVideoToViewport);
++  }
+ 
+   document.addEventListener(
+     "scroll",
+     () => {
+       if (!ticking) {
+         requestAnimationFrame(updateBlur);
+         ticking = true;
+       }
+     },
+     { passive: true }
+   );
+ }
+ 
+ const injectPartial = async (selector, url, onReady) => {
+   const html = await fetch(url).then((r) => r.text());
+ 
+   document.querySelectorAll(selector).forEach((slot) => {
+     slot.innerHTML = html;
+     onReady?.(slot);
+   });
  };
  
  const headerUrl = resolvePartialUrl("partials/header.html");
  const footerUrl = resolvePartialUrl("partials/footer.html");
  const siteBasePath = new URL("..", headerUrl);
- 
- const resolveSitePath = (path) => new URL(path, siteBasePath).pathname;
- const applyRelativePaths = (ctx = document) => {
-   ctx.querySelectorAll("[data-path]").forEach((el) => {
-     const path = el.getAttribute("data-path");
-     if (path) el.setAttribute("href", resolveSitePath(path));
-   });
- 
-   ctx.querySelectorAll("img[data-src]").forEach((img) => {
-     const src = img.getAttribute("data-src");
-     if (src) img.setAttribute("src", resolveSitePath(src));
-   });
- };
- 
- const normalizeGalleryManifest = (data) => {
-   if (Array.isArray(data)) return data;
-   if (Array.isArray(data?.images)) return data.images;
-   return [];
- };
- 
--const initMediaGalleries = async (ctx = document) => {
--  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
-+const initLightbox = (ctx = document) => {
-   const overlay = ctx.querySelector("[data-gallery-lightbox]");
--  if (!overlay || !galleries.length) return;
-+  if (!overlay) return null;
-+  if (overlay.dataset.enhanced) return overlay._lightboxController;
- 
-   const overlayImg = overlay.querySelector("img");
-   const prevButton = overlay.querySelector(".lightbox-nav--prev");
-   const nextButton = overlay.querySelector(".lightbox-nav--next");
-   const closeButton = overlay.querySelector(".lightbox-close");
-   let activeIndex = 0;
-   let activeItems = [];
-   let activeLabel = "Gallery photo";
- 
-   const setOverlayVisible = (visible) => {
-     overlay.hidden = !visible;
-     overlay.setAttribute("aria-hidden", visible ? "false" : "true");
-     document.body.style.overflow = visible ? "hidden" : "";
-   };
- 
-   const updateOverlay = (index) => {
-     if (!activeItems.length) return;
-     activeIndex = (index + activeItems.length) % activeItems.length;
-     if (overlayImg) {
-       overlayImg.src = resolveSitePath(activeItems[activeIndex]);
-       overlayImg.alt = `${activeLabel} ${activeIndex + 1} of ${activeItems.length}`;
-     }
-   };
- 
--  const openOverlay = (items, index, label) => {
--    activeItems = items;
-+  const openOverlay = (items, index = 0, label) => {
-+    const normalizedItems = Array.isArray(items) ? items : [items];
-+    activeItems = normalizedItems.filter((src) => typeof src === "string" && src.trim());
-+    if (!activeItems.length) return;
-+
-     activeLabel = label || "Gallery photo";
-     overlay.setAttribute("aria-label", activeLabel);
-     updateOverlay(index);
-     setOverlayVisible(true);
-     closeButton?.focus({ preventScroll: true });
-   };
- 
-   const closeOverlay = () => setOverlayVisible(false);
- 
-   const showNext = () => {
-     if (!activeItems.length) return;
-     updateOverlay(activeIndex + 1);
-   };
- 
-   const showPrev = () => {
-     if (!activeItems.length) return;
-     updateOverlay(activeIndex - 1);
-   };
- 
-+  nextButton?.addEventListener("click", showNext);
-+  prevButton?.addEventListener("click", showPrev);
-+  closeButton?.addEventListener("click", closeOverlay);
-+
-+  overlay.addEventListener("click", (event) => {
-+    if (event.target === overlay) closeOverlay();
-+  });
-+
-+  document.addEventListener("keydown", (event) => {
-+    if (overlay.hidden) return;
-+    if (event.key === "Escape") closeOverlay();
-+    if (event.key === "ArrowRight") showNext();
-+    if (event.key === "ArrowLeft") showPrev();
-+  });
-+
-+  overlay.dataset.enhanced = "true";
-+  overlay._lightboxController = { open: openOverlay };
-+  return overlay._lightboxController;
-+};
-+
-+const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
-+  const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
-+  if (!lightbox || !galleries.length) return;
-+
-   const loadGalleryItems = async (manifestPath) => {
-     if (!manifestPath) return [];
-     const manifestUrl = resolveSitePath(manifestPath);
-     const response = await fetch(manifestUrl, { cache: "no-cache" });
-     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
-     const manifest = await response.json();
-     return normalizeGalleryManifest(manifest).filter(
-       (src) => typeof src === "string" && src.trim()
-     );
-   };
- 
-   await Promise.all(
-     galleries.map(async (gallery) => {
-       const manifestPath = gallery.getAttribute("data-gallery-manifest");
-       const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
-       let items = [];
- 
-       try {
-         items = await loadGalleryItems(manifestPath);
-       } catch (error) {
-         gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
-         return;
-       }
- 
-       if (!items.length) {
-         gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
-         return;
-       }
- 
-       const fragment = document.createDocumentFragment();
- 
-       items.forEach((src, index) => {
-         const button = document.createElement("button");
-         button.type = "button";
-         button.className = "gallery-thumb";
-         button.dataset.index = String(index);
- 
-         const img = document.createElement("img");
-         img.loading = "lazy";
-         img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
-         img.src = resolveSitePath(src);
- 
-         button.appendChild(img);
--        button.addEventListener("click", () => openOverlay(items, index, galleryLabel));
-+        button.addEventListener("click", () => lightbox.open(items, index, galleryLabel));
-         fragment.appendChild(button);
-       });
- 
-       gallery.innerHTML = "";
-       gallery.appendChild(fragment);
-     })
-   );
-+};
- 
--  nextButton?.addEventListener("click", showNext);
--  prevButton?.addEventListener("click", showPrev);
--  closeButton?.addEventListener("click", closeOverlay);
-+const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
-+  const trigger = ctx.querySelector("[data-hero-lightbox]");
-+  if (!lightbox || !trigger || trigger.dataset.enhanced) return;
- 
--  overlay.addEventListener("click", (event) => {
--    if (event.target === overlay) closeOverlay();
--  });
-+  trigger.dataset.enhanced = "true";
-+  const img = trigger.querySelector("img");
-+  const src = img?.getAttribute("src");
-+  const alt = img?.getAttribute("alt")?.trim();
-+  const label = alt || "Pool photo";
- 
--  document.addEventListener("keydown", (event) => {
--    if (overlay.hidden) return;
--    if (event.key === "Escape") closeOverlay();
--    if (event.key === "ArrowRight") showNext();
--    if (event.key === "ArrowLeft") showPrev();
-+  trigger.addEventListener("click", () => {
-+    if (!src) return;
-+    lightbox.open([src], 0, label);
-   });
- };
- 
- injectPartial("[data-header]", headerUrl, (slot) => {
-   applyRelativePaths(slot);
-   initNavigation(slot);
-   initThemeToggle(slot);
-   initHamburger(slot);
- });
- 
- injectPartial("[data-footer]", footerUrl, (slot) => {
-   setYear(slot);
- });
- 
- initNavigation();
- initThemeToggle();
- initHamburger();
- setYear();
--initMediaGalleries();
-+const lightbox = initLightbox();
-+initMediaGalleries(document, lightbox);
-+initPoolHeroLightbox(document, lightbox);

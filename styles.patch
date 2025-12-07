@@ -1,4 +1,5 @@
 diff --git a/styles.css b/styles.css
+<<<<<<< HEAD
 index aac1f1bc51bba504b70727f73f95dad59a27f101..57e6f7985b94c733030372d0cd56f15ee59309ff 100644
 --- a/styles.css
 +++ b/styles.css
@@ -61,3 +62,63 @@ index aac1f1bc51bba504b70727f73f95dad59a27f101..57e6f7985b94c733030372d0cd56f15e
  }
  
  .hero-image {
+=======
+index b3072695948b7d9adab4443709ccd941beb53423..04f39f5f350dd82683de0629cdb302124fbf1889 100644
+--- a/styles.css
++++ b/styles.css
+@@ -872,50 +872,54 @@ body {
+ 
+   .footer-section-group::after {
+     display: none;
+   }
+ 
+   .footer-section + .footer-section {
+     border-top: 1px solid var(--footer-border);
+     padding-top: 1.25rem;
+     margin-top: 0.25rem;
+   }
+ 
+   .footer-meta {
+     text-align: center;
+   }
+ }
+ 
+ .pool-page {
+   position: relative;
+   isolation: isolate;
+   padding: clamp(2.5rem, 6vw, 4.5rem) 0 4.5rem;
+   display: flex;
+   flex-direction: column;
+   gap: 2.5rem;
+ }
+ 
++.pool-main {
++  padding-top: clamp(3.5rem, 8vw, 6rem);
++}
++
+ .pool-hero {
+   display: grid;
+   gap: 0.75rem;
+   max-width: 960px;
+   width: 100%;
+ }
+ 
+ .pool-kicker {
+   text-transform: uppercase;
+   letter-spacing: 0.16em;
+   font-weight: 700;
+   color: var(--brand);
+   font-size: 0.85rem;
+ }
+ 
+ .pool-lede {
+   display: grid;
+   gap: 0.75rem;
+   color: var(--muted);
+   line-height: 1.7;
+ }
+ 
+ .pool-hero-figure {
+   margin: 0;
+   border-radius: 1rem;
+>>>>>>> 89a0a6f65ac2e3cc4eeb44f5f397b11ea7d24b7c

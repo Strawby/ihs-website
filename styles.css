@@ -457,6 +457,7 @@ body {
   object-fit: cover;
 }
 
+<<<<<<< HEAD
 .hero-media--static {
   background: linear-gradient(135deg, #0f172a 0%, #12463d 100%);
 }
@@ -465,6 +466,8 @@ body {
   display: none;
 }
 
+=======
+>>>>>>> 89a0a6f65ac2e3cc4eeb44f5f397b11ea7d24b7c
 .hero-media--fallback .hero-video {
   display: none;
 }
