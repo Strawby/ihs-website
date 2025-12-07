@@ -397,7 +397,11 @@ body {
     justify-content: flex-start;
     width: 100%;
   }
-
+  .nav.nav--collapsible .nav-button {
+    width: auto;
+    align-self: flex-start;
+  }
+  
   .nav-item,
   .nav-item--nested {
     width: 100%;
