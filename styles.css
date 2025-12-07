@@ -887,7 +887,6 @@ body {
 
 .pool-page {
   position: relative;
-  isolation: isolate;
   padding: clamp(2.5rem, 6vw, 4.5rem) 0 4.5rem;
   display: flex;
   flex-direction: column;
