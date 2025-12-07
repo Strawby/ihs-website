@@ -333,8 +333,8 @@ body {
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-        :root {
+@media (max-width: 1300px) {
+  :root {
     --header-height: 210px;
   }
   .nav {
@@ -380,7 +380,7 @@ body {
   .nav-inner > .brand {
     display: none;
   }
-  
+
   .nav.nav--collapsible .nav-links,
   .nav.nav--collapsible .nav-links--right {
     justify-content: flex-start;
@@ -414,9 +414,9 @@ body {
     width: auto;
     align-self: flex-start;
     display: inline-flex;
-	margin-left: 0;
+    margin-left: 0;
   }
-  
+
   .nav-item,
   .nav-item--nested {
     width: 100%;
@@ -434,7 +434,9 @@ body {
   .brand {
     margin: 0;
   }
+}
 
+@media (max-width: 900px) {
   .hero {
     margin: 0 calc(50% - 50vw) 2rem;
     padding: clamp(2rem, 10vw, 3.5rem) clamp(1rem, 7vw, 2.5rem);

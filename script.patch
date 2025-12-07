@@ -1,8 +1,8 @@
 diff --git a/script.js b/script.js
-index ebad139b6c9b8b9fc1931cdb4599e33854ad96bd..ad0deb8e7648f46c8698277405099900f0b406f2 100644
+index ad0deb8e7648f46c8698277405099900f0b406f2..7f36877a1e124e017538ec6bf520aba59c05bc62 100644
 --- a/script.js
 +++ b/script.js
-@@ -108,72 +108,92 @@ const initHamburger = (ctx = document) => {
+@@ -108,51 +108,51 @@ const initHamburger = (ctx = document) => {
  
    document.addEventListener("click", (event) => {
      if (!nav.contains(event.target)) setOpen(false);
@@ -28,7 +28,8 @@ index ebad139b6c9b8b9fc1931cdb4599e33854ad96bd..ad0deb8e7648f46c8698277405099900
  if (heroVideo) {
    const heroSection = heroVideo.closest(".hero");
    const heroMedia = heroVideo.closest(".hero-media");
-+  const compactNavQuery = window.matchMedia("(max-width: 900px)");
+-  const compactNavQuery = window.matchMedia("(max-width: 900px)");
++  const compactNavQuery = window.matchMedia("(max-width: 1300px)");
    const maxBlur = 8; // px
    let ticking = false;
  
@@ -50,48 +51,7 @@ index ebad139b6c9b8b9fc1931cdb4599e33854ad96bd..ad0deb8e7648f46c8698277405099900
    heroVideo.addEventListener("error", showHeroFallback);
    heroVideo.addEventListener("stalled", showHeroFallback);
  
-+  const syncHeroVideoToViewport = () => {
-+    const shouldHideVideo = compactNavQuery.matches;
-+
-+    heroMedia?.classList.toggle("hero-media--static", shouldHideVideo);
-+
-+    if (shouldHideVideo) {
-+      if (!heroVideo.paused) heroVideo.pause();
-+    } else if (heroVideo.paused) {
-+      heroVideo.play().catch(() => {});
-+    }
-+  };
-+
-   updateBlur();
-+  syncHeroVideoToViewport();
-+
-+  if (compactNavQuery.addEventListener) {
-+    compactNavQuery.addEventListener("change", syncHeroVideoToViewport);
-+  } else {
-+    compactNavQuery.addListener(syncHeroVideoToViewport);
-+  }
+   const syncHeroVideoToViewport = () => {
+     const shouldHideVideo = compactNavQuery.matches;
  
-   document.addEventListener(
-     "scroll",
-     () => {
-       if (!ticking) {
-         requestAnimationFrame(updateBlur);
-         ticking = true;
-       }
-     },
-     { passive: true }
-   );
- }
- 
- const injectPartial = async (selector, url, onReady) => {
-   const html = await fetch(url).then((r) => r.text());
- 
-   document.querySelectorAll(selector).forEach((slot) => {
-     slot.innerHTML = html;
-     onReady?.(slot);
-   });
- };
- 
- const headerUrl = resolvePartialUrl("partials/header.html");
- const footerUrl = resolvePartialUrl("partials/footer.html");
- const siteBasePath = new URL("..", headerUrl);
+     heroMedia?.classList.toggle("hero-media--static", shouldHideVideo);

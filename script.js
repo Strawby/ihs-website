@@ -130,7 +130,7 @@ const heroVideo = $(".hero-video");
 if (heroVideo) {
   const heroSection = heroVideo.closest(".hero");
   const heroMedia = heroVideo.closest(".hero-media");
-  const compactNavQuery = window.matchMedia("(max-width: 900px)");
+  const compactNavQuery = window.matchMedia("(max-width: 1300px)");
   const maxBlur = 8; // px
   let ticking = false;
 
