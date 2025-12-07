@@ -894,6 +894,10 @@ body {
   gap: 2.5rem;
 }
 
+.pool-main {
+  padding-top: clamp(3.5rem, 8vw, 6rem);
+}
+
 .pool-hero {
   display: grid;
   gap: 0.75rem;

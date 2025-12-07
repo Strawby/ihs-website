@@ -1,8 +1,11 @@
 diff --git a/styles.css b/styles.css
-index cc4f1a8c06298e031192ef376c1cdc9e6ba4dba5..b3072695948b7d9adab4443709ccd941beb53423 100644
+index b3072695948b7d9adab4443709ccd941beb53423..04f39f5f350dd82683de0629cdb302124fbf1889 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -875,75 +875,93 @@ body {
+@@ -872,50 +872,54 @@ body {
+ 
+   .footer-section-group::after {
+     display: none;
    }
  
    .footer-section + .footer-section {
@@ -25,12 +28,15 @@ index cc4f1a8c06298e031192ef376c1cdc9e6ba4dba5..b3072695948b7d9adab4443709ccd941
    gap: 2.5rem;
  }
  
++.pool-main {
++  padding-top: clamp(3.5rem, 8vw, 6rem);
++}
++
  .pool-hero {
    display: grid;
    gap: 0.75rem;
--  max-width: 920px;
-+  max-width: 960px;
-+  width: 100%;
+   max-width: 960px;
+   width: 100%;
  }
  
  .pool-kicker {
@@ -51,49 +57,3 @@ index cc4f1a8c06298e031192ef376c1cdc9e6ba4dba5..b3072695948b7d9adab4443709ccd941
  .pool-hero-figure {
    margin: 0;
    border-radius: 1rem;
-   overflow: hidden;
-   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
- }
- 
-+.pool-hero-lightbox {
-+  background: none;
-+  border: 0;
-+  padding: 0;
-+  margin: 0;
-+  width: 100%;
-+  height: 100%;
-+  display: block;
-+  cursor: pointer;
-+  text-align: left;
-+}
-+
-+.pool-hero-lightbox:focus-visible {
-+  outline: 3px solid var(--brand);
-+  outline-offset: 4px;
-+}
-+
- .pool-hero-figure img {
-   width: 100%;
-   height: 100%;
-   display: block;
-   object-fit: cover;
- }
- 
- .pool-section {
-   background: var(--card);
-   border: 1px solid #22304a;
-   border-radius: 1.25rem;
-   padding: clamp(1.5rem, 3vw, 2.25rem);
-   display: grid;
-   gap: 1.25rem;
-   box-shadow: 0 16px 36px rgba(0,0,0,.2);
- }
- 
- .section-header {
-   display: grid;
-   gap: 0.25rem;
- }
- 
- .section-kicker {
-   text-transform: uppercase;
-   letter-spacing: 0.1em;
