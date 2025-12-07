@@ -386,8 +386,15 @@ body {
   .nav-links,
   .nav-links--right {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     gap: 1rem;
+    width: 100%;
+  }
+
+  .nav.nav--collapsible .nav-link,
+  .nav.nav--collapsible .nav-toggle {
+    justify-content: flex-start;
     width: 100%;
   }
 
