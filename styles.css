@@ -895,8 +895,8 @@ body {
 }
 
 .pool-main {
-  padding-top: clamp(3.5rem, 8vw, 6rem);
-}
+  padding-top: clamp(6rem, 12vw, 9rem);
+  }
 
 .pool-hero {
   display: grid;
