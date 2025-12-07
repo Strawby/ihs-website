@@ -397,6 +397,12 @@ body {
     justify-content: flex-start;
     width: 100%;
   }
+  .nav.nav--collapsible .nav-link,
+  .nav.nav--collapsible .nav-toggle,
+  .nav.nav--collapsible .nav-menu-link,
+  .nav.nav--collapsible .nav-menu-heading {
+    font-size: 1.05rem;
+  }
   .nav.nav--collapsible .nav-button {
     width: auto;
     align-self: flex-start;
