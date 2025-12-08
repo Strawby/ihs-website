@@ -10,6 +10,7 @@
   --footer-fg: #f3f7f2;
   --footer-border: rgba(243, 247, 242, 0.16);
   --header-height: 120px;
+  --content-stack-space: clamp(1.25rem, 2.5vw, 2.25rem);
 }
 
 :root.light {
@@ -40,13 +41,13 @@ body {
   color: var(--fg);
   position: relative;
   min-height: 100%;
-  padding-top: var(--header-height);
+  padding-top: calc(var(--header-height) + var(--content-stack-space));
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem var(--content-stack-space);
 }
 
 .site-header {
@@ -448,7 +449,7 @@ body {
 /* PATCHED MOBILE HERO */
 @media (max-width: 900px) {
   .hero {
-    margin: 0 calc(50% - 50vw) 1rem;
+    margin: 0 calc(50% - 50vw) var(--content-stack-space);
     padding: clamp(1.25rem, 7vw, 2.25rem) clamp(.75rem, 6vw, 2rem);
     min-height: max(380px, 75vh);
     gap: clamp(1.35rem, 8vw, 2.5rem);
@@ -464,7 +465,7 @@ body {
 /* PATCHED DESKTOP HERO */
 .hero {
   position: relative;
-  margin: 0 calc(50% - 50vw) 1.5rem;
+  margin: 0 calc(50% - 50vw) var(--content-stack-space);
   padding: clamp(1.35rem, 3.5vw, 2.8rem) clamp(1.25rem, 7vw, 4.5rem);
   display: flex;
   flex-direction: column;
@@ -540,10 +541,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  gap: var(--content-stack-space);
   width: 100%;
   max-width: min(960px, 100%);
-  margin-top: clamp(1.1rem, 4vh, 2.4rem);
+  margin-top: var(--content-stack-space);
   z-index: 1;
 }
 
@@ -680,7 +681,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: var(--content-stack-space);
 }
 
 .card {
@@ -711,7 +712,7 @@ body {
 .site-footer {
   background: color-mix(in srgb, var(--footer-bg) 90%, var(--bg) 10%);
   color: var(--footer-fg);
-  margin: 3.5rem auto 1.5rem;
+  margin: var(--content-stack-space) auto var(--content-stack-space);
   padding: 2.75rem clamp(1.75rem, 4vw, 3rem) 2rem;
   width: min(1100px, calc(100% - 2.5rem));
   border-radius: 1.25rem;
