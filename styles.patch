@@ -1,66 +1,43 @@
 diff --git a/styles.css b/styles.css
-index 43974e6787338c0f66de24737a2853cc89ed733c..ceb6aec4e131d995e5e7bfb305ac69e2b920604a 100644
+index ac05234baf6f024da4a86b214756c9724f9c94df..1988b041a9f8dbaca0e6a2f1dc383ddd351a84df 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -425,147 +425,143 @@ body {
-     display: inline-flex;
-     margin-left: 0;
-   }
- 
-   .nav-item,
-   .nav-item--nested {
-     width: 100%;
-   }
- 
-   .nav-menu {
-     position: static;
-     width: 100%;
-     margin-top: .5rem;
-     box-shadow: none;
-     padding: .5rem 0;
-     background: transparent;
-   }
- 
+@@ -443,56 +443,56 @@ body {
    .brand {
      margin: 0;
    }
  }
  
+ /* PATCHED MOBILE HERO */
  @media (max-width: 900px) {
    .hero {
--    margin: 0 calc(50% - 50vw) 2rem;
--    padding: clamp(2rem, 10vw, 3.5rem) clamp(1rem, 7vw, 2.5rem);
--    min-height: max(480px, 100vh);
--    gap: clamp(2.5rem, 12vw, 4rem);
-+    margin: 0 calc(50% - 50vw) 1.5rem;
-+    padding: clamp(1.75rem, 9vw, 3rem) clamp(1rem, 7vw, 2.5rem);
-+    min-height: max(460px, 90vh);
-+    gap: clamp(2rem, 10vw, 3.25rem);
+     margin: 0 calc(50% - 50vw) 1rem;
+     padding: clamp(1.25rem, 7vw, 2.25rem) clamp(.75rem, 6vw, 2rem);
+     min-height: max(380px, 75vh);
+     gap: clamp(1.35rem, 8vw, 2.5rem);
    }
  
    .hero-panels {
--    margin-top: clamp(3rem, 14vh, 6rem);
-+    margin-top: clamp(2.25rem, 10vh, 4.5rem);
-     padding: 0 clamp(0.5rem, 4vw, 1.5rem);
+     margin-top: clamp(1.25rem, 8vh, 3rem);
+     padding: 0 clamp(0.25rem, 3.5vw, 1.25rem);
      max-width: none;
    }
  }
  
+ /* PATCHED DESKTOP HERO */
  .hero {
    position: relative;
--  margin: 0 calc(50% - 50vw) 3rem;
--  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 8vw, 6rem);
-+  margin: 0 calc(50% - 50vw) 2rem;
-+  padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
+   margin: 0 calc(50% - 50vw) 1.5rem;
+-  padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.25rem, 7vw, 4.5rem);
++  padding: clamp(1.35rem, 3.5vw, 2.8rem) clamp(1.25rem, 7vw, 4.5rem);
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
--  gap: clamp(2.5rem, 7vh, 4.5rem);
-+  gap: clamp(2rem, 5vh, 3.5rem);
+-  gap: clamp(1.5rem, 4vh, 2.75rem);
++  gap: clamp(1.25rem, 3vh, 2.35rem);
    text-align: center;
--  min-height: max(540px, 100vh);
-+  min-height: max(520px, 88vh);
+   min-height: max(420px, 78vh);
    overflow: hidden;
    isolation: isolate;
  }
@@ -84,31 +61,7 @@ index 43974e6787338c0f66de24737a2853cc89ed733c..ceb6aec4e131d995e5e7bfb305ac69e2
    object-fit: cover;
  }
  
--<<<<<<< HEAD
- .hero-media--static {
-   background: linear-gradient(135deg, #0f172a 0%, #12463d 100%);
- }
- 
- .hero-media--static .hero-video {
-   display: none;
- }
--
--=======
-->>>>>>> 89a0a6f65ac2e3cc4eeb44f5f397b11ea7d24b7c
- .hero-media--fallback .hero-video {
-   display: none;
- }
- 
- .page-filter {
-   position: fixed;
-   inset: 0;
-   background: linear-gradient(160deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .9) 85%);
-   pointer-events: none;
-   z-index: -1;
- }
- 
- :root.light .page-filter {
-   background: linear-gradient(160deg, rgba(15, 23, 42, .35) 0%, rgba(15, 23, 42, .6) 85%);
+@@ -521,51 +521,51 @@ body {
  }
  
  .hero-video {
@@ -125,23 +78,24 @@ index 43974e6787338c0f66de24737a2853cc89ed733c..ceb6aec4e131d995e5e7bfb305ac69e2
    transform: scale(1.03);
  }
  
+ /* PATCHED HERO PANELS */
  .hero-panels {
    position: relative;
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: clamp(1.5rem, 3vw, 2.75rem);
+   gap: clamp(1.25rem, 2.5vw, 2.25rem);
    width: 100%;
    max-width: min(960px, 100%);
--  margin-top: clamp(4rem, 15vh, 8rem);
-+  margin-top: clamp(3rem, 10vh, 6rem);
+-  margin-top: clamp(1.75rem, 6vh, 3.5rem);
++  margin-top: clamp(1.1rem, 4vh, 2.4rem);
    z-index: 1;
  }
  
  .hero-panel {
    background: linear-gradient(145deg, #1f8f73 0%, #1a6f62 100%);
    color: #f2f8f4;
-   padding: clamp(1.75rem, 3vw, 2.5rem);
+   padding: clamp(1.35rem, 2.5vw, 2.15rem);
    border-radius: 1.5rem;
    box-shadow: 0 18px 45px rgba(0,0,0,.25);
    display: flex;
