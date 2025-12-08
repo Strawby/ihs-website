@@ -39,7 +39,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   position: relative;
-  min-height: 100%;+  
+  min-height: 100%;
   padding-top: var(--header-height);
 }
 
@@ -59,6 +59,8 @@ body {
   z-index: 10;
   width: 100%;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
 }
 
 .brand {
@@ -91,11 +93,14 @@ body {
   border: 0;
 }
 
-.nav { 
+.nav {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: .75rem 2rem;
+  padding: .75rem clamp(1.25rem, 4vw, 2.5rem);
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .nav-top {
@@ -112,6 +117,9 @@ body {
   align-items: center;
   gap: 1.25rem;
   width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 .nav-hamburger {
@@ -353,6 +361,7 @@ body {
     grid-template-columns: 1fr;
     justify-items: center;
     row-gap: 1rem;
+    max-width: none;
   }
 
   .nav.nav--collapsible .nav-inner {
