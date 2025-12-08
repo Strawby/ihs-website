@@ -312,7 +312,7 @@ body {
   border: 1px solid #22304a;
   padding: .5rem .75rem;
   border-radius: .75rem;
-  cursor: pointer;
+  cursor: button;
   margin-left: 1.25rem;
 }
 
@@ -445,32 +445,34 @@ body {
   }
 }
 
+/* PATCHED MOBILE HERO */
 @media (max-width: 900px) {
   .hero {
-    margin: 0 calc(50% - 50vw) 1.5rem;
-    padding: clamp(1.75rem, 9vw, 3rem) clamp(1rem, 7vw, 2.5rem);
-    min-height: max(460px, 90vh);
-    gap: clamp(2rem, 10vw, 3.25rem);
+    margin: 0 calc(50% - 50vw) 1rem;
+    padding: clamp(1.25rem, 7vw, 2.25rem) clamp(.75rem, 6vw, 2rem);
+    min-height: max(380px, 75vh);
+    gap: clamp(1.35rem, 8vw, 2.5rem);
   }
 
   .hero-panels {
-    margin-top: clamp(2.25rem, 10vh, 4.5rem);
-    padding: 0 clamp(0.5rem, 4vw, 1.5rem);
+    margin-top: clamp(1.25rem, 8vh, 3rem);
+    padding: 0 clamp(0.25rem, 3.5vw, 1.25rem);
     max-width: none;
   }
 }
 
+/* PATCHED DESKTOP HERO */
 .hero {
   position: relative;
-  margin: 0 calc(50% - 50vw) 2rem;
-  padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
+  margin: 0 calc(50% - 50vw) 1.5rem;
+  padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.25rem, 7vw, 4.5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(2rem, 5vh, 3.5rem);
+  gap: clamp(1.5rem, 4vh, 2.75rem);
   text-align: center;
-  min-height: max(520px, 88vh);
+  min-height: max(420px, 78vh);
   overflow: hidden;
   isolation: isolate;
 }
@@ -501,6 +503,7 @@ body {
 .hero-media--static .hero-video {
   display: none;
 }
+
 .hero-media--fallback .hero-video {
   display: none;
 }
@@ -531,22 +534,23 @@ body {
   transform: scale(1.03);
 }
 
+/* PATCHED HERO PANELS */
 .hero-panels {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(1.5rem, 3vw, 2.75rem);
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
   width: 100%;
   max-width: min(960px, 100%);
-  margin-top: clamp(3rem, 10vh, 6rem);
+  margin-top: clamp(1.75rem, 6vh, 3.5rem);
   z-index: 1;
 }
 
 .hero-panel {
   background: linear-gradient(145deg, #1f8f73 0%, #1a6f62 100%);
   color: #f2f8f4;
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  padding: clamp(1.35rem, 2.5vw, 2.15rem);
   border-radius: 1.5rem;
   box-shadow: 0 18px 45px rgba(0,0,0,.25);
   display: flex;
@@ -939,7 +943,7 @@ body {
 
 .pool-main {
   padding-top: clamp(6rem, 12vw, 9rem);
-  }
+}
 
 .pool-hero {
   display: grid;
