@@ -447,14 +447,14 @@ body {
 
 @media (max-width: 900px) {
   .hero {
-    margin: 0 calc(50% - 50vw) 2rem;
-    padding: clamp(2rem, 10vw, 3.5rem) clamp(1rem, 7vw, 2.5rem);
-    min-height: max(480px, 100vh);
-    gap: clamp(2.5rem, 12vw, 4rem);
+    margin: 0 calc(50% - 50vw) 1.5rem;
+    padding: clamp(1.75rem, 9vw, 3rem) clamp(1rem, 7vw, 2.5rem);
+    min-height: max(460px, 90vh);
+    gap: clamp(2rem, 10vw, 3.25rem);
   }
 
   .hero-panels {
-    margin-top: clamp(3rem, 14vh, 6rem);
+    margin-top: clamp(2.25rem, 10vh, 4.5rem);
     padding: 0 clamp(0.5rem, 4vw, 1.5rem);
     max-width: none;
   }
@@ -462,15 +462,15 @@ body {
 
 .hero {
   position: relative;
-  margin: 0 calc(50% - 50vw) 3rem;
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 8vw, 6rem);
+  margin: 0 calc(50% - 50vw) 2rem;
+  padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 8vw, 6rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(2.5rem, 7vh, 4.5rem);
+  gap: clamp(2rem, 5vh, 3.5rem);
   text-align: center;
-  min-height: max(540px, 100vh);
+  min-height: max(520px, 88vh);
   overflow: hidden;
   isolation: isolate;
 }
@@ -494,7 +494,6 @@ body {
   object-fit: cover;
 }
 
-<<<<<<< HEAD
 .hero-media--static {
   background: linear-gradient(135deg, #0f172a 0%, #12463d 100%);
 }
@@ -502,9 +501,6 @@ body {
 .hero-media--static .hero-video {
   display: none;
 }
-
-=======
->>>>>>> 89a0a6f65ac2e3cc4eeb44f5f397b11ea7d24b7c
 .hero-media--fallback .hero-video {
   display: none;
 }
@@ -543,7 +539,7 @@ body {
   gap: clamp(1.5rem, 3vw, 2.75rem);
   width: 100%;
   max-width: min(960px, 100%);
-  margin-top: clamp(4rem, 15vh, 8rem);
+  margin-top: clamp(3rem, 10vh, 6rem);
   z-index: 1;
 }
 
