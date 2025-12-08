@@ -355,7 +355,9 @@ body {
   }
 
   .nav-top {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
   }
 
   .nav-inner {
@@ -380,11 +382,14 @@ body {
   .nav-hamburger {
     display: inline-flex;
     align-self: center;
+    justify-self: end;
   }
 
   .nav-brand--mobile {
     display: flex;
     align-self: center;
+    grid-column: 2;
+    justify-self: center;
   }
 
   .nav-inner > .brand {

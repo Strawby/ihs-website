@@ -1,116 +1,91 @@
 diff --git a/styles.css b/styles.css
-index ac05234baf6f024da4a86b214756c9724f9c94df..1988b041a9f8dbaca0e6a2f1dc383ddd351a84df 100644
+index 156defddf57d333b9cc8f718732bfcc3a0e005bc..a8325c2cd2bd5a732fa80f1aa05116d0fbf44120 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -443,56 +443,56 @@ body {
-   .brand {
-     margin: 0;
-   }
+@@ -333,80 +333,85 @@ body {
+   gap: 1rem;
  }
  
- /* PATCHED MOBILE HERO */
- @media (max-width: 900px) {
-   .hero {
-     margin: 0 calc(50% - 50vw) 1rem;
-     padding: clamp(1.25rem, 7vw, 2.25rem) clamp(.75rem, 6vw, 2rem);
-     min-height: max(380px, 75vh);
-     gap: clamp(1.35rem, 8vw, 2.5rem);
+ .simple-page p {
+   color: var(--muted);
+ }
+ 
+ .simple-page a {
+   color: var(--brand);
+   font-weight: 600;
+ }
+ 
+ @media (max-width: 1300px) {
+   :root {
+     --header-height: 210px;
+   }
+   .nav {
+     flex-direction: column;
+     align-items: stretch;
+     padding: 1rem 1.25rem;
+     row-gap: .5rem;
+     position: relative;
    }
  
-   .hero-panels {
-     margin-top: clamp(1.25rem, 8vh, 3rem);
-     padding: 0 clamp(0.25rem, 3.5vw, 1.25rem);
+   .nav-top {
+-    display: flex;
++    display: grid;
++    grid-template-columns: 1fr auto 1fr;
++    align-items: center;
+   }
+ 
+   .nav-inner {
+     grid-template-columns: 1fr;
+     justify-items: center;
+     row-gap: 1rem;
      max-width: none;
    }
- }
  
- /* PATCHED DESKTOP HERO */
- .hero {
-   position: relative;
-   margin: 0 calc(50% - 50vw) 1.5rem;
--  padding: clamp(1.75rem, 4vw, 3.25rem) clamp(1.25rem, 7vw, 4.5rem);
-+  padding: clamp(1.35rem, 3.5vw, 2.8rem) clamp(1.25rem, 7vw, 4.5rem);
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
--  gap: clamp(1.5rem, 4vh, 2.75rem);
-+  gap: clamp(1.25rem, 3vh, 2.35rem);
-   text-align: center;
-   min-height: max(420px, 78vh);
-   overflow: hidden;
-   isolation: isolate;
- }
+   .nav.nav--collapsible .nav-inner {
+     display: none;
+     width: 100%;
+   }
  
- .hero-media {
-   position: fixed;
-   inset: 0;
-   width: 100vw;
-   height: 100vh;
-   z-index: -2;
-   pointer-events: none;
-   overflow: hidden;
- }
+   .nav.nav--collapsible.nav--open .nav-inner {
+     display: grid;
+     justify-items: start;
+     text-align: left;
+     align-items: start;
+   }
  
- .hero-media img,
- .hero-media video {
-   position: absolute;
-   inset: 0;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
- }
+   .nav-hamburger {
+     display: inline-flex;
+     align-self: center;
++    justify-self: end;
+   }
  
-@@ -521,51 +521,51 @@ body {
- }
+   .nav-brand--mobile {
+     display: flex;
+     align-self: center;
++    grid-column: 2;
++    justify-self: center;
+   }
  
- .hero-video {
-   display: block;
-   filter: blur(var(--hero-blur));
-   transform: scale(1.03);
-   will-change: filter;
-   z-index: 1;
- }
+   .nav-inner > .brand {
+     display: none;
+   }
  
- .hero-image {
-   display: block;
-   filter: blur(var(--hero-blur));
-   transform: scale(1.03);
- }
+   .nav.nav--collapsible .nav-links,
+   .nav.nav--collapsible .nav-links--right {
+     justify-content: flex-start;
+   }
  
- /* PATCHED HERO PANELS */
- .hero-panels {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: clamp(1.25rem, 2.5vw, 2.25rem);
-   width: 100%;
-   max-width: min(960px, 100%);
--  margin-top: clamp(1.75rem, 6vh, 3.5rem);
-+  margin-top: clamp(1.1rem, 4vh, 2.4rem);
-   z-index: 1;
- }
+   .nav-links,
+   .nav-links--right {
+     justify-content: center;
+     flex-direction: column;
+     align-items: stretch;
+     gap: 1rem;
+     width: 100%;
+   }
  
- .hero-panel {
-   background: linear-gradient(145deg, #1f8f73 0%, #1a6f62 100%);
-   color: #f2f8f4;
-   padding: clamp(1.35rem, 2.5vw, 2.15rem);
-   border-radius: 1.5rem;
-   box-shadow: 0 18px 45px rgba(0,0,0,.25);
-   display: flex;
-   flex-direction: column;
-   gap: 1rem;
-   align-items: flex-start;
-   text-align: left;
- }
- 
- .hero-panel h1,
- .hero-panel h2 {
-   margin: 0;
-   font-weight: 700;
-   letter-spacing: .04em;
-   text-transform: uppercase;
- }
- 
- .hero-panel h1,
+   .nav.nav--collapsible .nav-link,
+   .nav.nav--collapsible .nav-toggle {
+     justify-content: flex-start;
+     width: 100%;
+   }
