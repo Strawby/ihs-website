@@ -192,6 +192,11 @@ body {
   cursor: pointer;
 }
 
+.nav-links .nav-link,
+.nav-links .nav-toggle {
+  white-space: nowrap;
+}
+
 .nav-link:hover,
 .nav-link:focus-visible,
 .nav-toggle:hover,
