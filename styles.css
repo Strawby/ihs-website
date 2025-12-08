@@ -42,7 +42,7 @@ body {
   position: relative;
   min-height: 100%;
   padding-top: clamp(50px, 8vw, 70px);
-  }
+}
 
 .container {
   max-width: 960px;
@@ -113,14 +113,27 @@ body {
 }
 
 .nav-inner {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 1.25rem;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  justify-items: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--fg);
+  min-width: 0;
+  flex: 1;
 }
 
 .nav-hamburger {
@@ -157,16 +170,8 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 1.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  color: var(--fg);
-  min-width: 0;
+.nav-inner > .brand {
+  justify-self: center;
 }
 
 .nav-links--right {
@@ -366,6 +371,7 @@ body {
   }
 
   .nav-inner {
+    display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
     row-gap: 1rem;
@@ -998,7 +1004,7 @@ body {
 }
 
 .pool-hero-lightbox:focus-visible {
-  outline: 3px solid var(--brand);
+  outline: 3px solid(var(--brand));
   outline-offset: 4px;
 }
 
