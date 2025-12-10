@@ -1175,15 +1175,26 @@ body {
 }
 
 .pool-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  padding-left: 1.1rem;
-  display: grid;
-  gap: 0.6rem;
   color: var(--muted);
 }
 
+.pool-list li + li {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
 .pool-list--tight {
-  gap: 0.35rem;
+  /* Slightly reduce spacing for compact lists */
+  --pool-list-tight-spacing: 0.5rem;
+}
+
+.pool-list--tight li + li {
+  margin-top: var(--pool-list-tight-spacing);
+  padding-top: var(--pool-list-tight-spacing);
 }
 
 .pool-grid {
