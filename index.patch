@@ -1,26 +1,10 @@
 diff --git a/pool/index.html b/pool/index.html
-index 4c7bfbca6a14dfc7eb5621c899b4374f52f7f895..21baba47143a005fd46598f1cfb504ce849b87b5 100644
+index 21baba47143a005fd46598f1cfb504ce849b87b5..0256e7141a772fb73fb7023487fc3a5be37c55bd 100644
 --- a/pool/index.html
 +++ b/pool/index.html
-@@ -1,52 +1,46 @@
- ﻿<!doctype html>
- <html lang="en">
- <head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Mineral Water Swimming Pool | Indian Hot Springs</title>
-   <meta name="description" content="Step into tropical turquoise waters inside our mineral water swimming pool. Review hours, pricing, and how to plan your soak at Indian Hot Springs." />
-   <link rel="stylesheet" href="../styles.css" />
- </head>
- <body>
+@@ -11,50 +11,51 @@
    	<div data-header></div>
    <main class="container pool-page pool-main">
--      <section class="pool-section" aria-labelledby="pool-page-title">
--      <div class="section-header">
--        <h1 id="pool-page-title">Mineral Water Swimming Pool</h1>
--		<p class="pool-kicker">unplug your device, recharge yourself</p>
--      </div>
--    </section>
      <div class="hero-media">
        <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool-1.jpg"></video>
      </div>
@@ -29,8 +13,7 @@ index 4c7bfbca6a14dfc7eb5621c899b4374f52f7f895..21baba47143a005fd46598f1cfb504ce
        <div class="pool-hero-inner">
          <div class="pool-hero-content">
            <p class="eyebrow">Mineral Water Swimming Pool</p>
--          <h1 class="pool-title">Mineral Water Swimming Pool</h1>
-+          <h1 class="pool-title" id="pool-page-title">Mineral Water Swimming Pool</h1>
+           <h1 class="pool-title" id="pool-page-title">Mineral Water Swimming Pool</h1>
            <p class="pool-subtitle">Unplug your device, recharge yourself in tropical turquoise waters beneath the dome.</p>
            <div class="pool-hero-meta">
              <div class="meta-item">
@@ -45,6 +28,7 @@ index 4c7bfbca6a14dfc7eb5621c899b4374f52f7f895..21baba47143a005fd46598f1cfb504ce
            <div class="pool-hero-actions">
              <a href="#hours" class="btn btn-primary">View Hours &amp; Pricing</a>
              <a href="#plan-your-visit" class="btn btn-ghost">Plan Your Visit</a>
++            <a class="btn btn-primary" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book Pool for Weekends</a>
            </div>
          </div>
          <figure class="pool-hero-figure">
@@ -56,3 +40,56 @@ index 4c7bfbca6a14dfc7eb5621c899b4374f52f7f895..21baba47143a005fd46598f1cfb504ce
      </header>
  
      <section class="pool-section pool-section--two-column" id="plan-your-visit">
+       <div class="pool-card">
+         <div class="section-header">
+           <p class="section-summary">You may think that it's impossible to have a tropical getaway in the middle of the mountains. Thanks to our staff botanist, and a magical sparkling dome, the main swimming pool gives off tropical vacation vibes all year long.</p>
+           <p class="section-summary">The hot mineral waters have been used to heal for centuries and you'll feel the benefits with whatever soaking style you choose&mdash;whether it's a slow paddle, a steady walk, or claiming a spot on one of the many built-in benches. While you're letting the tropical turquoise waters work their wonders, make sure to gaze around the edge and marvel at the banana trees, ferns, and flowers&mdash;many of which you won't find anywhere else in Colorado.</p>
+           <h2>Plan Your Soak</h2>
+           <p class="section-summary">Everything you need to enjoy the dome-covered mineral pool, from reservations to on-site amenities.</p>
+         </div>
+       </div>
+       <div class="pool-card">
+         <ul class="pool-list">
+           <li>Weekdays &ndash; No reservation required</li>
+           <li>Weekends &ndash; Reservation required</li>
+           <li>As a natural geothermal source of water, we are unable to adjust the water heat. Our average temperatures range from 96-102&deg;F.</li>
+           <li>A minimal amount of chlorine is used to ensure safety</li>
+@@ -110,38 +111,31 @@
+     <section class="pool-section pool-gallery" id="gallery" aria-label="Pool photo gallery">
+       <div class="section-header">
+         <p class="section-kicker">Pool gallery</p>
+         <h2>See inside the dome</h2>
+         <p class="section-summary">Browse snapshots from around the mineral water swimming pool. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
+       </div>
+ 
+       <div class="media-gallery" data-media-gallery data-gallery-manifest="media/pool/manifest.json" data-gallery-label="Pool photo">
+         <p class="muted">Loading photos...</p>
+       </div>
+     </section>
+ 
+     <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Pool photo">
+       <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
+       <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
+         <span aria-hidden="true">&#10094;</span>
+       </button>
+       <div class="lightbox-frame">
+         <img src="" alt="Pool gallery photo" />
+       </div>
+       <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
+         <span aria-hidden="true">&#10095;</span>
+       </button>
+     </div>
+ 
+-    <section class="pool-section" id="book-pool">
+-      <div class="pool-card">
+-        <div class="pool-cta">
+-          <a class="panel-cta" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book Pool for Weekends</a>
+-        </div>
+-      </div>
+-    </section>
+   </main>
+   <div data-footer></div>
+     <script src="../script.js"></script>
+ </body>
+ </html>
+ 
