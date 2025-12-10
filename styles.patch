@@ -1,22 +1,8 @@
 diff --git a/styles.css b/styles.css
-index abf339c74308fd5b7551c67812ebaba31e236fa7..756efc1ee4143bb23d790c8372ad36d7c9066c08 100644
+index 756efc1ee4143bb23d790c8372ad36d7c9066c08..7ed0fbfeb393e7bae9fb3374f445288c0d4d0c70 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -930,198 +930,230 @@ body {
-     width: calc(100% - 1.5rem);
-     border-radius: 1rem;
-   }
- 
-   .footer-hours {
-     flex-direction: column;
-   }
- 
-   .footer-section-group::after {
-     display: none;
-   }
- 
-   .footer-section + .footer-section {
-     border-top: 1px solid var(--footer-border);
+@@ -944,56 +944,158 @@ body {
      padding-top: 1.25rem;
      margin-top: 0.25rem;
    }
@@ -28,29 +14,132 @@ index abf339c74308fd5b7551c67812ebaba31e236fa7..756efc1ee4143bb23d790c8372ad36d7
  
  .pool-page {
    position: relative;
--  padding: clamp(2.5rem, 6vw, 4.5rem) 0 4.5rem;
-+  padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(5rem, 8vw, 6rem);
+   padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(5rem, 8vw, 6rem);
    display: flex;
    flex-direction: column;
--  gap: 2.5rem;
-+  gap: clamp(2.75rem, 5vw, 3.75rem);
+   gap: clamp(2.75rem, 5vw, 3.75rem);
  }
  
  .pool-main {
--  padding-top: clamp(6rem, 12vw, 9rem);
-+  padding-top: clamp(6.5rem, 11vw, 9.5rem);
-+  max-width: min(1180px, 100% - 2.5rem);
-+  margin: 0 auto;
-+  width: 100%;
+   padding-top: clamp(6.5rem, 11vw, 9.5rem);
+   max-width: min(1180px, 100% - 2.5rem);
+   margin: 0 auto;
+   width: 100%;
  }
  
  .pool-hero {
-   display: grid;
-   gap: 0.75rem;
-   max-width: 960px;
+-  display: grid;
+-  gap: 0.75rem;
+-  max-width: 960px;
++  max-width: min(1180px, 100% - 2.5rem);
    width: 100%;
-+  margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
-+  justify-items: center;
+   margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
+-  justify-items: center;
++}
++
++.pool-hero-inner {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++  align-items: center;
++  gap: clamp(1.5rem, 4vw, 3rem);
++}
++
++.pool-hero-content {
++  display: grid;
++  gap: 0.75rem;
++  align-content: start;
++}
++
++.eyebrow {
++  text-transform: uppercase;
++  letter-spacing: 0.18em;
++  font-weight: 700;
++  color: var(--brand);
++  font-size: 0.9rem;
++  margin: 0;
++}
++
++.pool-title {
++  margin: 0;
++  font-size: clamp(2.2rem, 5vw, 3rem);
++  line-height: 1.1;
++}
++
++.pool-subtitle {
++  margin: 0;
++  color: var(--muted);
++  font-size: 1.05rem;
++  line-height: 1.6;
++}
++
++.pool-hero-meta {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
++  gap: 0.75rem;
++}
++
++.meta-item {
++  display: grid;
++  gap: 0.2rem;
++  padding: 0.85rem 1rem;
++  border: 1px solid rgba(148, 163, 184, 0.35);
++  border-radius: 0.9rem;
++  background: color-mix(in srgb, var(--card) 92%, transparent);
++}
++
++.meta-label {
++  font-size: 0.8rem;
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++  color: var(--muted);
++  font-weight: 700;
++}
++
++.meta-value {
++  font-weight: 600;
++}
++
++.pool-hero-actions {
++  display: flex;
++  gap: 0.75rem;
++  flex-wrap: wrap;
++}
++
++.btn {
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  gap: 0.4rem;
++  padding: 0.75rem 1.1rem;
++  border-radius: 0.85rem;
++  text-decoration: none;
++  font-weight: 700;
++  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
++  border: 1px solid transparent;
++}
++
++.btn-primary {
++  background: var(--brand);
++  color: #0b1220;
++  border-color: color-mix(in srgb, var(--brand) 85%, transparent);
++  box-shadow: 0 12px 30px rgba(79, 156, 255, 0.35);
++}
++
++.btn-primary:hover {
++  transform: translateY(-2px);
++  background: color-mix(in srgb, var(--brand) 90%, #ffffff 10%);
++}
++
++.btn-ghost {
++  background: transparent;
++  color: var(--fg);
++  border-color: rgba(148, 163, 184, 0.45);
++}
++
++.btn-ghost:hover {
++  transform: translateY(-2px);
++  border-color: var(--brand);
++  color: var(--brand);
  }
  
  .pool-kicker {
@@ -76,172 +165,3 @@ index abf339c74308fd5b7551c67812ebaba31e236fa7..756efc1ee4143bb23d790c8372ad36d7
  }
  
  .pool-hero-lightbox {
-   background: none;
-   border: 0;
-   padding: 0;
-   margin: 0;
-   width: 100%;
-   height: 100%;
-   display: block;
-   cursor: pointer;
-   text-align: left;
- }
- 
- .pool-hero-lightbox:focus-visible {
-   outline: 3px solid(var(--brand));
-   outline-offset: 4px;
- }
- 
- .pool-hero-figure img {
-   width: 100%;
-   height: 100%;
-   display: block;
-   object-fit: cover;
- }
- 
- .pool-section {
-   background: var(--card);
--  border: 1px solid #22304a;
--  border-radius: 1.25rem;
--  padding: clamp(1.5rem, 3vw, 2.25rem);
-+  border: 1px solid rgba(148, 163, 184, 0.35);
-+  border-radius: 1.35rem;
-+  padding: clamp(1.75rem, 3vw, 2.5rem);
-   display: grid;
-   gap: 1.25rem;
--  box-shadow: 0 16px 36px rgba(0,0,0,.2);
-+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.28);
-+  max-width: min(1100px, 100% - 2.5rem);
-+  margin: 0 auto;
-+}
-+
-+.pool-section + .pool-section {
-+  margin-top: clamp(1.75rem, 4vw, 3rem);
-+}
-+
-+.pool-section--two-column {
-+  grid-template-columns: repeat(2, minmax(0, 1fr));
-+  gap: clamp(1.25rem, 3vw, 1.75rem);
-+  align-items: start;
- }
- 
- .section-header {
-   display: grid;
-   gap: 0.25rem;
- }
- 
- .section-kicker {
-   text-transform: uppercase;
-   letter-spacing: 0.1em;
-   font-weight: 700;
-   color: var(--brand);
-   font-size: 0.9rem;
-   margin: 0;
- }
- 
- .section-summary {
-   margin: 0;
-   color: var(--muted);
- }
- 
- .pool-list {
-   margin: 0;
-   padding-left: 1.1rem;
-   display: grid;
-   gap: 0.6rem;
-   color: var(--muted);
- }
- 
- .pool-list--tight {
-   gap: 0.35rem;
- }
- 
- .pool-grid {
-   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
--  gap: 1rem;
-+  gap: clamp(1.1rem, 3vw, 1.6rem);
-+}
-+
-+.pool-card {
-+  background: color-mix(in srgb, var(--card) 94%, var(--bg));
-+  border: 1px solid rgba(148, 163, 184, 0.35);
-+  border-radius: 1rem;
-+  padding: clamp(1.35rem, 3vw, 1.9rem);
-+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
-+  height: 100%;
- }
- 
- .info-card {
--  background: color-mix(in srgb, var(--card) 90%, transparent);
--  border: 1px solid #22304a;
-+  background: color-mix(in srgb, var(--card) 96%, var(--bg));
-+  border: 1px solid rgba(148, 163, 184, 0.3);
-   border-radius: 1rem;
--  padding: 1.25rem;
-+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
-   display: grid;
-   gap: 0.75rem;
--  box-shadow: inset 0 1px 0 rgba(255,255,255,.02), 0 8px 22px rgba(0,0,0,.18);
-+  box-shadow: inset 0 1px 0 rgba(255,255,255,.02), 0 8px 22px rgba(15,23,42,.18);
- }
- 
- .info-card h3 {
-   margin: 0;
-   font-size: 1.2rem;
- }
- 
- .info-subsection {
-   display: grid;
-   gap: 0.35rem;
- }
- 
- .info-subsection h4 {
-   margin: 0;
-   font-size: 1rem;
- }
- 
- .muted {
-   color: var(--muted);
-   margin: 0;
- }
- 
- .pool-cta {
-   display: flex;
-   justify-content: center;
- }
- 
- .pool-gallery {
-   gap: 1.75rem;
- }
- 
-+@media (max-width: 780px) {
-+  .pool-section--two-column {
-+    grid-template-columns: 1fr;
-+  }
-+}
-+
- .media-gallery {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-   gap: 1rem;
- }
- 
- .gallery-thumb {
-   border: 1px solid #1f2c45;
-   padding: 0;
-   border-radius: 1rem;
-   overflow: hidden;
-   background: color-mix(in srgb, var(--card) 90%, black);
-   cursor: pointer;
-   position: relative;
-   aspect-ratio: 4 / 3;
-   box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 10px 25px rgba(0,0,0,.2);
-   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
- }
- 
- .gallery-thumb:hover,
- .gallery-thumb:focus-visible {
-   transform: translateY(-2px);
-   border-color: #30456a;
-   box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.28);
- }

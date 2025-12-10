@@ -966,12 +966,114 @@ body {
 }
 
 .pool-hero {
-  display: grid;
-  gap: 0.75rem;
-  max-width: 960px;
+  max-width: min(1180px, 100% - 2.5rem);
   width: 100%;
   margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
-  justify-items: center;
+}
+
+.pool-hero-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.pool-hero-content {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--brand);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.pool-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+.pool-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.pool-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.meta-item {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+}
+
+.meta-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.meta-value {
+  font-weight: 600;
+}
+
+.pool-hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 0.85rem;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #0b1220;
+  border-color: color-mix(in srgb, var(--brand) 85%, transparent);
+  box-shadow: 0 12px 30px rgba(79, 156, 255, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--brand) 90%, #ffffff 10%);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--fg);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand);
+  color: var(--brand);
 }
 
 .pool-kicker {
