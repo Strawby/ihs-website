@@ -982,6 +982,15 @@ body {
   margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
 }
 
+.pool-hero-card {
+  background: color-mix(in srgb, var(--card) 88%, rgba(15, 23, 42, 0.12));
+  padding: clamp(1.75rem, 3.5vw, 2.25rem);
+}
+
+.pool-hero-card .pool-hero-inner {
+  align-items: start;
+}
+
 .pool-hero-inner {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
