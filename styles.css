@@ -956,6 +956,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: clamp(2.75rem, 5vw, 3.75rem);
+  line-height: 1.6;
+}
+
+.pool-page p {
+  font-size: 0.95rem;
+}
+
+.pool-page small,
+.pool-page .note {
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
 .pool-main {
