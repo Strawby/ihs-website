@@ -985,6 +985,9 @@ body {
 .pool-hero-card {
   background: color-mix(in srgb, var(--card) 88%, rgba(15, 23, 42, 0.12));
   padding: clamp(1.75rem, 3.5vw, 2.25rem);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 1.35rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.3);
 }
 
 .pool-hero-card .pool-hero-inner {
