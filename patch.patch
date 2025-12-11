@@ -1,56 +1,55 @@
-diff --git a/cedar-tubs/index.html b/cedar-tubs/index.html
-index 2ed86bdd8ee9b37c5083c5d14a2802a84a02f28d..50947decc1871709c762e1535912db8ca2295737 100644
---- a/cedar-tubs/index.html
-+++ b/cedar-tubs/index.html
-@@ -1,21 +1,139 @@
+diff --git a/mud/index.html b/mud/index.html
+index 88656a4dd1b6261d3679bc2026700ccba24e93ed..1b31ad35588c14b3bc87be8b0534c9dcc3685016 100644
+--- a/mud/index.html
++++ b/mud/index.html
+@@ -1,21 +1,144 @@
 -﻿<!doctype html>
 +<!doctype html>
  <html lang="en">
  <head>
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Outdoor Cedar Tubs | Indian Hot Springs</title>
-+  <meta name="description" content="Soak in outdoor cedar tubs fed by flowing mineral water with mountain views and privacy fencing at Indian Hot Springs." />
+   <title>Club Mud | Indian Hot Springs</title>
++  <meta name="description" content="Settle into mineral-rich clay in our Club Mud rooms. Learn about hours, pricing, and how to plan your detoxifying mud soak at Indian Hot Springs." />
    <link rel="stylesheet" href="../styles.css" />
  </head>
  <body>
    <div data-header></div>
  
 -  <main class="simple-page">
--    <h1>Outdoor Cedar Tubs</h1>
+-    <h1>Club Mud</h1>
 -    <p>We're getting this page ready. In the meantime, please contact us if you have questions or head back to the homepage.</p>
 -    <p><a href="../index.html">Return to Home</a></p>
-+  <main class="container pool-page pool-main cedar-page">
++  <main class="container pool-page pool-main mud-page">
 +    <div class="hero-media">
-+      <video class="hero-video" src="../media/tubs/cedar/cedar_hero.mp4" autoplay muted loop playsinline poster="../media/tubs/cedar/ihs-cedar-1.webp"></video>
++      <video class="hero-video" src="../media/tubs/cedar/mud_hero.mp4" autoplay muted loop playsinline poster="../media/mud/ihs-mud-1.webp"></video>
 +    </div>
 +    <div class="page-filter" aria-hidden="true"></div>
 +    <header class="pool-hero">
 +      <div class="pool-hero-card">
 +        <div class="pool-hero-inner">
 +          <div class="pool-hero-content">
-+            <p class="eyebrow">aromatic cedar, open mountain air</p>
-+            <h1 class="pool-title" id="cedar-page-title">Outdoor Cedar Tubs</h1>
-+            <p class="pool-subtitle">Private cedar tubs filled with flowing mineral water, tucked beside the mountainside with crisp fresh air overhead.</p>
++            <p class="eyebrow">renewal from the ground up</p>
++            <h1 class="pool-title" id="mud-page-title">Club Mud</h1>
++            <p class="pool-subtitle">Detoxifying mineral clay, soothing heat, and a quiet room designed for deep relaxation.</p>
 +            <div class="pool-hero-meta">
 +              <div class="meta-item">
 +                <span class="meta-label">Hours</span>
-+                <span class="meta-value">Daily, by reservation</span>
++                <span class="meta-value">Mon-Fri: 8:30am - 9:00pm<br>Sat-Sun: Reservations Only (8:30am - 8:30pm)</span>
 +              </div>
 +              <div class="meta-item">
 +                <span class="meta-label">Ages</span>
-+                <span class="meta-value">All ages welcome with adult supervision</span>
++                <span class="meta-value">Recommended for guests 18+ seeking a quiet experience</span>
 +              </div>
 +            </div>
 +            <div class="pool-hero-actions">
 +              <a href="#hours" class="btn btn-primary">Hours &amp; Pricing</a>
 +              <a href="#plan-your-visit" class="btn btn-primary">Plan Your Visit</a>
-+              <a class="btn btn-primary" href="./booking/">Book a Cedar Tub</a>
 +            </div>
 +          </div>
 +          <figure class="pool-hero-figure">
-+            <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of an outdoor cedar tub with a mountainside view">
-+              <img src="../media/tubs/cedar/ihs-cedar-1.webp" alt="Outdoor cedar tub with a mountainside view" />
++            <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of the Club Mud room with mineral clay basins">
++              <img src="../media/mud/ihs-mud-1.webp" alt="Club Mud room with mineral clay basins" />
 +            </button>
 +          </figure>
 +        </div>
@@ -61,34 +60,39 @@ index 2ed86bdd8ee9b37c5083c5d14a2802a84a02f28d..50947decc1871709c762e1535912db8c
 +      <div class="pool-card">
 +        <div class="section-header">
 +          <h2>Plan Your Soak</h2>
-+          <p class="section-summary"><b>Everything you need to enjoy the outdoor cedar tubs, from reservations to on-site amenities.<br><br></b></p>
-+          <p class="section-summary">Crafted from aromatic cedar and continuously supplied with flowing mineral water, our outdoor tubs provide a deeply grounding soak set against a beautiful mountainside view. Privacy fencing creates a secluded haven while the open sky above brings crisp air and calm.</p>
-+          <p class="section-summary">Stretch out, breathe deep, and let the cedar and minerals work their quiet magic. Each reservation gives you a dedicated tub with fresh water, comfortable seating, and access to nearby amenities for changing and relaxing between soaks.</p>
++          <p class="section-summary"><b>Everything you need to enjoy a mud soak, from reservations to on-site amenities.<br><br></b></p>
++          <p class="section-summary">Our Mud Room brings the natural benefits of mineral-rich clay directly to the skin. Gently warmed and deeply detoxifying, the mud draws out impurities while soothing muscles and improving circulation. As you rest in the quiet heat, tension dissolves and your body feels light, balanced, and refreshed.</p>
++          <p class="section-summary">Staff will guide you through the full experience&mdash;from applying the clay to rinsing off and rehydrating. Give yourself time to settle in, breathe deeply, and let the heat and minerals do their work.</p>
 +        </div>
 +      </div>
 +      <div class="pool-card">
 +        <ul class="pool-list">
-+          <li>Reservations required; weekend and evening slots fill quickly</li>
-+          <li>Each tub is fully drained, cleaned, and refilled between sessions</li>
-+          <li>Designed for small groups; please keep conversations low to honor the tranquil setting</li>
-+          <li>Bring sandals or robes for the short outdoor walk to your tub</li>
-+          <li>Outdoor experience in all seasons&mdash;pack for current weather</li>
-+          <li>No glass or coolers permitted; visit our dining hall for snacks and drinks</li>
++          <li>Reservations required on weekends; walk-ins welcomed on weekdays as space allows</li>
++          <li>Average temperature 102&ndash;108&deg;F, varies with geothermal flow</li>
++          <li>A minimal amount of chlorine is used to ensure safety</li>
++          <li>Arrive 15 minutes early to review guidelines and hydrate</li>
++          <li>Bring a swimsuit or wear provided wraps; mud may discolor light fabrics</li>
 +          <li>Towels available to rent for $5; key locks available for $4</li>
-+          <li>Arrive 15 minutes early to check in and review guidelines with staff</li>
++          <li>Please store phones and cameras&mdash;the room is a quiet, screen-free space</li>
 +        </ul>
 +      </div>
 +    </section>
 +
-+    <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Cedar tubs hours and pricing">
++    <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Club Mud hours and pricing">
 +      <article class="pool-card info-card">
 +        <h3>Hours</h3>
 +        <div class="info-subsection">
-+          <h4>Daily</h4>
-+          <p class="muted">By reservation only</p>
++          <h4>Monday - Friday</h4>
++          <p class="muted">8:30am - 9:00pm</p>
++        </div>
++        <div class="info-subsection">
++          <h4>Saturday - Sunday<br><b>(Reservations Required)</b></h4>
 +          <ul class="pool-list pool-list--tight">
-+            <li>Time slots available throughout the day and evening</li>
-+            <li>See booking calendar for the latest availability</li>
++            <li>8:30am - 10:30am</li>
++            <li>11:00am - 1:00pm</li>
++            <li>1:30pm - 3:30pm</li>
++            <li>4:00pm - 6:00pm</li>
++            <li>6:30pm - 8:30pm</li>
 +          </ul>
 +        </div>
 +      </article>
@@ -96,8 +100,9 @@ index 2ed86bdd8ee9b37c5083c5d14a2802a84a02f28d..50947decc1871709c762e1535912db8c
 +      <article class="pool-card info-card">
 +        <h3>Pricing</h3>
 +        <ul class="pool-list pool-list--tight">
-+          <li>Rates vary by date, time, and party size</li>
-+          <li>Final pricing shown during checkout</li>
++          <li>Monday - Thursday: $40 per person</li>
++          <li>Friday: $45 per person</li>
++          <li>Saturday - Sunday: $45 per person per time slot</li>
 +          <li>Towels available to rent for $5.00</li>
 +          <li>Key locks available for $4.00</li>
 +          <li>Discounts cannot be combined.</li>
@@ -118,25 +123,25 @@ index 2ed86bdd8ee9b37c5083c5d14a2802a84a02f28d..50947decc1871709c762e1535912db8c
 +      </article>
 +    </section>
 +
-+    <section class="pool-section pool-gallery" id="gallery" aria-label="Cedar tubs photo gallery">
++    <section class="pool-section pool-gallery" id="gallery" aria-label="Club Mud photo gallery">
 +      <div class="section-header">
-+        <p class="section-kicker">Cedar tubs gallery</p>
-+        <h2>See the tubs under open sky</h2>
-+        <p class="section-summary">Browse snapshots from around the outdoor cedar tubs. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
++        <p class="section-kicker">Club Mud gallery</p>
++        <h2>See inside the mud room</h2>
++        <p class="section-summary">Browse snapshots from Club Mud. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
 +      </div>
 +
-+      <div class="media-gallery" data-media-gallery data-gallery-manifest="media/tubs/cedar/manifest.json" data-gallery-label="Cedar tubs photo">
++      <div class="media-gallery" data-media-gallery data-gallery-manifest="media/mud/manifest.json" data-gallery-label="Club Mud photo">
 +        <p class="muted">Loading photos...</p>
 +      </div>
 +    </section>
 +
-+    <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Cedar tubs photo">
++    <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Club Mud photo">
 +      <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
 +      <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
 +        <span aria-hidden="true">&#10094;</span>
 +      </button>
 +      <div class="lightbox-frame">
-+        <img src="" alt="Cedar tubs gallery photo" />
++        <img src="" alt="Club Mud gallery photo" />
 +      </div>
 +      <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
 +        <span aria-hidden="true">&#10095;</span>
