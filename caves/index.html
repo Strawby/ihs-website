@@ -11,49 +11,68 @@
   <div data-header></div>
 
   <main class="container pool-page pool-main caves-page">
-  <section class="pool-section" aria-labelledby="caves-page-title">
-      <div class="section-header">
-        <h1 id="caves-page-title">Men's &amp; Women's Caves</h1>
-        <p class="pool-kicker">connect to the earth and reconnect to yourself</p>
-      </div>
-    </section>
-
     <div class="hero-media">
-      <video class="hero-video" src="../media/caves/caves_hero.mp4" autoplay muted loop playsinline></video>
+      <video class="hero-video" src="../media/caves/caves_hero.mp4" autoplay muted loop playsinline poster="../media/caves/ihs-caves-1.jpg"></video>
     </div>
     <div class="page-filter" aria-hidden="true"></div>
     <header class="pool-hero">
-      <div class="pool-lede">
+      <div class="pool-hero-card">
+        <div class="pool-hero-inner">
+          <div class="pool-hero-content">
+            <p class="eyebrow">connect to the earth and reconnect to yourself</p>
+            <h1 class="pool-title" id="caves-page-title">Men's &amp; Women's Caves</h1>
+            <p class="pool-subtitle">Quiet geothermal pools carved into the rock for adults seeking deep relaxation.</p>
+            <div class="pool-hero-meta">
+              <div class="meta-item">
+                <span class="meta-label">Hours</span>
+                <span class="meta-value">Mon-Fri: 8:30am - 9:00pm<br>
+                                                                                 Sat-Sun: Timed entries all day</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Ages</span>
+                <span class="meta-value">18+ only</span>
+              </div>
+            </div>
+            <div class="pool-hero-actions">
+              <a href="#hours" class="btn btn-primary">Hours &amp; Pricing</a>
+              <a href="#plan-your-visit" class="btn btn-ghost">Plan Your Visit</a>
+              <a class="btn btn-primary" href="https://indianhotsprings.try.be/offerings/categories/67ae2e97f875b456b9065436/caves#results" target="_blank" rel="noreferrer">Book for Weekends</a>
+            </div>
+          </div>
           <figure class="pool-hero-figure">
-          <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of guests relaxing in the geothermal caves">
-            <img src="../media/caves/ihs-caves-1.jpg" alt="Guests relaxing in the geothermal caves" />
-          </button>
-        </figure>
+            <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of guests relaxing in the geothermal caves">
+              <img src="../media/caves/ihs-caves-1.jpg" alt="Guests relaxing in the geothermal caves" />
+            </button>
+          </figure>
+        </div>
       </div>
     </header>
 
-    <section class="pool-section">
-      <div class="section-header">
-        <p class="section-summary">Are you dying to have an adventure but also, whew, adventures kind of sound like a lot of work? The pools in our caves will make you feel like you’re traversing through time and connecting with the earth&mdash;minus the effort of spelunking.</p>
-        <p class="section-summary">The cave passages were driven into the rock in the early 1900s to create this underground oasis that’s a designated quiet zone to ensure relaxation and reflection for each visitor. Each walk-in tub allows you to study the nooks and crannies in the surrounding cave walls, and each area is gender specific.</p>
-        <h2>Plan Your Soak</h2>
-        <p class="section-summary">Everything you need to enjoy the geothermal caves, from reservations to on-site amenities.</p>
+    <section class="pool-section pool-section--two-column" id="plan-your-visit">
+      <div class="pool-card">
+        <div class="section-header">
+          <h2>Plan Your Soak</h2>
+          <p class="section-summary"><b>Everything you need to enjoy the geothermal caves, from reservations to on-site amenities.<br><br></b></p>
+          <p class="section-summary">Feel like you’re traversing through time while you soak in the underground oasis carved into the rock in the early 1900s. Each gender-specific cave is a designated quiet zone to ensure relaxation and reflection for every visitor.</p>
+        </div>
       </div>
-      <ul class="pool-list">
-        <li>Average temperature 108 - 113&deg;F, varies with the geothermal well flow</li>
-        <li>A minimal amount of chlorine is used to ensure safety</li>
-        <li>Reservation recommended on weekends</li>
-        <li>Give yourself enough time prior to your reservation</li>
-        <li>Gender specific caves</li>
-        <li>Caves are a designated quiet area, cameras and cell phones are prohibited</li>
-        <li>Must be 18 years of age or older</li>
-        <li>Swim attire optional on weekdays</li>
-        <li>Swim attire mandatory on weekends &amp; holidays</li>
-      </ul>
+      <div class="pool-card">
+        <ul class="pool-list">
+          <li>Average temperature 108 - 113&deg;F, varies with the geothermal well flow</li>
+          <li>A minimal amount of chlorine is used to ensure safety</li>
+          <li>Reservation recommended on weekends</li>
+          <li>Give yourself enough time prior to your reservation</li>
+          <li>Gender specific caves</li>
+          <li>Caves are a designated quiet area, cameras and cell phones are prohibited</li>
+          <li>Must be 18 years of age or older</li>
+          <li>Swim attire optional on weekdays</li>
+          <li>Swim attire mandatory on weekends &amp; holidays</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="pool-section pool-grid" aria-label="Caves hours and pricing">
-      <article class="info-card">
+    <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Caves hours and pricing">
+      <article class="pool-card info-card">
         <h3>Hours</h3>
         <div class="info-subsection">
           <h4>Monday - Friday</h4>
@@ -73,7 +92,7 @@
         </div>
       </article>
 
-      <article class="info-card">
+      <article class="pool-card info-card">
         <h3>Pricing</h3>
         <ul class="pool-list pool-list--tight">
           <li>Monday - Thursday: $35 per person</li>
@@ -88,7 +107,7 @@
         </ul>
       </article>
 
-      <article class="info-card">
+      <article class="pool-card info-card">
         <h3>Discounts</h3>
         <ul class="pool-list pool-list--tight">
           <li>$10 discount with purchase of pool admission</li>
@@ -97,7 +116,7 @@
       </article>
     </section>
 
-    <section class="pool-section pool-gallery" aria-label="Caves photo gallery">
+    <section class="pool-section pool-gallery" id="gallery" aria-label="Caves photo gallery">
       <div class="section-header">
         <p class="section-kicker">Caves gallery</p>
         <h2>Peek inside the caverns</h2>
@@ -120,10 +139,6 @@
       <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
         <span aria-hidden="true">&#10095;</span>
       </button>
-    </div>
-
-    <div class="pool-cta">
-      <a class="panel-cta" data-path="https://indianhotsprings.try.be/offerings/categories/67ae2e97f875b456b9065436/caves#results">Book for weekends</a>
     </div>
   </main>
   <div data-footer></div>
