@@ -1,0 +1,75 @@
+diff --git a/pool/index.html b/pool/index.html
+index 606cee68693c0992cf8966029347bef8ed39b3eb..98186ce000531c46bc05374b3c02239236a4b133 100644
+--- a/pool/index.html
++++ b/pool/index.html
+@@ -1,68 +1,68 @@
+ ﻿<!doctype html>
+ <html lang="en">
+ <head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Mineral Water Swimming Pool | Indian Hot Springs</title>
+   <meta name="description" content="Step into tropical turquoise waters inside our mineral water swimming pool. Review hours, pricing, and how to plan your soak at Indian Hot Springs." />
+   <link rel="stylesheet" href="../styles.css" />
+ </head>
+ <body>
+   	<div data-header></div>
+   <main class="container pool-page pool-main">
+     <div class="hero-media">
+-      <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool-1.jpg"></video>
++      <video class="hero-video" src="../media/pool/pool_hero.mp4" autoplay muted loop playsinline poster="../media/pool/ihs-pool-1.webp"></video>
+     </div>
+     <div class="page-filter" aria-hidden="true"></div>
+     <header class="pool-hero">
+       <div class="pool-hero-card">
+         <div class="pool-hero-inner">
+           <div class="pool-hero-content">
+             <p class="eyebrow">unplug your device, recharge yourself</p>
+             <h1 class="pool-title" id="pool-page-title">Mineral Water Swimming Pool</h1>
+             <p class="pool-subtitle">Heal yourself in tropical turquoise waters, just 30 minutes from Denver.</p>
+             <div class="pool-hero-meta">
+               <div class="meta-item">
+                 <span class="meta-label">Hours</span>
+                 <span class="meta-value">Mon-Fri: 8:30am-9pm<br>
+ 										 Sat-Sun: Reservations Only (7:30am - 9:30pm)</span>
+               </div>
+               <div class="meta-item">
+                 <span class="meta-label">Ages</span>
+                 <span class="meta-value">All ages welcome</span>
+               </div>
+             </div>
+             <div class="pool-hero-actions">
+               <a href="#hours" class="btn btn-primary">Hours &amp; Pricing</a>
+               <a href="#plan-your-visit" class="btn btn-primary">Plan Your Visit</a>
+               <a class="btn btn-primary" href="https://indianhotsprings.try.be/offerings/categories/67ae2e914c511ecdb20ba060/pool#results" target="_blank" rel="noreferrer">Book for Weekends</a>
+             </div>
+           </div>
+           <figure class="pool-hero-figure">
+             <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of guests enjoying the mineral water swimming pool beneath the dome">
+-              <img src="../media/pool/ihs-pool-1.jpg" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
++              <img src="../media/pool/ihs-pool-1.webp" alt="Guests enjoying the mineral water swimming pool beneath the dome" />
+             </button>
+           </figure>
+         </div>
+       </div>
+     </header>
+ 
+     <section class="pool-section pool-section--two-column" id="plan-your-visit">
+       <div class="pool-card">
+         <div class="section-header">
+ 		  <h2>Plan Your Soak</h2>
+ 		  <p class="section-summary"><b>Everything you need to enjoy the dome-covered mineral pool, from reservations to on-site amenities.<br><br></b></p>
+           <p class="section-summary">You may think that it's impossible to have a tropical getaway in the middle of the mountains. Thanks to our staff botanist, and a magical sparkling dome, the main swimming pool gives off tropical vacation vibes all year long.</p>
+           <p class="section-summary">The hot mineral waters have been used to heal for centuries and you'll feel the benefits with whatever soaking style you choose&mdash;whether it's a slow paddle, a steady walk, or claiming a spot on one of the many built-in benches. While you're letting the tropical turquoise waters work their wonders, make sure to gaze around the edge and marvel at the banana trees, ferns, and flowers&mdash;many of which you won't find anywhere else in Colorado.</p>
+         </div>
+       </div>
+       <div class="pool-card">
+         <ul class="pool-list">
+           <li>Weekdays &ndash; No reservation required</li>
+           <li><b>Weekends &ndash; Reservation required</b></li>
+           <li>As a natural geothermal source of water, we are unable to adjust the water heat. Our average temperatures range from 96-102&deg;F.</li>
+           <li>A minimal amount of chlorine is used to ensure safety</li>
+           <li>Glass and coolers are not permitted. (Please use our dining hall)</li>
+           <li>Children under the age of 14 must be accompanied or supervised by an adult since there are no lifeguards on duty</li>
+           <li>Snack area inside natatorium</li>
+           <li>Plants available for purchase</li>
