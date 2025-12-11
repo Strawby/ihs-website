@@ -1062,6 +1062,12 @@ body {
   flex-wrap: wrap;
 }
 
+@media (min-width: 768px) {
+  .pool-hero-actions {
+    flex-wrap: nowrap;
+  }
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
