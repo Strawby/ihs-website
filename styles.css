@@ -1206,6 +1206,49 @@ body {
   border-top: 1px solid rgba(148, 163, 184, 0.25);
 }
 
+.discount-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.95rem;
+  background: color-mix(in srgb, var(--brand) 90%, #b4d4ff 10%);
+  color: #0b1220;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(79, 156, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  border: 1px solid color-mix(in srgb, var(--brand) 75%, #e5edff 25%);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.discount-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(79, 156, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  background: color-mix(in srgb, var(--brand) 100%, #cde1ff 8%);
+}
+
+.discount-link:focus-visible {
+  outline: none;
+  box-shadow: var(--ring), 0 12px 34px rgba(79, 156, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.discount-link__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: rgba(11, 18, 32, 0.08);
+  color: inherit;
+  font-size: 1rem;
+  transition: transform 150ms ease;
+}
+
+.discount-link:hover .discount-link__icon {
+  transform: translateX(2px);
+}
+
 .pool-list--tight {
   /* Slightly reduce spacing for compact lists */
   --pool-list-tight-spacing: 0.5rem;

@@ -1,109 +1,98 @@
-diff --git a/mud/index.html b/mud/index.html
-index 1b31ad35588c14b3bc87be8b0534c9dcc3685016..6f39d63cb6c09de8861db14ce637cb0c6e87f19d 100644
---- a/mud/index.html
-+++ b/mud/index.html
-@@ -1,92 +1,91 @@
- <!doctype html>
- <html lang="en">
- <head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Club Mud | Indian Hot Springs</title>
-   <meta name="description" content="Settle into mineral-rich clay in our Club Mud rooms. Learn about hours, pricing, and how to plan your detoxifying mud soak at Indian Hot Springs." />
-   <link rel="stylesheet" href="../styles.css" />
- </head>
- <body>
-   <div data-header></div>
+diff --git a/styles.css b/styles.css
+index 895863d8e226aeb52b6236224b48f6d70d025d52..0322ff53bb02f64359e76987a8e5bd21fd105ebf 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1184,50 +1184,93 @@ body {
+   letter-spacing: 0.1em;
+   font-weight: 700;
+   color: var(--brand);
+   font-size: 0.9rem;
+   margin: 0;
+ }
  
-   <main class="container pool-page pool-main mud-page">
-     <div class="hero-media">
-       <video class="hero-video" src="../media/tubs/cedar/mud_hero.mp4" autoplay muted loop playsinline poster="../media/mud/ihs-mud-1.webp"></video>
-     </div>
-     <div class="page-filter" aria-hidden="true"></div>
-     <header class="pool-hero">
-       <div class="pool-hero-card">
-         <div class="pool-hero-inner">
-           <div class="pool-hero-content">
-             <p class="eyebrow">renewal from the ground up</p>
-             <h1 class="pool-title" id="mud-page-title">Club Mud</h1>
--            <p class="pool-subtitle">Detoxifying mineral clay, soothing heat, and a quiet room designed for deep relaxation.</p>
-+              <p class="pool-subtitle">Smooth on warm mineral clay, let it dry, and rinse away to reveal softer, refreshed skin.</p>
-             <div class="pool-hero-meta">
-               <div class="meta-item">
-                 <span class="meta-label">Hours</span>
-                 <span class="meta-value">Mon-Fri: 8:30am - 9:00pm<br>Sat-Sun: Reservations Only (8:30am - 8:30pm)</span>
-               </div>
-               <div class="meta-item">
-                 <span class="meta-label">Ages</span>
-                 <span class="meta-value">Recommended for guests 18+ seeking a quiet experience</span>
-               </div>
-             </div>
-             <div class="pool-hero-actions">
-               <a href="#hours" class="btn btn-primary">Hours &amp; Pricing</a>
-               <a href="#plan-your-visit" class="btn btn-primary">Plan Your Visit</a>
-             </div>
-           </div>
-           <figure class="pool-hero-figure">
-             <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo of the Club Mud room with mineral clay basins">
-               <img src="../media/mud/ihs-mud-1.webp" alt="Club Mud room with mineral clay basins" />
-             </button>
-           </figure>
-         </div>
-       </div>
-     </header>
+ .section-summary {
+   margin: 0;
+   color: var(--muted);
+ }
  
-     <section class="pool-section pool-section--two-column" id="plan-your-visit">
-       <div class="pool-card">
-         <div class="section-header">
-           <h2>Plan Your Soak</h2>
--          <p class="section-summary"><b>Everything you need to enjoy a mud soak, from reservations to on-site amenities.<br><br></b></p>
--          <p class="section-summary">Our Mud Room brings the natural benefits of mineral-rich clay directly to the skin. Gently warmed and deeply detoxifying, the mud draws out impurities while soothing muscles and improving circulation. As you rest in the quiet heat, tension dissolves and your body feels light, balanced, and refreshed.</p>
--          <p class="section-summary">Staff will guide you through the full experience&mdash;from applying the clay to rinsing off and rehydrating. Give yourself time to settle in, breathe deeply, and let the heat and minerals do their work.</p>
-+            <p class="section-summary"><b>Everything you need to enjoy a mud soak, from reservations to on-site amenities.<br><br></b></p>
-+            <p class="section-summary">Club Mud uses naturally warmed mineral-rich clay sourced on-site. Coat your skin, let the clay dry for a gentle detox, and rinse clean in our mineral-water showers before heading back into the lounge to relax.</p>
-+            <p class="section-summary">Attendants keep fresh, warm mud available and guide guests on how long to let it set. Plan on taking a quick rinse before and after your soak so you can move comfortably between the mud room, showers, and relaxation areas.</p>
-         </div>
-       </div>
-       <div class="pool-card">
--        <ul class="pool-list">
--          <li>Reservations required on weekends; walk-ins welcomed on weekdays as space allows</li>
--          <li>Average temperature 102&ndash;108&deg;F, varies with geothermal flow</li>
--          <li>A minimal amount of chlorine is used to ensure safety</li>
--          <li>Arrive 15 minutes early to review guidelines and hydrate</li>
--          <li>Bring a swimsuit or wear provided wraps; mud may discolor light fabrics</li>
--          <li>Towels available to rent for $5; key locks available for $4</li>
--          <li>Please store phones and cameras&mdash;the room is a quiet, screen-free space</li>
--        </ul>
-+          <ul class="pool-list">
-+            <li>Reservations required on weekends; weekday visits are first-come, first-served</li>
-+            <li>Each visit includes time to apply the mud, let it dry, and rinse in mineral-water showers</li>
-+            <li>Arrive 15 minutes early to check in, hydrate, and change before your time slot begins</li>
-+            <li>Swimsuits or provided wraps are required&mdash;keep in mind the clay can stain light fabrics</li>
-+            <li>Towels available to rent for $5; key locks available for $4</li>
-+            <li>For everyone’s comfort, please silence phones and enjoy the quiet atmosphere</li>
-+          </ul>
-       </div>
-     </section>
+ .pool-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   color: var(--muted);
+ }
  
-     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Club Mud hours and pricing">
-       <article class="pool-card info-card">
-         <h3>Hours</h3>
-         <div class="info-subsection">
-           <h4>Monday - Friday</h4>
-           <p class="muted">8:30am - 9:00pm</p>
-         </div>
-         <div class="info-subsection">
-           <h4>Saturday - Sunday<br><b>(Reservations Required)</b></h4>
-           <ul class="pool-list pool-list--tight">
-             <li>8:30am - 10:30am</li>
-             <li>11:00am - 1:00pm</li>
-             <li>1:30pm - 3:30pm</li>
-             <li>4:00pm - 6:00pm</li>
-             <li>6:30pm - 8:30pm</li>
-           </ul>
-         </div>
-       </article>
+ .pool-list li + li {
+   margin-top: 0.75rem;
+   padding-top: 0.75rem;
+   border-top: 1px solid rgba(148, 163, 184, 0.25);
+ }
  
-       <article class="pool-card info-card">
-         <h3>Pricing</h3>
-         <ul class="pool-list pool-list--tight">
++.discount-link {
++  display: inline-flex;
++  align-items: center;
++  gap: 0.6rem;
++  padding: 0.65rem 0.95rem;
++  background: color-mix(in srgb, var(--brand) 90%, #b4d4ff 10%);
++  color: #0b1220;
++  font-weight: 700;
++  border-radius: 999px;
++  text-decoration: none;
++  box-shadow: 0 10px 30px rgba(79, 156, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
++  border: 1px solid color-mix(in srgb, var(--brand) 75%, #e5edff 25%);
++  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
++}
++
++.discount-link:hover {
++  transform: translateY(-1px);
++  box-shadow: 0 16px 40px rgba(79, 156, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.45);
++  background: color-mix(in srgb, var(--brand) 100%, #cde1ff 8%);
++}
++
++.discount-link:focus-visible {
++  outline: none;
++  box-shadow: var(--ring), 0 12px 34px rgba(79, 156, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35);
++}
++
++.discount-link__icon {
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  width: 1.75rem;
++  height: 1.75rem;
++  border-radius: 50%;
++  background: rgba(11, 18, 32, 0.08);
++  color: inherit;
++  font-size: 1rem;
++  transition: transform 150ms ease;
++}
++
++.discount-link:hover .discount-link__icon {
++  transform: translateX(2px);
++}
++
+ .pool-list--tight {
+   /* Slightly reduce spacing for compact lists */
+   --pool-list-tight-spacing: 0.5rem;
+ }
+ 
+ .pool-list--tight li + li {
+   margin-top: var(--pool-list-tight-spacing);
+   padding-top: var(--pool-list-tight-spacing);
+ }
+ 
+ .pool-grid {
+   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+   gap: clamp(1.1rem, 3vw, 1.6rem);
+ }
+ 
+ .pool-card {
+   background: color-mix(in srgb, var(--card) 94%, var(--bg));
+   border: 1px solid rgba(148, 163, 184, 0.35);
+   border-radius: 1rem;
+   padding: clamp(1.35rem, 3vw, 1.9rem);
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
+   height: 100%;
+ }
+ 
+ .info-card {
