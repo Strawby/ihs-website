@@ -1200,6 +1200,14 @@ body {
   color: var(--muted);
 }
 
+.pool-list__heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+}
+
 .pool-list li + li {
   margin-top: 0.75rem;
   padding-top: 0.75rem;

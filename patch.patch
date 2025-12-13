@@ -1,86 +1,63 @@
 diff --git a/styles.css b/styles.css
-index 0322ff53bb02f64359e76987a8e5bd21fd105ebf..3f1db6989e845a590552c551214c0cd07660610f 100644
+index 8372251bf0b4d8d8be928562ab56cc84da06093c..6163274b32c4a7c6b11bcbf2f318f35698a88823 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -1251,50 +1251,81 @@ body {
- 
- .pool-list--tight {
-   /* Slightly reduce spacing for compact lists */
-   --pool-list-tight-spacing: 0.5rem;
+@@ -1178,50 +1178,58 @@ body {
+   display: grid;
+   gap: 0.25rem;
  }
  
- .pool-list--tight li + li {
-   margin-top: var(--pool-list-tight-spacing);
-   padding-top: var(--pool-list-tight-spacing);
+ .section-kicker {
+   text-transform: uppercase;
+   letter-spacing: 0.1em;
+   font-weight: 700;
+   color: var(--brand);
+   font-size: 0.9rem;
+   margin: 0;
  }
  
- .pool-grid {
-   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-   gap: clamp(1.1rem, 3vw, 1.6rem);
+ .section-summary {
+   margin: 0;
+   color: var(--muted);
  }
  
- .pool-card {
-   background: color-mix(in srgb, var(--card) 94%, var(--bg));
-   border: 1px solid rgba(148, 163, 184, 0.35);
-   border-radius: 1rem;
-   padding: clamp(1.35rem, 3vw, 1.9rem);
-   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
-   height: 100%;
+ .pool-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   color: var(--muted);
  }
  
-+.soak-table {
-+  width: 100%;
-+  border-collapse: collapse;
-+  color: var(--muted);
-+  font-size: 0.95rem;
-+}
-+
-+.soak-table th,
-+.soak-table td {
-+  padding: 0.65rem 0.75rem;
-+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
++.pool-list__heading {
++  margin: 0;
++  font-size: 1rem;
++  font-weight: 700;
++  color: var(--text);
 +  text-align: left;
 +}
 +
-+.soak-table thead th {
-+  color: var(--text);
-+  font-weight: 700;
-+  font-size: 0.95rem;
-+}
-+
-+.soak-table tbody th {
-+  color: var(--text);
-+  font-weight: 600;
-+}
-+
-+.soak-table td:nth-child(2),
-+.soak-table td:nth-child(3),
-+.soak-table td:nth-child(4) {
-+  white-space: nowrap;
-+}
-+
- .info-card {
-   background: color-mix(in srgb, var(--card) 96%, var(--bg));
-   border: 1px solid rgba(148, 163, 184, 0.3);
-   border-radius: 1rem;
-   padding: clamp(1.25rem, 2.5vw, 1.6rem);
-   display: grid;
-   gap: 0.75rem;
-   box-shadow: inset 0 1px 0 rgba(255,255,255,.02), 0 8px 22px rgba(15,23,42,.18);
+ .pool-list li + li {
+   margin-top: 0.75rem;
+   padding-top: 0.75rem;
+   border-top: 1px solid rgba(148, 163, 184, 0.25);
  }
  
- .info-card h3 {
-   margin: 0;
-   font-size: 1.2rem;
+ .discount-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.6rem;
+   padding: 0.65rem 0.95rem;
+   background: color-mix(in srgb, var(--brand) 90%, #b4d4ff 10%);
+   color: #0b1220;
+   font-weight: 700;
+   border-radius: 999px;
+   text-decoration: none;
+   box-shadow: 0 10px 30px rgba(79, 156, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+   border: 1px solid color-mix(in srgb, var(--brand) 75%, #e5edff 25%);
+   transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
  }
  
- .info-subsection {
-   display: grid;
-   gap: 0.35rem;
- }
- 
- .info-subsection h4 {
-   margin: 0;
-   font-size: 1rem;
- }
- 
+ .discount-link:hover {
+   transform: translateY(-1px);
+   box-shadow: 0 16px 40px rgba(79, 156, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+   background: color-mix(in srgb, var(--brand) 100%, #cde1ff 8%);
