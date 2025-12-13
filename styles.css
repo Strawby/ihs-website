@@ -1254,6 +1254,14 @@ body {
   --pool-list-tight-spacing: 0.5rem;
 }
 
+.pool-list--tight h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+  padding: clamp(1.35rem, 3vw, 1.9rem);
+  text-align: left;
+}
+
 .pool-list--tight li + li {
   margin-top: var(--pool-list-tight-spacing);
   padding-top: var(--pool-list-tight-spacing);
@@ -1271,6 +1279,37 @@ body {
   padding: clamp(1.35rem, 3vw, 1.9rem);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
   height: 100%;
+}
+
+.soak-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.soak-table th,
+.soak-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  text-align: left;
+}
+
+.soak-table thead th {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.soak-table tbody th {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.soak-table td:nth-child(2),
+.soak-table td:nth-child(3),
+.soak-table td:nth-child(4) {
+  white-space: nowrap;
 }
 
 .info-card {
