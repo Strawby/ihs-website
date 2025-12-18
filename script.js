@@ -295,6 +295,17 @@ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) 
   const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
   if (!lightbox || !galleries.length) return;
 
+  const getThumbnailSrc = (src) => {
+    if (typeof src !== "string") return src;
+    const trimmedSrc = src.trim();
+    const lastSlash = trimmedSrc.lastIndexOf("/");
+    if (lastSlash === -1) return trimmedSrc;
+
+    const dir = trimmedSrc.slice(0, lastSlash);
+    const filename = trimmedSrc.slice(lastSlash + 1);
+    return `${dir}/thumbnail/${filename}`;
+  };
+
   const loadGalleryItems = async (manifestPath) => {
     if (!manifestPath) return [];
     const manifestUrl = resolveSitePath(manifestPath);
@@ -335,7 +346,15 @@ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) 
         const img = document.createElement("img");
         img.loading = "lazy";
         img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
-        img.src = resolveSitePath(src);
+        const thumbnailSrc = resolveSitePath(getThumbnailSrc(src));
+        const fullSrc = resolveSitePath(src);
+        img.src = thumbnailSrc;
+
+        img.addEventListener("error", () => {
+          if (img.dataset.fallbackApplied) return;
+          img.dataset.fallbackApplied = "true";
+          img.src = fullSrc;
+        });
 
         button.appendChild(img);
         button.addEventListener("click", () =>

@@ -1,372 +1,116 @@
-diff --git a/rooms-suites/index.html b/rooms-suites/index.html
-index f1238e04a7926bb3e4fb261e948e146391404647..8256650e7f4c9b00dd0e7ebfbb2947e9fc5df2c0 100644
---- a/rooms-suites/index.html
-+++ b/rooms-suites/index.html
-@@ -1,175 +1,175 @@
- ﻿<!doctype html>
- <html lang="en">
- <head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Rooms & Suites | Indian Hot Springs</title>
-   <meta name="description" content="Stay steps from the springs with historic rooms, comfortable inns, quiet lodges, and creekside cabins. Explore lodging options, perks, and booking details." />
-   <link rel="stylesheet" href="../styles.css" />
- </head>
- <body>
-   <div data-header></div>
+diff --git a/script.js b/script.js
+index 7f36877a1e124e017538ec6bf520aba59c05bc62..b9cdbffebeb72c945eaa0cbb92fafd73d302d4db 100644
+--- a/script.js
++++ b/script.js
+@@ -273,91 +273,110 @@ const initLightbox = (ctx = document) => {
  
-   <main class="container pool-page pool-main lodging-page">
-     <div class="hero-media">
--      <video class="hero-video" src="../media/lodging/lodging_hero.mp4" autoplay muted loop playsinline poster="../media/lodging/cabins/ihs-cabin-1.webp"></video>
-+      <video class="hero-video" src="../media/lodging/hero_output_quiet_bg.mp4" autoplay muted loop playsinline poster="../media/lodging/cabins/cabin-1.webp"></video>
-     </div>
-     <div class="page-filter" aria-hidden="true"></div>
-     <header class="pool-hero lodging-hero" aria-labelledby="lodging-page-title">
-       <div class="lodging-hero-intro pool-card">
-         <p class="eyebrow">healing waters, cozy quarters</p>
-         <h1 class="pool-title" id="lodging-page-title">Rooms &amp; Suites</h1>
-         <p class="pool-subtitle">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
-         <p class="section-summary">Pick the stay that matches your getaway style and jump straight to details, photos, and booking help for each option.</p>
-         <div class="pool-hero-actions">
-           <a href="#lodging-options" class="btn btn-primary">Explore all rooms</a>
-           <a href="#stay-perks" class="btn btn-ghost">See stay perks</a>
-         </div>
-       </div>
+   nextButton?.addEventListener("click", showNext);
+   prevButton?.addEventListener("click", showPrev);
+   closeButton?.addEventListener("click", closeOverlay);
  
-       <div class="lodging-hero-grid">
-         <article class="pool-hero-card lodging-hero-card">
-           <div class="pool-hero-inner">
-             <div class="pool-hero-content">
-               <p class="section-kicker">Built in 1905</p>
-               <h2>Historic Resort</h2>
-               <p class="section-summary">Classic steam radiators, original water closets, and modern essentials just steps from the mineral pool, caves, private baths, outdoor tubs, and dining hall.</p>
-               <div class="lodging-hero-meta">
-                 <div class="meta-item">
-                   <span class="meta-label">Starting at</span>
-                   <span class="meta-value">$139 per night</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Highlights</span>
-                   <span class="meta-value">Interior corridor, historic character</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Best for</span>
-                   <span class="meta-value">History lovers &amp; couples</span>
-                 </div>
-               </div>
-               <div class="pool-hero-actions">
-                 <a class="btn btn-primary" href="#historic-resort">View details</a>
-                 <a class="btn btn-ghost" href="../contact/">Book the Resort</a>
-               </div>
-             </div>
-             <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="/assets/historic-resort-1-full-B0q2BVQK.jpg" alt="Historic resort hallway and room entrance" />
-+              <img src="../media/lodging/resort/resort-1.webp" alt="Historic resort hallway and room entrance" />
-             </figure>
-           </div>
-         </article>
+   overlay.addEventListener("click", (event) => {
+     if (event.target === overlay) closeOverlay();
+   });
  
-         <article class="pool-hero-card lodging-hero-card">
-           <div class="pool-hero-inner">
-             <div class="pool-hero-content">
-               <p class="section-kicker">Relaxed &amp; functional</p>
-               <h2>The Inn</h2>
-               <p class="section-summary">A clean, no-fuss stay across from the main building with updated interiors, exterior corridor access, and full private bathrooms.</p>
-               <div class="lodging-hero-meta">
-                 <div class="meta-item">
-                   <span class="meta-label">Starting at</span>
-                   <span class="meta-value">$159 per night</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Highlights</span>
-                   <span class="meta-value">Remodeled interiors, exterior corridor</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Best for</span>
-                   <span class="meta-value">Couples &amp; small families</span>
-                 </div>
-               </div>
-               <div class="pool-hero-actions">
-                 <a class="btn btn-primary" href="#the-inn">View details</a>
-                 <a class="btn btn-ghost" href="../contact/">Book the Inn</a>
-               </div>
-             </div>
-             <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="/assets/room-gallery-19-full-BdNn-LYy.jpg" alt="Inn guest room with king bed" />
-+              <img src="../media/lodging/inn/inn-1.webp" alt="Inn guest room with king bed" />
-             </figure>
-           </div>
-         </article>
+   document.addEventListener("keydown", (event) => {
+     if (overlay.hidden) return;
+     if (event.key === "Escape") closeOverlay();
+     if (event.key === "ArrowRight") showNext();
+     if (event.key === "ArrowLeft") showPrev();
+   });
  
-         <article class="pool-hero-card lodging-hero-card">
-           <div class="pool-hero-inner">
-             <div class="pool-hero-content">
-               <p class="section-kicker">Quiet &amp; convenient</p>
-               <h2>The Lodge</h2>
-               <p class="section-summary">A calm stay across the street from the main resort with interior corridors, dedicated Moose Lot parking, and walk-in showers.</p>
-               <div class="lodging-hero-meta">
-                 <div class="meta-item">
-                   <span class="meta-label">Starting at</span>
-                   <span class="meta-value">$159 per night</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Highlights</span>
-                   <span class="meta-value">Interior corridor, walk-in showers</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Best for</span>
-                   <span class="meta-value">Guests who want Moose Lot parking</span>
-                 </div>
-               </div>
-               <div class="pool-hero-actions">
-                 <a class="btn btn-primary" href="#the-lodge">View details</a>
-                 <a class="btn btn-ghost" href="../contact/">Book the Lodge</a>
-               </div>
-             </div>
-             <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="/assets/lodge-1-full-ChLbJ5OV.jpg" alt="Lodge guest room with king bed" />
-+              <img src="../media/lodging/lodge/premium/lodge-premium-1.webp" alt="Lodge guest room with king bed" />
-             </figure>
-           </div>
-         </article>
+   overlay.dataset.enhanced = "true";
+   overlay._lightboxController = { open: openOverlay };
+   return overlay._lightboxController;
+ };
  
-         <article class="pool-hero-card lodging-hero-card">
-           <div class="pool-hero-inner">
-             <div class="pool-hero-content">
-               <p class="section-kicker">Creekside comfort</p>
-               <h2>Cabins</h2>
-               <p class="section-summary">Rustic cabins along Soda Creek with a full kitchen, private bathroom, queen bedroom, hallway bunk beds, and a living area that opens to a private deck.</p>
-               <div class="lodging-hero-meta">
-                 <div class="meta-item">
-                   <span class="meta-label">Starting at</span>
-                   <span class="meta-value">$229 per night</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Highlights</span>
-                   <span class="meta-value">Full kitchen, private deck</span>
-                 </div>
-                 <div class="meta-item">
-                   <span class="meta-label">Best for</span>
-                   <span class="meta-value">Small families &amp; longer stays</span>
-                 </div>
-               </div>
-               <div class="pool-hero-actions">
-                 <a class="btn btn-primary" href="#cabins">View details</a>
-                 <a class="btn btn-ghost" href="../contact/">Book a Cabin</a>
-               </div>
-             </div>
-             <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="/assets/cabin-gallery-4-full-BmF-71z3.jpg" alt="Cabin living room and kitchen" />
-+              <img src="../media/lodging/cabins/cabin-4.webp" alt="Cabin living room and kitchen" />
-             </figure>
-           </div>
-         </article>
-       </div>
-     </header>
+ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
+   const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
+   if (!lightbox || !galleries.length) return;
  
-     <section class="pool-section pool-section--two-column" id="plan-your-stay">
-       <div class="pool-card">
-         <div class="section-header">
-           <p class="section-kicker">Suites</p>
-           <h2>Healing waters, cozy quarters</h2>
-           <p class="section-summary">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
-           <p class="section-summary">From creekside cabins to historic rooms just steps from the mineral pool, each stay is designed to help you unwind and reconnect with yourself, your loved ones, and the healing power of the springs.</p>
-         </div>
-       </div>
-       <div class="pool-card">
-         <ul class="pool-list">
-           <li>Choose from historic charm, inn-style comfort, quiet lodge rooms, or creekside cabins with full kitchens.</li>
-           <li>Walkable access to the mineral pool, caves, private baths, outdoor tubs, and dining hall.</li>
-           <li>Thoughtful updates keep you close to the character of our historic property without sacrificing modern essentials.</li>
-           <li>Perfect for quick getaways, small groups, couples retreats, and extended relaxation weekends.</li>
-         </ul>
-       </div>
-     </section>
++  const getThumbnailSrc = (src) => {
++    if (typeof src !== "string") return src;
++    const trimmedSrc = src.trim();
++    const lastSlash = trimmedSrc.lastIndexOf("/");
++    if (lastSlash === -1) return trimmedSrc;
++
++    const dir = trimmedSrc.slice(0, lastSlash);
++    const filename = trimmedSrc.slice(lastSlash + 1);
++    return `${dir}/thumbnail/${filename}`;
++  };
++
+   const loadGalleryItems = async (manifestPath) => {
+     if (!manifestPath) return [];
+     const manifestUrl = resolveSitePath(manifestPath);
+     const response = await fetch(manifestUrl, { cache: "no-cache" });
+     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
+     const manifest = await response.json();
+     return normalizeGalleryManifest(manifest).filter(
+       (src) => typeof src === "string" && src.trim()
+     );
+   };
  
-@@ -187,171 +187,169 @@
-               <p class="section-kicker">Built in 1905</p>
-               <h3>THE HISTORIC RESORT</h3>
-               <p class="section-summary">Step back in time without sacrificing comfort. Classic steam radiators, original water closets, and the warm scent of aged wood meet modern essentials just steps from the caves, mineral pool, private baths, outdoor tubs, and dining hall.</p>
-             </div>
-             <div class="lodging-rate">
-               <p class="muted">Starting at</p>
-               <p class="lodging-price">$139 per night</p>
-               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
-             </div>
-           </div>
-           <div class="lodging-tags">
-             <span class="lodging-tag">Interior corridor</span>
-             <span class="lodging-tag">Historic character</span>
-             <span class="lodging-tag">Steps from amenities</span>
-           </div>
-           <div class="lodging-details">
-             <h4>Room options</h4>
-             <ul class="pool-list">
-               <li><strong>Queen Room</strong> &mdash; ½ bath (toilet + sink only; no shower) with interior corridor access.</li>
-               <li><strong>Suite</strong> &mdash; Full bath, fridge &amp; microwave, living room, small patio, and interior corridor access.</li>
-             </ul>
-             <h4>Best for</h4>
-             <p class="section-summary">History lovers, solo travelers, or couples who want to be at the heart of it all.</p>
-           </div>
-           <div class="lodging-gallery">
--            <img src="/assets/historic-resort-1-full-B0q2BVQK.jpg" alt="Historic resort hallway and room entrance" />
--            <img src="/assets/historic-resort-2-full-D5S82kKm.jpg" alt="Historic resort room interior with classic finishes" />
--            <img src="/assets/historic-resort-3-full-qBy6hXkZ.jpg" alt="Historic resort guest room with period details" />
--            <img src="/assets/historic-resort-7-full-DFU_Mewb.jpg" alt="Historic resort interior corridor" />
--            <img src="/assets/historic-resort-8-full-DAImbgtN.jpg" alt="Historic resort seating nook" />
--            <img src="/assets/historic-resort-9-full-Dlp4aaoA.jpg" alt="Historic resort bathroom fixtures" />
-+            <img src="../media/lodging/resort/thumbnails/resort-1.webp" alt="Historic resort hallway and room entrance" />
-+            <img src="../media/lodging/resort/thumbnails/resort-2.webp" alt="Historic resort room interior with classic finishes" />
-+            <img src="../media/lodging/resort/thumbnails/resort-3.webp" alt="Historic resort guest room with period details" />
-+            <img src="../media/lodging/resort/thumbnails/resort-4.webp" alt="Historic resort interior corridor" />
-+            <img src="../media/lodging/resort/thumbnails/resort-5.webp" alt="Historic resort seating nook" />
-+            <img src="../media/lodging/resort/thumbnails/resort-6.webp" alt="Historic resort bathroom fixtures" />
-           </div>
-           <div class="lodging-actions">
-             <a class="btn btn-ghost" href="../contact/">Book Now</a>
-           </div>
-         </article>
+   await Promise.all(
+     galleries.map(async (gallery) => {
+       const manifestPath = gallery.getAttribute("data-gallery-manifest");
+       const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
+       let items = [];
  
-         <article class="lodging-card" id="the-inn">
-           <div class="lodging-card__header">
-             <div>
-               <p class="section-kicker">Relaxed &amp; functional</p>
-               <h3>THE INN</h3>
-               <p class="section-summary">A clean, no-fuss stay with simple, functional design across from the main building. Updated interiors, full private bathrooms, and convenient exterior corridor access make it easy to settle in and head to the mineral pool, caves, and dining hall.</p>
-             </div>
-             <div class="lodging-rate">
-               <p class="muted">Starting at</p>
-               <p class="lodging-price">$159 per night</p>
-               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
-             </div>
-           </div>
-           <div class="lodging-tags">
-             <span class="lodging-tag">Exterior corridor</span>
-             <span class="lodging-tag">Remodeled interiors</span>
-             <span class="lodging-tag">Steps from pool &amp; caves</span>
-           </div>
-           <div class="lodging-details">
-             <h4>Room options</h4>
-             <ul class="pool-list">
-               <li><strong>King or Two Full Beds</strong> &mdash; Full private bathroom with tub/shower combo and in-room fridge. Two Full Bed rooms welcome up to 4 guests ($45/night per additional guest, includes pool access and perks).</li>
-             </ul>
-             <h4>Best for</h4>
-             <p class="section-summary">Couples or small families looking for a relaxed, easy-going stay with parking right out front.</p>
-           </div>
-           <div class="lodging-gallery">
--            <img src="/assets/room-gallery-19-full-BdNn-LYy.jpg" alt="Inn guest room with king bed" />
--            <img src="/assets/room-gallery-22-full-3t18Hao5.jpg" alt="Inn bathroom with tub and shower combo" />
--            <img src="/assets/room-gallery-23-full-ZUPHU3fl.jpg" alt="Inn guest room with two full beds" />
--            <img src="/assets/room-gallery-26-full-MR3OaEf4.jpg" alt="Inn guest room seating area" />
--            <img src="/assets/room-gallery-27-full-BkROYqbD.jpg" alt="Inn room with dresser and television" />
-+            <img src="../media/lodging/inn/thumbnails/inn-1.webp" alt="Inn guest room with king bed" />
-+            <img src="../media/lodging/inn/thumbnails/inn-2.webp" alt="Inn bathroom with tub and shower combo" />
-+            <img src="../media/lodging/inn/thumbnails/inn-3.webp" alt="Inn guest room with two full beds" />
-           </div>
-           <div class="lodging-actions">
-             <a class="btn btn-ghost" href="../contact/">Book Now</a>
-           </div>
-         </article>
+       try {
+         items = await loadGalleryItems(manifestPath);
+       } catch (error) {
+         gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+         return;
+       }
  
-         <article class="lodging-card" id="the-lodge">
-           <div class="lodging-card__header">
-             <div>
-               <p class="section-kicker">Quiet &amp; convenient</p>
-               <h3>THE LODGE</h3>
-               <p class="section-summary">A quiet, comfortable stay across the street from the main resort with interior corridor access and dedicated Moose Lot parking. Walk-in showers and in-room fridges add convenience close to the mineral waters.</p>
-             </div>
-             <div class="lodging-rate">
-               <p class="muted">Starting at</p>
-               <p class="lodging-price">$159 per night</p>
-               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
-             </div>
-           </div>
-           <div class="lodging-tags">
-             <span class="lodging-tag">Interior corridor</span>
-             <span class="lodging-tag">Walk-in showers</span>
-             <span class="lodging-tag">Dedicated parking</span>
-           </div>
-           <div class="lodging-details">
-             <h4>Room options</h4>
-             <ul class="pool-list">
-               <li><strong>King or Two Full Beds</strong> &mdash; Walk-in shower, in-room fridge, and interior corridor access. Two Full Bed rooms welcome up to 4 guests ($45/night per additional guest, includes pool access and perks).</li>
-               <li><strong>Suite</strong> &mdash; One King bed, ADA-compliant layout, lounge area with couch and coffee table, walk-in shower, and in-room fridge.</li>
-               <li><strong>Premium Two Full Beds (Newly Renovated)</strong> &mdash; Two Full beds with walk-in shower, in-room fridge, interior corridor, desk, and bench. Up to 4 guests ($45/night per additional guest, includes pool access and perks).</li>
-             </ul>
-             <h4>Best for</h4>
-             <p class="section-summary">Guests seeking interior access, close proximity to the resort, and convenient access to oversized vehicles in the Moose Lot.</p>
-           </div>
-           <div class="lodging-gallery">
--            <img src="/assets/lodge-1-full-ChLbJ5OV.jpg" alt="Lodge guest room with king bed" />
--            <img src="/assets/lodge-2-full-DHKwN39P.jpg" alt="Lodge room with two full beds" />
--            <img src="/assets/lodge-3-full-BDSmMA68.jpg" alt="Lodge bathroom with walk-in shower" />
-+            <img src="../media/lodging/lodge/premium/thumbnails/lodge-premium-1.webp" alt="Lodge guest room with king bed" />
-+            <img src="../media/lodging/lodge/premium/thumbnails/lodge-premium-2.webp" alt="Lodge room with two full beds" />
-+            <img src="../media/lodging/lodge/premium/thumbnails/lodge-premium-4.webp" alt="Lodge bathroom with walk-in shower" />
-           </div>
-           <div class="lodging-actions">
-             <a class="btn btn-ghost" href="../contact/">Book Now</a>
-           </div>
-         </article>
+       if (!items.length) {
+         gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
+         return;
+       }
  
-         <article class="lodging-card" id="cabins">
-           <div class="lodging-card__header">
-             <div>
-               <p class="section-kicker">Creekside comfort</p>
-               <h3>CABINS</h3>
-               <p class="section-summary">Nestled alongside Soda Creek and a short walk to the main resort, each cabin blends rustic charm with convenience. Enjoy a full kitchen, private bathroom, queen bedroom, hallway bunk beds, and a living area that opens to a private deck.</p>
-             </div>
-             <div class="lodging-rate">
-               <p class="muted">Starting at</p>
-               <p class="lodging-price">$229 per night</p>
-               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
-             </div>
-           </div>
-           <div class="lodging-tags">
-             <span class="lodging-tag">Full kitchen</span>
-             <span class="lodging-tag">Private deck</span>
-             <span class="lodging-tag">Creekside setting</span>
-           </div>
-           <div class="lodging-details">
-             <h4>Layout &amp; features</h4>
-             <ul class="pool-list">
-               <li>Welcomes up to 4 guests (2 adults + 2 children 14 and under); $45/night per additional guest over age 3 (includes pool access and perks).</li>
-               <li>1 queen bedroom + small hallway bunk beds.</li>
-               <li>Full kitchen with cooktop, microwave, and fridge.</li>
-               <li>Private bathroom, living room, and deck with private parking.</li>
-             </ul>
-             <h4>Best for</h4>
-             <p class="section-summary">Small families, hiking trips, or a quiet getaway for two.</p>
-           </div>
-           <div class="lodging-gallery">
--            <img src="/assets/cabin-gallery-4-full-BmF-71z3.jpg" alt="Cabin living room and kitchen" />
--            <img src="/assets/cabin-gallery-8-full-Dys2M5eT.jpg" alt="Cabin bedroom with queen bed" />
--            <img src="/assets/cabin-gallery-1-full-DB7Cyxaz.jpg" alt="Cabin exterior along Soda Creek" />
-+            <img src="../media/lodging/cabins/thumbnails/cabin-4.webp" alt="Cabin living room and kitchen" />
-+            <img src="../media/lodging/cabins/thumbnails/cabin-5.webp" alt="Cabin bedroom with queen bed" />
-+            <img src="../media/lodging/cabins/thumbnails/cabin-1.webp" alt="Cabin exterior along Soda Creek" />
-           </div>
-           <div class="lodging-actions">
-             <a class="btn btn-ghost" href="../contact/">Book Now</a>
-           </div>
-         </article>
-       </div>
-     </section>
+       const fragment = document.createDocumentFragment();
  
-     <section class="pool-section pool-section--two-column" id="stay-perks">
-       <div class="pool-card">
-         <div class="section-header">
-           <p class="section-kicker">What's included</p>
-           <h2>Perks with every stay</h2>
-           <p class="section-summary">Every guest on the reservation receives access to our mineral waters and exclusive savings during your visit.</p>
-         </div>
-       </div>
-       <div class="pool-card">
-         <ul class="pool-list">
-           <li>Full weekday access to our mineral water pool.</li>
-           <li>Weekend guests receive one complimentary time slot in our main mineral pool per day (Cabin guests: complimentary time slot is for up to 2 guests).</li>
-           <li>20% off all water amenities, including Women’s &amp; Men’s Caves (ages 18+), Private Baths, and Outdoor Tubs.</li>
-           <li>10% off gift shop purchases.</li>
-           <li>Exclusive discounts at local Idaho Springs restaurants, breweries, and shops.</li>
-           <li>Over $60 in added value per night.</li>
-         </ul>
+       items.forEach((src, index) => {
+         const button = document.createElement("button");
+         button.type = "button";
+         button.className = "gallery-thumb";
+         button.dataset.index = String(index);
+ 
+         const img = document.createElement("img");
+         img.loading = "lazy";
+         img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
+-        img.src = resolveSitePath(src);
++        const thumbnailSrc = resolveSitePath(getThumbnailSrc(src));
++        const fullSrc = resolveSitePath(src);
++        img.src = thumbnailSrc;
++
++        img.addEventListener("error", () => {
++          if (img.dataset.fallbackApplied) return;
++          img.dataset.fallbackApplied = "true";
++          img.src = fullSrc;
++        });
+ 
+         button.appendChild(img);
+         button.addEventListener("click", () =>
+           lightbox.open(items, index, galleryLabel)
+         );
+         fragment.appendChild(button);
+       });
+ 
+       gallery.innerHTML = "";
+       gallery.appendChild(fragment);
+     })
+   );
+ };
+ 
+ const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
+   const trigger = ctx.querySelector("[data-hero-lightbox]");
+   if (!lightbox || !trigger || trigger.dataset.enhanced) return;
+ 
+   trigger.dataset.enhanced = "true";
+   const img = trigger.querySelector("img");
+   const src = img?.getAttribute("src");
+   const alt = img?.getAttribute("alt")?.trim();
+   const label = alt || "Pool photo";
+ 
+   trigger.addEventListener("click", () => {
