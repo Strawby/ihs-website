@@ -1,89 +1,198 @@
-diff --git a/baths/woodland/index.html b/baths/woodland/index.html
-index b7c1b8e59691ebf97db4adc59f291c1ffc6acd80..8d3a01762053213dd8c5de69fa6ab1ea6243681f 100644
---- a/baths/woodland/index.html
-+++ b/baths/woodland/index.html
-@@ -7,77 +7,73 @@
-   <meta name="description" content="Retreat to our nature-inspired Woodland Private Baths—Birch, Cottonwood, Douglas Fir, and Evergreen—for quiet, grounding soaks with flexible layouts and private showers." />
-   <link rel="stylesheet" href="../../styles.css" />
- </head>
- <body>
-   <div data-header></div>
+diff --git a/styles.css b/styles.css
+index 6163274b32c4a7c6b11bcbf2f318f35698a88823..33c4ee9ff04eae0c2f1c57de2cb88e221f9ce0c2 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1258,50 +1258,136 @@ body {
+ }
  
-   <main class="container pool-page pool-main woodland-page">
-     <div class="hero-media">
-       <video class="hero-video" src="../../media/baths/woodland/woodland-hero.mp4" autoplay muted loop playsinline poster="../../media/baths/woodland/ihs-birch-1.webp"></video>
-     </div>
-     <div class="page-filter" aria-hidden="true"></div>
+ .pool-list--tight {
+   /* Slightly reduce spacing for compact lists */
+   --pool-list-tight-spacing: 0.5rem;
+ }
  
-     <header class="pool-hero">
-       <div class="pool-hero-card">
-         <div class="pool-hero-inner">
-           <div class="pool-hero-content">
-             <p class="eyebrow">nature-inspired soaks, each with their own story</p>
-             <h1 class="pool-title" id="woodland-page-title">Woodland Private Baths</h1>
-             <p class="pool-subtitle">Tucked away in our Woodland Hallway, Birch, Cottonwood, Douglas Fir, and Evergreen offer quiet retreats designed to help you slow down, breathe deeply, and reconnect.</p>
-             <div class="pool-hero-meta">
-               <div class="meta-item">
-                 <span class="meta-label">Hours</span>
-                 <span class="meta-value">Monday - Sunday<br>8:00am - 9:30pm</span>
-               </div>
-               <div class="meta-item">
--                <span class="meta-label">Guests</span>
--                <span class="meta-value">Private rooms for 2-4 guests depending on bath</span>
--              </div>
--              <div class="meta-item">
--                <span class="meta-label">Location</span>
--                <span class="meta-value">Woodland hallway with private showers and benches</span>
-+                <span class="meta-label">Ages</span>
-+                <span class="meta-value">All ages welcome</span>
-               </div>
-             </div>
-             <div class="pool-hero-actions">
--              <a href="#hours" class="btn btn-primary">Hours &amp; Policies</a>
--              <a href="#plan-your-soak" class="btn btn-primary">Plan Your Soak</a>
--              <a href="#woodland-baths" class="btn btn-primary">Explore the Baths</a>
-+              <a href="#hours" class="btn btn-primary">Hours &amp; Pricing</a>
-+              <a href="#plan-your-visit" class="btn btn-primary">Plan Your Visit</a>
-+              <a class="btn btn-primary" href="booking/">Book for Weekends</a>
-             </div>
-           </div>
-           <figure class="pool-hero-figure">
-             <button type="button" class="pool-hero-lightbox" data-hero-lightbox aria-label="Enlarge photo from the Woodland Private Baths hallway">
-               <img src="../../media/baths/woodland/ihs-birch-2.webp" alt="Nature-inspired private bath with flowing mineral water" />
-             </button>
-           </figure>
-         </div>
-       </div>
-     </header>
+ .pool-list--tight h4 {
+   margin: 0;
+   font-size: 1rem;
+   color: white;
+   padding: clamp(1.35rem, 3vw, 1.9rem);
+   text-align: left;
+ }
  
--    <section class="pool-section pool-section--two-column" id="plan-your-soak">
-+    <section class="pool-section pool-section--two-column" id="plan-your-visit">
-       <div class="pool-card">
-         <div class="section-header">
--          <h2>Plan Your Soak</h2>
-+          <h2>Plan Your Visit</h2>
-           <p class="section-summary"><b>Grounding escapes with natural textures, flowing mineral water, and space to reset.<br><br></b></p>
-           <p class="section-summary">Each Woodland Bath is designed for stillness and restoration. With the sound of water and warm cedar hues all around, these rooms invite you to take a quiet pause, whether you prefer the spacious Birch, the deeper Cottonwood, the open Douglas Fir, or the intimate Evergreen.</p>
-         </div>
-       </div>
-       <div class="pool-card">
-         <ul class="pool-list">
-           <li>Average temperature 105–110&deg;F, varies with the geothermal well flow</li>
-           <li>A minimal amount of chlorine is used to ensure safety</li>
-           <li>Each private bath area includes a shower and bench</li>
-           <li>Reservations recommended; booking available up to 30 days in advance</li>
-           <li>Please arrive 20 minutes prior to your reservation</li>
-           <li>Cancellations within 24 hours of reservation time will be charged full booking deposit</li>
-         </ul>
-       </div>
-     </section>
+ .pool-list--tight li + li {
+   margin-top: var(--pool-list-tight-spacing);
+   padding-top: var(--pool-list-tight-spacing);
+ }
  
-     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Woodland bath hours, pricing, and policies">
-       <article class="pool-card info-card">
-         <h3>Hours</h3>
-         <div class="info-subsection">
-           <h4>Everyday</h4>
-           <p class="muted">8am - 8pm<br>Reservations Required</p>
-         </div>
-       </article>
+ .pool-grid {
+   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+   gap: clamp(1.1rem, 3vw, 1.6rem);
+ }
  
++.lodging-grid {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++  gap: clamp(1rem, 2vw, 1.35rem);
++}
++
++.lodging-card {
++  background: color-mix(in srgb, var(--card) 96%, rgba(15, 23, 42, 0.04));
++  border: 1px solid rgba(148, 163, 184, 0.3);
++  border-radius: 1rem;
++  padding: clamp(1.25rem, 2.5vw, 1.6rem);
++  display: grid;
++  gap: 0.85rem;
++  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 26px rgba(15, 23, 42, 0.18);
++}
++
++.lodging-card__header {
++  display: grid;
++  grid-template-columns: minmax(0, 1fr) 220px;
++  gap: 1rem;
++  align-items: start;
++}
++
++.lodging-rate {
++  background: color-mix(in srgb, var(--bg) 70%, rgba(79, 156, 255, 0.12));
++  border: 1px solid rgba(148, 163, 184, 0.4);
++  border-radius: 0.85rem;
++  padding: 0.85rem 1rem;
++  display: grid;
++  gap: 0.2rem;
++}
++
++.lodging-price {
++  margin: 0;
++  font-size: 1.35rem;
++  font-weight: 800;
++}
++
++.lodging-tags {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 0.5rem;
++}
++
++.lodging-tag {
++  display: inline-flex;
++  align-items: center;
++  gap: 0.35rem;
++  padding: 0.45rem 0.85rem;
++  border-radius: 999px;
++  background: color-mix(in srgb, var(--brand) 18%, rgba(148, 163, 184, 0.14));
++  border: 1px solid rgba(148, 163, 184, 0.4);
++  font-weight: 700;
++  color: var(--text);
++  font-size: 0.9rem;
++}
++
++.lodging-details {
++  display: grid;
++  gap: 0.35rem;
++}
++
++.lodging-details h4 {
++  margin: 0;
++}
++
++.lodging-gallery {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
++  gap: 0.65rem;
++}
++
++.lodging-gallery img {
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++  border-radius: 0.85rem;
++  border: 1px solid rgba(148, 163, 184, 0.25);
++  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 20px rgba(0, 0, 0, 0.18);
++}
++
++.lodging-actions {
++  display: flex;
++  justify-content: flex-start;
++}
++
+ .pool-card {
+   background: color-mix(in srgb, var(--card) 94%, var(--bg));
+   border: 1px solid rgba(148, 163, 184, 0.35);
+   border-radius: 1rem;
+   padding: clamp(1.35rem, 3vw, 1.9rem);
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
+   height: 100%;
+ }
+ 
+ .soak-table {
+   width: 100%;
+   border-collapse: collapse;
+   color: var(--muted);
+   font-size: 0.95rem;
+ }
+ 
+ .soak-table th,
+ .soak-table td {
+   padding: 0.65rem 0.75rem;
+   border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+   text-align: left;
+ }
+ 
+ .soak-table thead th {
+   color: var(--text);
+@@ -1343,50 +1429,56 @@ body {
+ .info-subsection h4 {
+   margin: 0;
+   font-size: 1rem;
+ }
+ 
+ .muted {
+   color: var(--muted);
+   margin: 0;
+ }
+ 
+ .pool-cta {
+   display: flex;
+   justify-content: center;
+ }
+ 
+ .pool-gallery {
+   gap: 1.75rem;
+ }
+ 
+ @media (max-width: 780px) {
+   .pool-section--two-column {
+     grid-template-columns: 1fr;
+   }
+ }
+ 
++@media (max-width: 900px) {
++  .lodging-card__header {
++    grid-template-columns: 1fr;
++  }
++}
++
+ .media-gallery {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 1rem;
+ }
+ 
+ .gallery-thumb {
+   border: 1px solid #1f2c45;
+   padding: 0;
+   border-radius: 1rem;
+   overflow: hidden;
+   background: color-mix(in srgb, var(--card) 90%, black);
+   cursor: pointer;
+   position: relative;
+   aspect-ratio: 4 / 3;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.03), 0 10px 25px rgba(0,0,0,.2);
+   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+ }
+ 
+ .gallery-thumb:hover,
+ .gallery-thumb:focus-visible {
+   transform: translateY(-2px);
+   border-color: #30456a;
+   box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.28);
+ }
