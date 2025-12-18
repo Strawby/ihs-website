@@ -1504,6 +1504,16 @@ body {
   gap: 1rem;
 }
 
+.media-gallery--mini {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.woodland-mini-gallery {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
 .gallery-thumb {
   border: 1px solid #1f2c45;
   padding: 0;
