@@ -1,16 +1,8 @@
 diff --git a/script.js b/script.js
-index 7f36877a1e124e017538ec6bf520aba59c05bc62..b9cdbffebeb72c945eaa0cbb92fafd73d302d4db 100644
+index b9cdbffebeb72c945eaa0cbb92fafd73d302d4db..8d49bf472d26d89fa66bd3d5a3aa680adfe36395 100644
 --- a/script.js
 +++ b/script.js
-@@ -273,91 +273,110 @@ const initLightbox = (ctx = document) => {
- 
-   nextButton?.addEventListener("click", showNext);
-   prevButton?.addEventListener("click", showPrev);
-   closeButton?.addEventListener("click", closeOverlay);
- 
-   overlay.addEventListener("click", (event) => {
-     if (event.target === overlay) closeOverlay();
-   });
+@@ -281,51 +281,54 @@ const initLightbox = (ctx = document) => {
  
    document.addEventListener("keydown", (event) => {
      if (overlay.hidden) return;
@@ -28,17 +20,21 @@ index 7f36877a1e124e017538ec6bf520aba59c05bc62..b9cdbffebeb72c945eaa0cbb92fafd73
    const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
    if (!lightbox || !galleries.length) return;
  
-+  const getThumbnailSrc = (src) => {
-+    if (typeof src !== "string") return src;
-+    const trimmedSrc = src.trim();
-+    const lastSlash = trimmedSrc.lastIndexOf("/");
-+    if (lastSlash === -1) return trimmedSrc;
-+
-+    const dir = trimmedSrc.slice(0, lastSlash);
-+    const filename = trimmedSrc.slice(lastSlash + 1);
-+    return `${dir}/thumbnail/${filename}`;
-+  };
-+
+   const getThumbnailSrc = (src) => {
+     if (typeof src !== "string") return src;
+     const trimmedSrc = src.trim();
+     const lastSlash = trimmedSrc.lastIndexOf("/");
+     if (lastSlash === -1) return trimmedSrc;
+ 
+     const dir = trimmedSrc.slice(0, lastSlash);
+     const filename = trimmedSrc.slice(lastSlash + 1);
+-    return `${dir}/thumbnail/${filename}`;
++    const thumbnailDir = dir.endsWith("/thumbnails")
++      ? dir
++      : `${dir}/thumbnails`;
++    return `${thumbnailDir}/${filename}`;
+   };
+ 
    const loadGalleryItems = async (manifestPath) => {
      if (!manifestPath) return [];
      const manifestUrl = resolveSitePath(manifestPath);
@@ -62,55 +58,3 @@ index 7f36877a1e124e017538ec6bf520aba59c05bc62..b9cdbffebeb72c945eaa0cbb92fafd73
          gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
          return;
        }
- 
-       if (!items.length) {
-         gallery.innerHTML = '<p class="muted">Check back soon for more photos.</p>';
-         return;
-       }
- 
-       const fragment = document.createDocumentFragment();
- 
-       items.forEach((src, index) => {
-         const button = document.createElement("button");
-         button.type = "button";
-         button.className = "gallery-thumb";
-         button.dataset.index = String(index);
- 
-         const img = document.createElement("img");
-         img.loading = "lazy";
-         img.alt = `${galleryLabel || "Gallery"} photo thumbnail`;
--        img.src = resolveSitePath(src);
-+        const thumbnailSrc = resolveSitePath(getThumbnailSrc(src));
-+        const fullSrc = resolveSitePath(src);
-+        img.src = thumbnailSrc;
-+
-+        img.addEventListener("error", () => {
-+          if (img.dataset.fallbackApplied) return;
-+          img.dataset.fallbackApplied = "true";
-+          img.src = fullSrc;
-+        });
- 
-         button.appendChild(img);
-         button.addEventListener("click", () =>
-           lightbox.open(items, index, galleryLabel)
-         );
-         fragment.appendChild(button);
-       });
- 
-       gallery.innerHTML = "";
-       gallery.appendChild(fragment);
-     })
-   );
- };
- 
- const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
-   const trigger = ctx.querySelector("[data-hero-lightbox]");
-   if (!lightbox || !trigger || trigger.dataset.enhanced) return;
- 
-   trigger.dataset.enhanced = "true";
-   const img = trigger.querySelector("img");
-   const src = img?.getAttribute("src");
-   const alt = img?.getAttribute("alt")?.trim();
-   const label = alt || "Pool photo";
- 
-   trigger.addEventListener("click", () => {

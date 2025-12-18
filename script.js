@@ -303,7 +303,10 @@ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) 
 
     const dir = trimmedSrc.slice(0, lastSlash);
     const filename = trimmedSrc.slice(lastSlash + 1);
-    return `${dir}/thumbnail/${filename}`;
+    const thumbnailDir = dir.endsWith("/thumbnails")
+      ? dir
+      : `${dir}/thumbnails`;
+    return `${thumbnailDir}/${filename}`;
   };
 
   const loadGalleryItems = async (manifestPath) => {
