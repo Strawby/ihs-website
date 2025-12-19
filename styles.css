@@ -1345,6 +1345,8 @@ body {
   overflow: hidden;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.25));
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .woodland-bath-card__hero img {
@@ -1352,12 +1354,20 @@ body {
   height: 100%;
   display: block;
   object-fit: cover;
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 21 / 9;
+  max-height: clamp(230px, 32vw, 340px);
 }
 
 .woodland-bath-card__body {
   display: grid;
   gap: 0.75rem;
+}
+
+.woodland-bath-card__body h3 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .woodland-bath-card__gallery {
