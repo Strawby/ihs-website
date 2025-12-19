@@ -1,60 +1,90 @@
-diff --git a/script.js b/script.js
-index b9cdbffebeb72c945eaa0cbb92fafd73d302d4db..8d49bf472d26d89fa66bd3d5a3aa680adfe36395 100644
---- a/script.js
-+++ b/script.js
-@@ -281,51 +281,54 @@ const initLightbox = (ctx = document) => {
+diff --git a/styles.css b/styles.css
+index 517b4a8ca78ed0faa9d6ccaa23aa4dcf1a075142..718b221aeb6fd8f83e1168c540e71bd58e1d0ddf 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1318,66 +1318,85 @@ body {
  
-   document.addEventListener("keydown", (event) => {
-     if (overlay.hidden) return;
-     if (event.key === "Escape") closeOverlay();
-     if (event.key === "ArrowRight") showNext();
-     if (event.key === "ArrowLeft") showPrev();
-   });
+ .pool-grid {
+   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+   gap: clamp(1.1rem, 3vw, 1.6rem);
+ }
  
-   overlay.dataset.enhanced = "true";
-   overlay._lightboxController = { open: openOverlay };
-   return overlay._lightboxController;
- };
+ .woodland-bath-stack {
+   display: grid;
+   gap: clamp(1.25rem, 3vw, 1.75rem);
+   max-width: min(1100px, 100% - 2.5rem);
+   margin: 0 auto;
+   margin-top: clamp(1.25rem, 3vw, 1.75rem);
+   scroll-margin-top: calc(var(--header-height) + 1.5rem);
+ }
  
- const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
-   const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
-   if (!lightbox || !galleries.length) return;
+ .woodland-bath-card {
+   background: color-mix(in srgb, var(--card) 96%, var(--bg));
+   border: 1px solid rgba(148, 163, 184, 0.35);
+   border-radius: 1.1rem;
+   padding: clamp(1.35rem, 3vw, 1.9rem);
+   display: grid;
+   gap: clamp(1rem, 2vw, 1.45rem);
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px rgba(15, 23, 42, 0.2);
+ }
  
-   const getThumbnailSrc = (src) => {
-     if (typeof src !== "string") return src;
-     const trimmedSrc = src.trim();
-     const lastSlash = trimmedSrc.lastIndexOf("/");
-     if (lastSlash === -1) return trimmedSrc;
++.woodland-bath-card__hero {
++  border-radius: 0.95rem;
++  overflow: hidden;
++  background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.25));
++  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
++}
++
++.woodland-bath-card__hero img {
++  width: 100%;
++  height: 100%;
++  display: block;
++  object-fit: cover;
++  aspect-ratio: 5 / 3;
++}
++
+ .woodland-bath-card__body {
+   display: grid;
+   gap: 0.75rem;
+ }
  
-     const dir = trimmedSrc.slice(0, lastSlash);
-     const filename = trimmedSrc.slice(lastSlash + 1);
--    return `${dir}/thumbnail/${filename}`;
-+    const thumbnailDir = dir.endsWith("/thumbnails")
-+      ? dir
-+      : `${dir}/thumbnails`;
-+    return `${thumbnailDir}/${filename}`;
-   };
+ .woodland-bath-card__gallery {
+   display: grid;
+   gap: 0.5rem;
+   align-content: start;
+ }
  
-   const loadGalleryItems = async (manifestPath) => {
-     if (!manifestPath) return [];
-     const manifestUrl = resolveSitePath(manifestPath);
-     const response = await fetch(manifestUrl, { cache: "no-cache" });
-     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
-     const manifest = await response.json();
-     return normalizeGalleryManifest(manifest).filter(
-       (src) => typeof src === "string" && src.trim()
-     );
-   };
+ @media (min-width: 850px) {
+   .woodland-bath-card {
+     grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+     align-items: start;
+   }
++
++  .woodland-bath-card__hero {
++    grid-column: 1 / -1;
++  }
+ }
  
-   await Promise.all(
-     galleries.map(async (gallery) => {
-       const manifestPath = gallery.getAttribute("data-gallery-manifest");
-       const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
-       let items = [];
+ .lodging-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+   gap: clamp(1rem, 2vw, 1.35rem);
+ }
  
-       try {
-         items = await loadGalleryItems(manifestPath);
-       } catch (error) {
-         gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
-         return;
-       }
+ .lodging-card {
+   background: color-mix(in srgb, var(--card) 96%, rgba(15, 23, 42, 0.04));
+   border: 1px solid rgba(148, 163, 184, 0.3);
+   border-radius: 1rem;
+   padding: clamp(1.25rem, 2.5vw, 1.6rem);
+   display: grid;
+   gap: 0.85rem;
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 26px rgba(15, 23, 42, 0.18);
+ }
+ 
+ .lodging-card__header {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) 220px;
+   gap: 1rem;
+   align-items: start;
+ }
+ 
