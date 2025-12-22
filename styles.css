@@ -1255,6 +1255,17 @@ body {
   border-top: 1px solid rgba(148, 163, 184, 0.25);
 }
 
+/* PATCH APPLIED: plain list variant */
+.pool-list--plain li {
+  border-top: none;
+}
+
+.pool-list--plain li + li {
+  margin-top: 0.35rem;
+  padding-top: 0;
+  border-top: none;
+}
+
 .discount-link {
   display: inline-flex;
   align-items: center;
@@ -1531,6 +1542,26 @@ body {
 .info-subsection {
   display: grid;
   gap: 0.35rem;
+}
+
+/* PATCH APPLIED: info card helpers */
+.info-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.3);
+}
+
+.info-note {
+  margin: 0;
+  color: var(--muted);
+}
+
+.info-note strong {
+  color: var(--text);
+}
+
+.info-cta {
+  display: flex;
+  align-items: center;
 }
 
 .info-subsection h4 {

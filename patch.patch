@@ -1,81 +1,151 @@
-diff --git a/styles.css b/styles.css
-index 718b221aeb6fd8f83e1168c540e71bd58e1d0ddf..59d8a28e30156569b002810b45dbf63fd6bb33cc 100644
---- a/styles.css
-+++ b/styles.css
-@@ -1323,65 +1323,75 @@ body {
+diff --git a/pool/index.html b/pool/index.html
+index 9a7ff5d58169c6dcefa9620832a16d616daf92dc..a67aedf7b578a7e7caa45dbe32c1b8b6312ff3f1 100644
+--- a/pool/index.html
++++ b/pool/index.html
+@@ -55,93 +55,123 @@
+           <p class="section-summary">You may think that it's impossible to have a tropical getaway in the middle of the mountains. Thanks to our staff botanist, and a magical sparkling dome, the main swimming pool gives off tropical vacation vibes all year long.</p>
+           <p class="section-summary">The hot mineral waters have been used to heal for centuries and you'll feel the benefits with whatever soaking style you choose&mdash;whether it's a slow paddle, a steady walk, or claiming a spot on one of the many built-in benches. While you're letting the tropical turquoise waters work their wonders, make sure to gaze around the edge and marvel at the banana trees, ferns, and flowers&mdash;many of which you won't find anywhere else in Colorado.</p>
+         </div>
+       </div>
+       <div class="pool-card">
+         <ul class="pool-list">
+           <li>Weekdays &ndash; No reservation required</li>
+           <li><b>Weekends &ndash; Reservation required</b></li>
+           <li>As a natural geothermal source of water, we are unable to adjust the water heat. Our average temperatures range from 96-102&deg;F.</li>
+           <li>A minimal amount of chlorine is used to ensure safety</li>
+           <li>Glass and coolers are not permitted. (Please use our dining hall)</li>
+           <li>Children under the age of 14 must be accompanied or supervised by an adult since there are no lifeguards on duty</li>
+           <li>Snack area inside natatorium</li>
+           <li>Plants available for purchase</li>
+         </ul>
+       </div>
+     </section>
  
- .woodland-bath-stack {
-   display: grid;
-   gap: clamp(1.25rem, 3vw, 1.75rem);
-   max-width: min(1100px, 100% - 2.5rem);
-   margin: 0 auto;
-   margin-top: clamp(1.25rem, 3vw, 1.75rem);
-   scroll-margin-top: calc(var(--header-height) + 1.5rem);
- }
+     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Pool hours and pricing">
+       <article class="pool-card info-card">
+         <h3>Hours</h3>
+         <div class="info-subsection">
+           <h4>Monday - Friday</h4>
+           <p class="muted">8:30am - 9:00pm</p>
+         </div>
++        <div class="info-divider" aria-hidden="true"></div>
+         <div class="info-subsection">
+           <h4>Saturday - Sunday<br><b>(Reservations Required)</b></h4>
+           <ul class="pool-list pool-list--tight">
+             <li>7:30am - 10:00am</li>
+             <li>10:30am - 2:00pm</li>
+             <li>3:00pm - 6:30pm</li>
+ 			<li>7:30pm - 9:30pm (Adult Swim; <b>18+ Only</b>)</li>
+           </ul>
+         </div>
++        <div class="info-divider" aria-hidden="true"></div>
++        <div class="info-subsection">
++          <h4>Summit Pricing<br><b>(Reservations May Be Required)</b></h4>
++          <p class="muted">Varies by day</p>
++        </div>
+       </article>
  
- .woodland-bath-card {
-   background: color-mix(in srgb, var(--card) 96%, var(--bg));
-   border: 1px solid rgba(148, 163, 184, 0.35);
-   border-radius: 1.1rem;
-   padding: clamp(1.35rem, 3vw, 1.9rem);
-   display: grid;
-   gap: clamp(1rem, 2vw, 1.45rem);
-   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px rgba(15, 23, 42, 0.2);
- }
+-      <article class="pool-card info-card">
+-        <h3>Pricing</h3>
+-        <ul class="pool-list pool-list--tight">
+-          <li>Monday - Thursday: $30 per person</li>
+-          <li>Friday: $35 per person</li>
+-          <li>Saturday - Sunday: $35 per person per time slot</li>
+-          <li>Towels available to rent for $5.00</li>
+-          <li>Key locks available for $4.00</li>
+-		  <li>Discounts cannot be combined.</li>
+-        </ul>
++      <article class="pool-card info-card pool-pricing-card">
++        <h3>Base Pool Pricing</h3>
++        <div class="info-subsection">
++          <p class="info-note"><strong>Monday &ndash; Thursday:</strong> $30 per person</p>
++          <p class="info-note"><strong>Friday:</strong> $35 per person</p>
++          <p class="info-note"><strong>Saturday &ndash; Sunday:</strong> $35 per person per time slot</p>
++        </div>
++        <div class="info-divider" aria-hidden="true"></div>
++        <div class="info-subsection">
++          <h4>Add-Ons</h4>
++          <ul class="pool-list pool-list--tight pool-list--plain">
++            <li><strong>Towel rental</strong> &mdash; $5</li>
++            <li><strong>Key lock rental</strong> &mdash; $4</li>
++          </ul>
++        </div>
++        <div class="info-divider" aria-hidden="true"></div>
++        <div class="info-subsection">
++          <h4>Policies</h4>
++          <p class="muted">Discounts cannot be combined.</p>
++        </div>
++        <div class="info-divider" aria-hidden="true"></div>
++        <div class="info-subsection">
++          <h4>Summit Pool Pricing</h4>
++          <p class="muted">$40 per person per day or per time slot</p>
++          <a href="../pricing/" class="discount-link">
++            <span>See full Summit Pricing details</span>
++            <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
++          </a>
++        </div>
+       </article>
  
- .woodland-bath-card__hero {
-   border-radius: 0.95rem;
-   overflow: hidden;
-   background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.25));
-   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.2);
-+  max-width: 960px;
-+  margin: 0 auto;
- }
+-      <article class="pool-card info-card">
++      <article class="pool-card info-card pool-discount-card">
+         <h3>Discounts</h3>
+-        <ul class="pool-list pool-list--tight">
+-          <li>Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</li>
+-          <li>Weekday discounts (Seniors, Military, Locals, Multi-Amenity)</li>
+-                  <li>
+-                    <a href="../pricing/" class="discount-link">
+-                      <span>See full details on discounts</span>
+-                      <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
+-                    </a>
+-                  </li>
+-        </ul>
++        <div class="info-subsection">
++          <p class="muted">Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</p>
++          <p class="muted">Weekday discounts (Seniors, Military, Locals, Multi-Amenity)</p>
++        </div>
++        <div class="info-subsection info-cta">
++          <a href="../pricing/" class="discount-link">
++            <span>See full details on discounts</span>
++            <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
++          </a>
++        </div>
++        <div class="info-divider" aria-hidden="true"></div>
++        <div class="info-subsection">
++          <h4>Policies</h4>
++          <p class="muted">Discounts cannot be combined.</p>
++        </div>
+       </article>
+     </section>
  
- .woodland-bath-card__hero img {
-   width: 100%;
-   height: 100%;
-   display: block;
-   object-fit: cover;
--  aspect-ratio: 5 / 3;
-+  aspect-ratio: 21 / 9;
-+  max-height: clamp(230px, 32vw, 340px);
- }
+     <section class="pool-section pool-gallery" id="gallery" aria-label="Pool photo gallery">
+       <div class="section-header">
+         <p class="section-kicker">Pool gallery</p>
+         <h2>See inside the dome</h2>
+         <p class="section-summary">Browse snapshots from around the mineral water swimming pool. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
+       </div>
  
- .woodland-bath-card__body {
-   display: grid;
-   gap: 0.75rem;
- }
+       <div class="media-gallery" data-media-gallery data-gallery-manifest="media/pool/manifest.json" data-gallery-label="Pool photo">
+         <p class="muted">Loading photos...</p>
+       </div>
+     </section>
  
-+.woodland-bath-card__body h3 {
-+  margin: 0;
-+  font-size: clamp(1.6rem, 3vw, 2.15rem);
-+  line-height: 1.2;
-+  letter-spacing: 0.01em;
-+}
-+
- .woodland-bath-card__gallery {
-   display: grid;
-   gap: 0.5rem;
-   align-content: start;
- }
+     <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Pool photo">
+       <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
+       <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
+         <span aria-hidden="true">&#10094;</span>
+       </button>
+       <div class="lightbox-frame">
+         <img src="" alt="Pool gallery photo" />
+       </div>
+       <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
+         <span aria-hidden="true">&#10095;</span>
+       </button>
+     </div>
  
- @media (min-width: 850px) {
-   .woodland-bath-card {
-     grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
-     align-items: start;
-   }
- 
-   .woodland-bath-card__hero {
-     grid-column: 1 / -1;
-   }
- }
- 
- .lodging-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-   gap: clamp(1rem, 2vw, 1.35rem);
- }
- 
- .lodging-card {
-   background: color-mix(in srgb, var(--card) 96%, rgba(15, 23, 42, 0.04));
+   </main>
+   <div data-footer></div>
+     <script src="../script.js"></script>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
