@@ -1,88 +1,67 @@
-diff --git a/pool/index.html b/pool/index.html
-index 9a7ff5d58169c6dcefa9620832a16d616daf92dc..a67aedf7b578a7e7caa45dbe32c1b8b6312ff3f1 100644
---- a/pool/index.html
-+++ b/pool/index.html
-@@ -55,93 +55,123 @@
-           <p class="section-summary">You may think that it's impossible to have a tropical getaway in the middle of the mountains. Thanks to our staff botanist, and a magical sparkling dome, the main swimming pool gives off tropical vacation vibes all year long.</p>
-           <p class="section-summary">The hot mineral waters have been used to heal for centuries and you'll feel the benefits with whatever soaking style you choose&mdash;whether it's a slow paddle, a steady walk, or claiming a spot on one of the many built-in benches. While you're letting the tropical turquoise waters work their wonders, make sure to gaze around the edge and marvel at the banana trees, ferns, and flowers&mdash;many of which you won't find anywhere else in Colorado.</p>
+diff --git a/cedar-tubs/index.html b/cedar-tubs/index.html
+index 4559faeb6d447a252bf8b250b2d38b2f5352d54a..088616d242586863632b7d7b99573e76ff5d06e4 100644
+--- a/cedar-tubs/index.html
++++ b/cedar-tubs/index.html
+@@ -50,77 +50,94 @@
+     <section class="pool-section pool-section--two-column" id="plan-your-visit">
+       <div class="pool-card">
+         <div class="section-header">
+           <h2>Plan Your Soak</h2>
+           <p class="section-summary"><b>Everything you need to enjoy the outdoor cedar tubs, from reservations to on-site amenities.<br><br></b></p>
+           <p class="section-summary">Crafted from aromatic cedar, these tubs are built for both comfort and wellness. Cedar’s natural resistance to mold and mildew ensures a clean, fresh environment, while its soothing scent calms the mind and enhances every breath. Known for anti-inflammatory properties and support for respiratory health, cedar transforms a simple soak into a restorative ritual. Each tub is designed with extra depth and double the volume of our standard tubs, giving you more room to stretch out and fully unwind. A continuous flow of fresh mineral water keeps your soak pristine, while the cedar-wrapped cascade adds both beauty and function. And if you’re seeking the extreme renewal of hot and cold, our newest addition brings that option below.</p>
          </div>
        </div>
        <div class="pool-card">
          <ul class="pool-list">
-           <li>Weekdays &ndash; No reservation required</li>
-           <li><b>Weekends &ndash; Reservation required</b></li>
-           <li>As a natural geothermal source of water, we are unable to adjust the water heat. Our average temperatures range from 96-102&deg;F.</li>
-           <li>A minimal amount of chlorine is used to ensure safety</li>
-           <li>Glass and coolers are not permitted. (Please use our dining hall)</li>
-           <li>Children under the age of 14 must be accompanied or supervised by an adult since there are no lifeguards on duty</li>
-           <li>Snack area inside natatorium</li>
-           <li>Plants available for purchase</li>
+           <li>Reservations required; weekend and holiday slots fill quickly</li>
+ 		  <li>Average temperature 106-113°F, varies with the geothermal well flow.</li>
+           <li>A minimum amount of chlorine is used to ensure safety and cleanliness.</li>
+ 		  <li>Cancellations within 24 hours of reservation time will be charged full booking deposit</li>
+           <li>No glass or coolers permitted</li>
+           <li>Towels available to rent for $5</li>
+           <li>Arrive 15 minutes early to check in and review guidelines with staff</li>
          </ul>
        </div>
      </section>
  
-     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Pool hours and pricing">
+     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Cedar tubs hours and pricing">
        <article class="pool-card info-card">
          <h3>Hours</h3>
          <div class="info-subsection">
-           <h4>Monday - Friday</h4>
-           <p class="muted">8:30am - 9:00pm</p>
+-                <span class="meta-value">Everyday: 8am-9pm (Reservations required- tubs are booked by the hour)
++          <h4>Everyday</h4>
++          <p class="muted">8:00am - 9:00pm</p>
++          <p class="muted">Reservations required; tubs are booked by the hour.</p>
          </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-         <div class="info-subsection">
-           <h4>Saturday - Sunday<br><b>(Reservations Required)</b></h4>
-           <ul class="pool-list pool-list--tight">
-             <li>7:30am - 10:00am</li>
-             <li>10:30am - 2:00pm</li>
-             <li>3:00pm - 6:30pm</li>
- 			<li>7:30pm - 9:30pm (Adult Swim; <b>18+ Only</b>)</li>
-           </ul>
-         </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-+        <div class="info-subsection">
-+          <h4>Summit Pricing<br><b>(Reservations May Be Required)</b></h4>
-+          <p class="muted">Varies by day</p>
-+        </div>
        </article>
  
 -      <article class="pool-card info-card">
 -        <h3>Pricing</h3>
 -        <ul class="pool-list pool-list--tight">
--          <li>Monday - Thursday: $30 per person</li>
--          <li>Friday: $35 per person</li>
--          <li>Saturday - Sunday: $35 per person per time slot</li>
+-          <li>Rates vary by date, time, and party size</li>
+-          <li>Final pricing shown during checkout</li>
 -          <li>Towels available to rent for $5.00</li>
 -          <li>Key locks available for $4.00</li>
--		  <li>Discounts cannot be combined.</li>
+-          <li>Discounts cannot be combined.</li>
 -        </ul>
 +      <article class="pool-card info-card pool-pricing-card">
-+        <h3>Base Pool Pricing</h3>
++        <h3>Cedar Tub Pricing</h3>
 +        <div class="info-subsection">
-+          <p class="info-note"><strong>Monday &ndash; Thursday:</strong> $30 per person</p>
-+          <p class="info-note"><strong>Friday:</strong> $35 per person</p>
-+          <p class="info-note"><strong>Saturday &ndash; Sunday:</strong> $35 per person per time slot</p>
++          <p class="info-note"><strong>Monday &ndash; Thursday:</strong> $100 per tub per hour (up to 3 guests)</p>
++          <p class="info-note"><strong>Friday &ndash; Sunday:</strong> $150 per tub per hour (up to 3 guests)</p>
 +        </div>
 +        <div class="info-divider" aria-hidden="true"></div>
 +        <div class="info-subsection">
 +          <h4>Add-Ons</h4>
 +          <ul class="pool-list pool-list--tight pool-list--plain">
 +            <li><strong>Towel rental</strong> &mdash; $5</li>
-+            <li><strong>Key lock rental</strong> &mdash; $4</li>
++            <li><strong>Lock for locker</strong> &mdash; $4</li>
 +          </ul>
 +        </div>
 +        <div class="info-divider" aria-hidden="true"></div>
 +        <div class="info-subsection">
 +          <h4>Policies</h4>
-+          <p class="muted">Discounts cannot be combined.</p>
-+        </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-+        <div class="info-subsection">
-+          <h4>Summit Pool Pricing</h4>
-+          <p class="muted">$40 per person per day or per time slot</p>
-+          <a href="../pricing/" class="discount-link">
-+            <span>See full Summit Pricing details</span>
-+            <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
-+          </a>
++          <p class="muted">Rates may vary by date and time and are confirmed during checkout. Discounts cannot be combined.</p>
 +        </div>
        </article>
  
@@ -92,12 +71,12 @@ index 9a7ff5d58169c6dcefa9620832a16d616daf92dc..a67aedf7b578a7e7caa45dbe32c1b8b6
 -        <ul class="pool-list pool-list--tight">
 -          <li>Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</li>
 -          <li>Weekday discounts (Seniors, Military, Locals, Multi-Amenity)</li>
--                  <li>
--                    <a href="../pricing/" class="discount-link">
--                      <span>See full details on discounts</span>
--                      <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
--                    </a>
--                  </li>
+-          <li>
+-            <a href="../pricing/" class="discount-link">
+-              <span>See full details on discounts</span>
+-              <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
+-            </a>
+-          </li>
 -        </ul>
 +        <div class="info-subsection">
 +          <p class="muted">Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</p>
@@ -112,40 +91,30 @@ index 9a7ff5d58169c6dcefa9620832a16d616daf92dc..a67aedf7b578a7e7caa45dbe32c1b8b6
 +        <div class="info-divider" aria-hidden="true"></div>
 +        <div class="info-subsection">
 +          <h4>Policies</h4>
-+          <p class="muted">Discounts cannot be combined.</p>
++          <p class="muted">Discounts cannot be combined. Discounts never apply on Summit Pricing days, excluding the Native American discount.</p>
 +        </div>
        </article>
      </section>
  
-     <section class="pool-section pool-gallery" id="gallery" aria-label="Pool photo gallery">
+     <section class="pool-section pool-gallery" id="gallery" aria-label="Cedar tubs photo gallery">
        <div class="section-header">
-         <p class="section-kicker">Pool gallery</p>
-         <h2>See inside the dome</h2>
-         <p class="section-summary">Browse snapshots from around the mineral water swimming pool. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
+         <p class="section-kicker">Cedar tubs gallery</p>
+         <h2>See the tubs under open sky</h2>
+         <p class="section-summary">Browse snapshots from around the outdoor cedar tubs. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
        </div>
  
-       <div class="media-gallery" data-media-gallery data-gallery-manifest="media/pool/manifest.json" data-gallery-label="Pool photo">
+       <div class="media-gallery" data-media-gallery data-gallery-manifest="media/tubs/cedar/manifest.json" data-gallery-label="Cedar tubs photo">
          <p class="muted">Loading photos...</p>
        </div>
      </section>
  
-     <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Pool photo">
+     <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Cedar tubs photo">
        <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
        <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
          <span aria-hidden="true">&#10094;</span>
        </button>
        <div class="lightbox-frame">
-         <img src="" alt="Pool gallery photo" />
+         <img src="" alt="Cedar tubs gallery photo" />
        </div>
        <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
          <span aria-hidden="true">&#10095;</span>
-       </button>
-     </div>
- 
-   </main>
-   <div data-footer></div>
-     <script src="../script.js"></script>
- </body>
--</html>
-\ No newline at end of file
-+</html>
