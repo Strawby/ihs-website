@@ -1474,8 +1474,10 @@ body {
 
 .lodging-gallery img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
   border-radius: 0.85rem;
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 20px rgba(0, 0, 0, 0.18);

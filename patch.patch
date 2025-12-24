@@ -1,77 +1,60 @@
 diff --git a/styles.css b/styles.css
-index 6bebd55991465e1706d7c0bf6025f666724c2e13..6fc8c0bd7daded1d13ad3171ac475e2d443bd63d 100644
+index 6fc8c0bd7daded1d13ad3171ac475e2d443bd63d..0c726b1db1827a43afeedeba33afff07d3ab75d9 100644
 --- a/styles.css
 +++ b/styles.css
-@@ -1378,62 +1378,64 @@ body {
-   margin: 0;
-   font-size: clamp(1.6rem, 3vw, 2.15rem);
-   line-height: 1.2;
-   letter-spacing: 0.01em;
- }
- 
- .woodland-bath-card__gallery {
-   display: grid;
-   gap: 0.5rem;
-   align-content: start;
- }
- 
- @media (min-width: 850px) {
-   .woodland-bath-card {
-     grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
-     align-items: start;
-   }
- 
-   .woodland-bath-card__hero {
-     grid-column: 1 / -1;
-   }
- }
- 
- .lodging-grid {
-   display: grid;
--  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
--  gap: clamp(1rem, 2vw, 1.35rem);
-+  grid-template-columns: 1fr;
-+  gap: clamp(1.25rem, 3vw, 1.75rem);
-+  max-width: min(1100px, 100% - 2.5rem);
-+  margin: 0 auto;
- }
- 
- .lodging-card {
--  background: color-mix(in srgb, var(--card) 96%, rgba(15, 23, 42, 0.04));
--  border: 1px solid rgba(148, 163, 184, 0.3);
--  border-radius: 1rem;
--  padding: clamp(1.25rem, 2.5vw, 1.6rem);
-+  background: color-mix(in srgb, var(--card) 96%, var(--bg));
-+  border: 1px solid rgba(148, 163, 184, 0.35);
-+  border-radius: 1.1rem;
-+  padding: clamp(1.35rem, 3vw, 1.9rem);
-   display: grid;
--  gap: 0.85rem;
--  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 26px rgba(15, 23, 42, 0.18);
-+  gap: clamp(1rem, 2vw, 1.45rem);
-+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px rgba(15, 23, 42, 0.2);
- }
- 
- .lodging-card__header {
-   display: grid;
-   grid-template-columns: minmax(0, 1fr) 220px;
-   gap: 1rem;
-   align-items: start;
- }
- 
- .lodging-rate {
-   background: color-mix(in srgb, var(--bg) 70%, rgba(79, 156, 255, 0.12));
+@@ -1452,52 +1452,54 @@ body {
+   border-radius: 999px;
+   background: color-mix(in srgb, var(--brand) 18%, rgba(148, 163, 184, 0.14));
    border: 1px solid rgba(148, 163, 184, 0.4);
-   border-radius: 0.85rem;
-   padding: 0.85rem 1rem;
+   font-weight: 700;
+   color: var(--text);
+   font-size: 0.9rem;
+ }
+ 
+ .lodging-details {
    display: grid;
-   gap: 0.2rem;
+   gap: 0.35rem;
  }
  
- .lodging-price {
+ .lodging-details h4 {
    margin: 0;
-   font-size: 1.35rem;
-   font-weight: 800;
  }
  
- .lodging-tags {
+ .lodging-gallery {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+   gap: 0.65rem;
+ }
+ 
+ .lodging-gallery img {
+   width: 100%;
+-  height: 100%;
++  height: auto;
++  aspect-ratio: 4 / 3;
+   object-fit: cover;
++  display: block;
+   border-radius: 0.85rem;
+   border: 1px solid rgba(148, 163, 184, 0.25);
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 20px rgba(0, 0, 0, 0.18);
+ }
+ 
+ .lodging-actions {
+   display: flex;
+   justify-content: flex-start;
+ }
+ 
+ .pool-card {
+   background: color-mix(in srgb, var(--card) 94%, var(--bg));
+   border: 1px solid rgba(148, 163, 184, 0.35);
+   border-radius: 1rem;
+   padding: clamp(1.35rem, 3vw, 1.9rem);
+   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 10px 28px rgba(15, 23, 42, 0.18);
+   height: 100%;
+ }
+ 
+ .soak-table {
+   width: 100%;
+   border-collapse: collapse;
+   color: var(--muted);
+   font-size: 0.95rem;
+ }
