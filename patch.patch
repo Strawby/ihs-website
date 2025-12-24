@@ -1,9 +1,8 @@
 diff --git a/rooms-suites/index.html b/rooms-suites/index.html
-index a0a9a29b91609afa0677bf646d2919d65af241da..31dc4b1f5a4a5cf077c8639ca89254e037da18e3 100644
+index bccd28851cc9a1d584c41351442e1cd4dbda7972..9f1c655cdde91d859750a9d879c9de8668971b9d 100644
 --- a/rooms-suites/index.html
 +++ b/rooms-suites/index.html
-@@ -5,175 +5,50 @@
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
+@@ -6,69 +6,50 @@
    <title>Rooms & Suites | Indian Hot Springs</title>
    <meta name="description" content="Stay steps from the springs with historic rooms, comfortable inns, quiet lodges, and creekside cabins. Explore lodging options, perks, and booking details." />
    <link rel="stylesheet" href="../styles.css" />
@@ -27,183 +26,49 @@ index a0a9a29b91609afa0677bf646d2919d65af241da..31dc4b1f5a4a5cf077c8639ca89254e0
            <a href="#stay-perks" class="btn btn-ghost">See stay perks</a>
          </div>
        </div>
- 
--      <div class="lodging-hero-grid">
--        <article class="pool-hero-card lodging-hero-card">
--          <div class="pool-hero-inner">
--            <div class="pool-hero-content">
--              <p class="section-kicker">Built in 1905</p>
--              <h2>Historic Resort</h2>
--              <p class="section-summary">Classic steam radiators, original water closets, and modern essentials just steps from the mineral pool, caves, private baths, outdoor tubs, and dining hall.</p>
--              <div class="lodging-hero-meta">
--                <div class="meta-item">
--                  <span class="meta-label">Starting at</span>
--                  <span class="meta-value">$139 per night</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Highlights</span>
--                  <span class="meta-value">Interior corridor, historic character</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Best for</span>
--                  <span class="meta-value">History lovers &amp; couples</span>
--                </div>
--              </div>
--              <div class="pool-hero-actions">
--                <a class="btn btn-primary" href="#historic-resort">View details</a>
--                <a class="btn btn-ghost" href="../contact/">Book the Resort</a>
--              </div>
--            </div>
--            <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="../media/lodging/resort/resort-1.webp" alt="Historic resort hallway and room entrance" />
--            </figure>
--          </div>
--        </article>
--
--        <article class="pool-hero-card lodging-hero-card">
--          <div class="pool-hero-inner">
--            <div class="pool-hero-content">
--              <p class="section-kicker">Relaxed &amp; functional</p>
--              <h2>The Inn</h2>
--              <p class="section-summary">A clean, no-fuss stay across from the main building with updated interiors, exterior corridor access, and full private bathrooms.</p>
--              <div class="lodging-hero-meta">
--                <div class="meta-item">
--                  <span class="meta-label">Starting at</span>
--                  <span class="meta-value">$159 per night</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Highlights</span>
--                  <span class="meta-value">Remodeled interiors, exterior corridor</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Best for</span>
--                  <span class="meta-value">Couples &amp; small families</span>
--                </div>
--              </div>
--              <div class="pool-hero-actions">
--                <a class="btn btn-primary" href="#the-inn">View details</a>
--                <a class="btn btn-ghost" href="../contact/">Book the Inn</a>
--              </div>
--            </div>
--            <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="../media/lodging/inn/inn-1.webp" alt="Inn guest room with king bed" />
--            </figure>
--          </div>
--        </article>
--
--        <article class="pool-hero-card lodging-hero-card">
--          <div class="pool-hero-inner">
--            <div class="pool-hero-content">
--              <p class="section-kicker">Quiet &amp; convenient</p>
--              <h2>The Lodge</h2>
--              <p class="section-summary">A calm stay across the street from the main resort with interior corridors, dedicated Moose Lot parking, and walk-in showers.</p>
--              <div class="lodging-hero-meta">
--                <div class="meta-item">
--                  <span class="meta-label">Starting at</span>
--                  <span class="meta-value">$159 per night</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Highlights</span>
--                  <span class="meta-value">Interior corridor, walk-in showers</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Best for</span>
--                  <span class="meta-value">Guests who want Moose Lot parking</span>
--                </div>
--              </div>
--              <div class="pool-hero-actions">
--                <a class="btn btn-primary" href="#the-lodge">View details</a>
--                <a class="btn btn-ghost" href="../contact/">Book the Lodge</a>
--              </div>
--            </div>
--            <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="../media/lodging/lodge/premium/lodge-premium-1.webp" alt="Lodge guest room with king bed" />
--            </figure>
--          </div>
--        </article>
--
--        <article class="pool-hero-card lodging-hero-card">
--          <div class="pool-hero-inner">
--            <div class="pool-hero-content">
--              <p class="section-kicker">Creekside comfort</p>
--              <h2>Cabins</h2>
--              <p class="section-summary">Rustic cabins along Soda Creek with a full kitchen, private bathroom, queen bedroom, hallway bunk beds, and a living area that opens to a private deck.</p>
--              <div class="lodging-hero-meta">
--                <div class="meta-item">
--                  <span class="meta-label">Starting at</span>
--                  <span class="meta-value">$229 per night</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Highlights</span>
--                  <span class="meta-value">Full kitchen, private deck</span>
--                </div>
--                <div class="meta-item">
--                  <span class="meta-label">Best for</span>
--                  <span class="meta-value">Small families &amp; longer stays</span>
--                </div>
--              </div>
--              <div class="pool-hero-actions">
--                <a class="btn btn-primary" href="#cabins">View details</a>
--                <a class="btn btn-ghost" href="../contact/">Book a Cabin</a>
--              </div>
--            </div>
--            <figure class="pool-hero-figure lodging-hero-figure">
--              <img src="../media/lodging/cabins/cabin-4.webp" alt="Cabin living room and kitchen" />
--            </figure>
--          </div>
--        </article>
--      </div>
      </header>
  
-     <section class="pool-section pool-section--two-column" id="plan-your-stay">
-       <div class="pool-card">
-         <div class="section-header">
-           <p class="section-kicker">Suites</p>
-           <h2>Healing waters, cozy quarters</h2>
-           <p class="section-summary">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
-           <p class="section-summary">From creekside cabins to historic rooms just steps from the mineral pool, each stay is designed to help you unwind and reconnect with yourself, your loved ones, and the healing power of the springs.</p>
-         </div>
-       </div>
-       <div class="pool-card">
-         <ul class="pool-list">
-           <li>Choose from historic charm, inn-style comfort, quiet lodge rooms, or creekside cabins with full kitchens.</li>
-           <li>Walkable access to the mineral pool, caves, private baths, outdoor tubs, and dining hall.</li>
-           <li>Thoughtful updates keep you close to the character of our historic property without sacrificing modern essentials.</li>
-           <li>Perfect for quick getaways, small groups, couples retreats, and extended relaxation weekends.</li>
-         </ul>
-       </div>
-     </section>
- 
+-    <section class="pool-section pool-section--two-column" id="plan-your-stay">
+-      <div class="pool-card">
+-        <div class="section-header">
+-          <p class="section-kicker">Suites</p>
+-          <h2>Healing waters, cozy quarters</h2>
+-          <p class="section-summary">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
+-          <p class="section-summary">From creekside cabins to historic rooms just steps from the mineral pool, each stay is designed to help you unwind and reconnect with yourself, your loved ones, and the healing power of the springs.</p>
+-        </div>
+-      </div>
+-      <div class="pool-card">
+-        <ul class="pool-list">
+-          <li>Choose from historic charm, inn-style comfort, quiet lodge rooms, or creekside cabins with full kitchens.</li>
+-          <li>Walkable access to the mineral pool, caves, private baths, outdoor tubs, and dining hall.</li>
+-          <li>Thoughtful updates keep you close to the character of our historic property without sacrificing modern essentials.</li>
+-          <li>Perfect for quick getaways, small groups, couples retreats, and extended relaxation weekends.</li>
+-        </ul>
+-      </div>
+-    </section>
+-
      <section class="pool-section" id="lodging-options" aria-label="Lodging options at Indian Hot Springs">
        <div class="section-header">
          <p class="section-kicker">Stay close to the springs</p>
          <h2>Pick your perfect stay</h2>
-@@ -363,26 +238,26 @@
-           <li>Must be 21+ to book, with valid ID and matching credit card at check-in.</li>
-           <li>Check-in: 3:00 PM – 9:00 PM (call ahead for late arrivals); Check-out: 11:00 AM (late check-out available for a fee, based on availability).</li>
-           <li>Rates based on double occupancy; additional guests are $45/night per person.</li>
-           <li>Taxes not included in listed rates.</li>
-           <li>No pets or emotional support animals allowed (ADA-approved service animals only).</li>
-           <li>All rooms are non-smoking and do not have air conditioning.</li>
-           <li>For group reservations, email: <a href="mailto:support@indianhotsprings.com">support@indianhotsprings.com</a></li>
-         </ul>
-       </article>
+         <p class="section-summary">Explore the spaces that fit your getaway style&mdash;all within a short walk of the mineral waters.</p>
+       </div>
  
-       <article class="pool-card info-card">
-         <h3>Cancellation Policy</h3>
-         <ul class="pool-list pool-list--tight">
-           <li>Cancel at least 48 hours before check-in for a full refund of your deposit (example: cancel by Friday for a Sunday check-in).</li>
-           <li>Cancel 24–48 hours before check-in for a full credit valid for 6 months.</li>
-           <li>Same-day cancellations will forfeit the deposit as a cancellation fee.</li>
-           <li>Need to make changes? Contact us and we’ll do our best to assist.</li>
-         </ul>
-       </article>
-     </section>
-   </main>
- 
-   <div data-footer></div>
-   <script src="../script.js"></script>
- </body>
--</html>
-\ No newline at end of file
-+</html>
+       <div class="lodging-grid">
+         <article class="lodging-card" id="historic-resort">
+           <div class="lodging-card__header">
+             <div>
+               <p class="section-kicker">Built in 1905</p>
+               <h3>THE HISTORIC RESORT</h3>
+               <p class="section-summary">Step back in time without sacrificing comfort. Classic steam radiators, original water closets, and the warm scent of aged wood meet modern essentials just steps from the caves, mineral pool, private baths, outdoor tubs, and dining hall.</p>
+             </div>
+             <div class="lodging-rate">
+               <p class="muted">Starting at</p>
+               <p class="lodging-price">$139 per night</p>
+               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
+             </div>
+           </div>
+           <div class="lodging-tags">
+             <span class="lodging-tag">Interior corridor</span>
+             <span class="lodging-tag">Historic character</span>
+             <span class="lodging-tag">Steps from amenities</span>
