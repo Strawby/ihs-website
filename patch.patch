@@ -1,120 +1,77 @@
-diff --git a/cedar-tubs/index.html b/cedar-tubs/index.html
-index 4559faeb6d447a252bf8b250b2d38b2f5352d54a..088616d242586863632b7d7b99573e76ff5d06e4 100644
---- a/cedar-tubs/index.html
-+++ b/cedar-tubs/index.html
-@@ -50,77 +50,94 @@
-     <section class="pool-section pool-section--two-column" id="plan-your-visit">
-       <div class="pool-card">
-         <div class="section-header">
-           <h2>Plan Your Soak</h2>
-           <p class="section-summary"><b>Everything you need to enjoy the outdoor cedar tubs, from reservations to on-site amenities.<br><br></b></p>
-           <p class="section-summary">Crafted from aromatic cedar, these tubs are built for both comfort and wellness. Cedar’s natural resistance to mold and mildew ensures a clean, fresh environment, while its soothing scent calms the mind and enhances every breath. Known for anti-inflammatory properties and support for respiratory health, cedar transforms a simple soak into a restorative ritual. Each tub is designed with extra depth and double the volume of our standard tubs, giving you more room to stretch out and fully unwind. A continuous flow of fresh mineral water keeps your soak pristine, while the cedar-wrapped cascade adds both beauty and function. And if you’re seeking the extreme renewal of hot and cold, our newest addition brings that option below.</p>
-         </div>
-       </div>
-       <div class="pool-card">
-         <ul class="pool-list">
-           <li>Reservations required; weekend and holiday slots fill quickly</li>
- 		  <li>Average temperature 106-113°F, varies with the geothermal well flow.</li>
-           <li>A minimum amount of chlorine is used to ensure safety and cleanliness.</li>
- 		  <li>Cancellations within 24 hours of reservation time will be charged full booking deposit</li>
-           <li>No glass or coolers permitted</li>
-           <li>Towels available to rent for $5</li>
-           <li>Arrive 15 minutes early to check in and review guidelines with staff</li>
-         </ul>
-       </div>
-     </section>
+diff --git a/styles.css b/styles.css
+index 6bebd55991465e1706d7c0bf6025f666724c2e13..6fc8c0bd7daded1d13ad3171ac475e2d443bd63d 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1378,62 +1378,64 @@ body {
+   margin: 0;
+   font-size: clamp(1.6rem, 3vw, 2.15rem);
+   line-height: 1.2;
+   letter-spacing: 0.01em;
+ }
  
-     <section class="pool-section pool-section--two-column pool-grid" id="hours" aria-label="Cedar tubs hours and pricing">
-       <article class="pool-card info-card">
-         <h3>Hours</h3>
-         <div class="info-subsection">
--                <span class="meta-value">Everyday: 8am-9pm (Reservations required- tubs are booked by the hour)
-+          <h4>Everyday</h4>
-+          <p class="muted">8:00am - 9:00pm</p>
-+          <p class="muted">Reservations required; tubs are booked by the hour.</p>
-         </div>
-       </article>
+ .woodland-bath-card__gallery {
+   display: grid;
+   gap: 0.5rem;
+   align-content: start;
+ }
  
--      <article class="pool-card info-card">
--        <h3>Pricing</h3>
--        <ul class="pool-list pool-list--tight">
--          <li>Rates vary by date, time, and party size</li>
--          <li>Final pricing shown during checkout</li>
--          <li>Towels available to rent for $5.00</li>
--          <li>Key locks available for $4.00</li>
--          <li>Discounts cannot be combined.</li>
--        </ul>
-+      <article class="pool-card info-card pool-pricing-card">
-+        <h3>Cedar Tub Pricing</h3>
-+        <div class="info-subsection">
-+          <p class="info-note"><strong>Monday &ndash; Thursday:</strong> $100 per tub per hour (up to 3 guests)</p>
-+          <p class="info-note"><strong>Friday &ndash; Sunday:</strong> $150 per tub per hour (up to 3 guests)</p>
-+        </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-+        <div class="info-subsection">
-+          <h4>Add-Ons</h4>
-+          <ul class="pool-list pool-list--tight pool-list--plain">
-+            <li><strong>Towel rental</strong> &mdash; $5</li>
-+            <li><strong>Lock for locker</strong> &mdash; $4</li>
-+          </ul>
-+        </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-+        <div class="info-subsection">
-+          <h4>Policies</h4>
-+          <p class="muted">Rates may vary by date and time and are confirmed during checkout. Discounts cannot be combined.</p>
-+        </div>
-       </article>
+ @media (min-width: 850px) {
+   .woodland-bath-card {
+     grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+     align-items: start;
+   }
  
--      <article class="pool-card info-card">
-+      <article class="pool-card info-card pool-discount-card">
-         <h3>Discounts</h3>
--        <ul class="pool-list pool-list--tight">
--          <li>Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</li>
--          <li>Weekday discounts (Seniors, Military, Locals, Multi-Amenity)</li>
--          <li>
--            <a href="../pricing/" class="discount-link">
--              <span>See full details on discounts</span>
--              <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
--            </a>
--          </li>
--        </ul>
-+        <div class="info-subsection">
-+          <p class="muted">Everyday guest discounts (Hotel, Spa, Indigenous Peoples of the U.S.)</p>
-+          <p class="muted">Weekday discounts (Seniors, Military, Locals, Multi-Amenity)</p>
-+        </div>
-+        <div class="info-subsection info-cta">
-+          <a href="../pricing/" class="discount-link">
-+            <span>See full details on discounts</span>
-+            <span aria-hidden="true" class="discount-link__icon">&rarr;</span>
-+          </a>
-+        </div>
-+        <div class="info-divider" aria-hidden="true"></div>
-+        <div class="info-subsection">
-+          <h4>Policies</h4>
-+          <p class="muted">Discounts cannot be combined. Discounts never apply on Summit Pricing days, excluding the Native American discount.</p>
-+        </div>
-       </article>
-     </section>
+   .woodland-bath-card__hero {
+     grid-column: 1 / -1;
+   }
+ }
  
-     <section class="pool-section pool-gallery" id="gallery" aria-label="Cedar tubs photo gallery">
-       <div class="section-header">
-         <p class="section-kicker">Cedar tubs gallery</p>
-         <h2>See the tubs under open sky</h2>
-         <p class="section-summary">Browse snapshots from around the outdoor cedar tubs. Tap any image to open a full-screen view and use the arrows to explore the rest.</p>
-       </div>
+ .lodging-grid {
+   display: grid;
+-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+-  gap: clamp(1rem, 2vw, 1.35rem);
++  grid-template-columns: 1fr;
++  gap: clamp(1.25rem, 3vw, 1.75rem);
++  max-width: min(1100px, 100% - 2.5rem);
++  margin: 0 auto;
+ }
  
-       <div class="media-gallery" data-media-gallery data-gallery-manifest="media/tubs/cedar/manifest.json" data-gallery-label="Cedar tubs photo">
-         <p class="muted">Loading photos...</p>
-       </div>
-     </section>
+ .lodging-card {
+-  background: color-mix(in srgb, var(--card) 96%, rgba(15, 23, 42, 0.04));
+-  border: 1px solid rgba(148, 163, 184, 0.3);
+-  border-radius: 1rem;
+-  padding: clamp(1.25rem, 2.5vw, 1.6rem);
++  background: color-mix(in srgb, var(--card) 96%, var(--bg));
++  border: 1px solid rgba(148, 163, 184, 0.35);
++  border-radius: 1.1rem;
++  padding: clamp(1.35rem, 3vw, 1.9rem);
+   display: grid;
+-  gap: 0.85rem;
+-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 12px 26px rgba(15, 23, 42, 0.18);
++  gap: clamp(1rem, 2vw, 1.45rem);
++  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 12px 30px rgba(15, 23, 42, 0.2);
+ }
  
-     <div class="lightbox" data-gallery-lightbox hidden aria-hidden="true" role="dialog" aria-label="Cedar tubs photo">
-       <button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button>
-       <button class="lightbox-nav lightbox-nav--prev" type="button" aria-label="Previous photo">
-         <span aria-hidden="true">&#10094;</span>
-       </button>
-       <div class="lightbox-frame">
-         <img src="" alt="Cedar tubs gallery photo" />
-       </div>
-       <button class="lightbox-nav lightbox-nav--next" type="button" aria-label="Next photo">
-         <span aria-hidden="true">&#10095;</span>
+ .lodging-card__header {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) 220px;
+   gap: 1rem;
+   align-items: start;
+ }
+ 
+ .lodging-rate {
+   background: color-mix(in srgb, var(--bg) 70%, rgba(79, 156, 255, 0.12));
+   border: 1px solid rgba(148, 163, 184, 0.4);
+   border-radius: 0.85rem;
+   padding: 0.85rem 1rem;
+   display: grid;
+   gap: 0.2rem;
+ }
+ 
+ .lodging-price {
+   margin: 0;
+   font-size: 1.35rem;
+   font-weight: 800;
+ }
+ 
+ .lodging-tags {
