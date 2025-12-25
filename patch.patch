@@ -1,74 +1,187 @@
-diff --git a/rooms-suites/index.html b/rooms-suites/index.html
-index bccd28851cc9a1d584c41351442e1cd4dbda7972..9f1c655cdde91d859750a9d879c9de8668971b9d 100644
---- a/rooms-suites/index.html
-+++ b/rooms-suites/index.html
-@@ -6,69 +6,50 @@
-   <title>Rooms & Suites | Indian Hot Springs</title>
-   <meta name="description" content="Stay steps from the springs with historic rooms, comfortable inns, quiet lodges, and creekside cabins. Explore lodging options, perks, and booking details." />
-   <link rel="stylesheet" href="../styles.css" />
- </head>
- <body>
-   <div data-header></div>
+diff --git a/script.js b/script.js
+index 8d49bf472d26d89fa66bd3d5a3aa680adfe36395..2f31dada37224b9a3d43d00f0f334cad0bc48b58 100644
+--- a/script.js
++++ b/script.js
+@@ -269,68 +269,74 @@ const initLightbox = (ctx = document) => {
+   const showPrev = () => {
+     if (!activeItems.length) return;
+     updateOverlay(activeIndex - 1);
+   };
  
-   <main class="container pool-page pool-main lodging-page">
-     <div class="hero-media">
-       <video class="hero-video" src="../media/lodging/hero_output_quiet_bg.mp4" autoplay muted loop playsinline poster="../media/lodging/cabins/cabin-1.webp"></video>
-     </div>
-     <div class="page-filter" aria-hidden="true"></div>
-     <header class="pool-hero lodging-hero" aria-labelledby="lodging-page-title">
-       <div class="lodging-hero-intro pool-card">
-         <p class="eyebrow">healing waters, cozy quarters</p>
-         <h1 class="pool-title" id="lodging-page-title">Rooms &amp; Suites</h1>
-         <p class="pool-subtitle">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
-         <p class="section-summary">Pick the stay that matches your getaway style and jump straight to details, photos, and booking help for each option.</p>
-         <div class="pool-hero-actions">
-           <a href="#lodging-options" class="btn btn-primary">Explore all rooms</a>
-           <a href="#stay-perks" class="btn btn-ghost">See stay perks</a>
-         </div>
-       </div>
-     </header>
+   nextButton?.addEventListener("click", showNext);
+   prevButton?.addEventListener("click", showPrev);
+   closeButton?.addEventListener("click", closeOverlay);
  
--    <section class="pool-section pool-section--two-column" id="plan-your-stay">
--      <div class="pool-card">
--        <div class="section-header">
--          <p class="section-kicker">Suites</p>
--          <h2>Healing waters, cozy quarters</h2>
--          <p class="section-summary">Whether you're staying for a serene soak or a weekend retreat, our variety of lodging options offer the perfect balance of rustic charm and restful comfort.</p>
--          <p class="section-summary">From creekside cabins to historic rooms just steps from the mineral pool, each stay is designed to help you unwind and reconnect with yourself, your loved ones, and the healing power of the springs.</p>
--        </div>
--      </div>
--      <div class="pool-card">
--        <ul class="pool-list">
--          <li>Choose from historic charm, inn-style comfort, quiet lodge rooms, or creekside cabins with full kitchens.</li>
--          <li>Walkable access to the mineral pool, caves, private baths, outdoor tubs, and dining hall.</li>
--          <li>Thoughtful updates keep you close to the character of our historic property without sacrificing modern essentials.</li>
--          <li>Perfect for quick getaways, small groups, couples retreats, and extended relaxation weekends.</li>
--        </ul>
--      </div>
--    </section>
+   overlay.addEventListener("click", (event) => {
+     if (event.target === overlay) closeOverlay();
+   });
+ 
+   document.addEventListener("keydown", (event) => {
+     if (overlay.hidden) return;
+     if (event.key === "Escape") closeOverlay();
+     if (event.key === "ArrowRight") showNext();
+     if (event.key === "ArrowLeft") showPrev();
+   });
+ 
+   overlay.dataset.enhanced = "true";
+   overlay._lightboxController = { open: openOverlay };
+   return overlay._lightboxController;
+ };
+ 
++const getThumbnailSrc = (src) => {
++  if (typeof src !== "string") return src;
++  const trimmedSrc = src.trim();
++  const lastSlash = trimmedSrc.lastIndexOf("/");
++  if (lastSlash === -1) return trimmedSrc;
++
++  const dir = trimmedSrc.slice(0, lastSlash);
++  const filename = trimmedSrc.slice(lastSlash + 1);
++  const thumbnailDir = dir.endsWith("/thumbnails")
++    ? dir
++    : `${dir}/thumbnails`;
++  return `${thumbnailDir}/${filename}`;
++};
++
++const getFullSizeSrc = (src) => {
++  if (typeof src !== "string") return src;
++  const trimmedSrc = src.trim();
++  return trimmedSrc.replace("/thumbnails/", "/");
++};
++
+ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
+   const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
+   if (!lightbox || !galleries.length) return;
+ 
+-  const getThumbnailSrc = (src) => {
+-    if (typeof src !== "string") return src;
+-    const trimmedSrc = src.trim();
+-    const lastSlash = trimmedSrc.lastIndexOf("/");
+-    if (lastSlash === -1) return trimmedSrc;
 -
-     <section class="pool-section" id="lodging-options" aria-label="Lodging options at Indian Hot Springs">
-       <div class="section-header">
-         <p class="section-kicker">Stay close to the springs</p>
-         <h2>Pick your perfect stay</h2>
-         <p class="section-summary">Explore the spaces that fit your getaway style&mdash;all within a short walk of the mineral waters.</p>
-       </div>
+-    const dir = trimmedSrc.slice(0, lastSlash);
+-    const filename = trimmedSrc.slice(lastSlash + 1);
+-    const thumbnailDir = dir.endsWith("/thumbnails")
+-      ? dir
+-      : `${dir}/thumbnails`;
+-    return `${thumbnailDir}/${filename}`;
+-  };
+-
+   const loadGalleryItems = async (manifestPath) => {
+     if (!manifestPath) return [];
+     const manifestUrl = resolveSitePath(manifestPath);
+     const response = await fetch(manifestUrl, { cache: "no-cache" });
+     if (!response.ok) throw new Error("Unable to fetch gallery manifest");
+     const manifest = await response.json();
+     return normalizeGalleryManifest(manifest).filter(
+       (src) => typeof src === "string" && src.trim()
+     );
+   };
  
-       <div class="lodging-grid">
-         <article class="lodging-card" id="historic-resort">
-           <div class="lodging-card__header">
-             <div>
-               <p class="section-kicker">Built in 1905</p>
-               <h3>THE HISTORIC RESORT</h3>
-               <p class="section-summary">Step back in time without sacrificing comfort. Classic steam radiators, original water closets, and the warm scent of aged wood meet modern essentials just steps from the caves, mineral pool, private baths, outdoor tubs, and dining hall.</p>
-             </div>
-             <div class="lodging-rate">
-               <p class="muted">Starting at</p>
-               <p class="lodging-price">$139 per night</p>
-               <small>Includes up to 2 guests; weekend and Summit pricing may vary. Taxes not included.</small>
-             </div>
-           </div>
-           <div class="lodging-tags">
-             <span class="lodging-tag">Interior corridor</span>
-             <span class="lodging-tag">Historic character</span>
-             <span class="lodging-tag">Steps from amenities</span>
+   await Promise.all(
+     galleries.map(async (gallery) => {
+       const manifestPath = gallery.getAttribute("data-gallery-manifest");
+       const galleryLabel = gallery.getAttribute("data-gallery-label")?.trim();
+       let items = [];
+ 
+       try {
+         items = await loadGalleryItems(manifestPath);
+       } catch (error) {
+         gallery.innerHTML = '<p class="muted">Unable to load gallery right now.</p>';
+         return;
+       }
+ 
+       if (!items.length) {
+@@ -366,43 +372,93 @@ const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx))
+         fragment.appendChild(button);
+       });
+ 
+       gallery.innerHTML = "";
+       gallery.appendChild(fragment);
+     })
+   );
+ };
+ 
+ const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
+   const trigger = ctx.querySelector("[data-hero-lightbox]");
+   if (!lightbox || !trigger || trigger.dataset.enhanced) return;
+ 
+   trigger.dataset.enhanced = "true";
+   const img = trigger.querySelector("img");
+   const src = img?.getAttribute("src");
+   const alt = img?.getAttribute("alt")?.trim();
+   const label = alt || "Pool photo";
+ 
+   trigger.addEventListener("click", () => {
+     if (!src) return;
+     lightbox.open([src], 0, label);
+   });
+ };
+ 
++const initInlineGalleryLightbox = (
++  ctx = document,
++  lightbox = initLightbox(ctx)
++) => {
++  const galleries = Array.from(ctx.querySelectorAll(".lodging-gallery"));
++  if (!lightbox || !galleries.length) return;
++
++  galleries.forEach((gallery) => {
++    const images = Array.from(gallery.querySelectorAll("img"));
++    if (!images.length) return;
++
++    const title =
++      gallery.closest(".lodging-card")?.querySelector("h3")?.textContent?.trim() ||
++      "Lodging";
++    const label = `${title} photo`;
++
++    const items = images
++      .map((img) => {
++        const dataFull = img.getAttribute("data-full-src");
++        const baseSrc = dataFull || img.getAttribute("src") || "";
++        const fullSrc = getFullSizeSrc(baseSrc);
++        if (!fullSrc) return null;
++
++        const thumbnailSrc = getThumbnailSrc(fullSrc);
++        if (thumbnailSrc && img.getAttribute("src") !== thumbnailSrc) {
++          img.setAttribute("src", thumbnailSrc);
++        }
++
++        img.setAttribute("role", "button");
++        img.setAttribute("tabindex", "0");
++        img.setAttribute("aria-label", `Open ${label.toLowerCase()}`);
++        return fullSrc;
++      })
++      .filter(Boolean);
++
++    images.forEach((img, index) => {
++      const openLightbox = () => lightbox.open(items, index, label);
++
++      img.addEventListener("click", openLightbox);
++      img.addEventListener("keydown", (event) => {
++        if (event.key === "Enter" || event.key === " ") {
++          event.preventDefault();
++          openLightbox();
++        }
++      });
++    });
++  });
++};
++
+ injectPartial("[data-header]", headerUrl, (slot) => {
+   applyRelativePaths(slot);
+   initNavigation(slot);
+   initThemeToggle(slot);
+   initHamburger(slot);
+ });
+ 
+ injectPartial("[data-footer]", footerUrl, (slot) => {
+   setYear(slot);
+ });
+ 
+ initNavigation();
+ initThemeToggle();
+ initHamburger();
+ setYear();
+ const lightbox = initLightbox();
+ initMediaGalleries(document, lightbox);
+ initPoolHeroLightbox(document, lightbox);
++initInlineGalleryLightbox(document, lightbox);

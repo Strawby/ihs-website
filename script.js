@@ -291,23 +291,29 @@ const initLightbox = (ctx = document) => {
   return overlay._lightboxController;
 };
 
+const getThumbnailSrc = (src) => {
+  if (typeof src !== "string") return src;
+  const trimmedSrc = src.trim();
+  const lastSlash = trimmedSrc.lastIndexOf("/");
+  if (lastSlash === -1) return trimmedSrc;
+
+  const dir = trimmedSrc.slice(0, lastSlash);
+  const filename = trimmedSrc.slice(lastSlash + 1);
+  const thumbnailDir = dir.endsWith("/thumbnails")
+    ? dir
+    : `${dir}/thumbnails`;
+  return `${thumbnailDir}/${filename}`;
+};
+
+const getFullSizeSrc = (src) => {
+  if (typeof src !== "string") return src;
+  const trimmedSrc = src.trim();
+  return trimmedSrc.replace("/thumbnails/", "/");
+};
+
 const initMediaGalleries = async (ctx = document, lightbox = initLightbox(ctx)) => {
   const galleries = Array.from(ctx.querySelectorAll("[data-media-gallery]"));
   if (!lightbox || !galleries.length) return;
-
-  const getThumbnailSrc = (src) => {
-    if (typeof src !== "string") return src;
-    const trimmedSrc = src.trim();
-    const lastSlash = trimmedSrc.lastIndexOf("/");
-    if (lastSlash === -1) return trimmedSrc;
-
-    const dir = trimmedSrc.slice(0, lastSlash);
-    const filename = trimmedSrc.slice(lastSlash + 1);
-    const thumbnailDir = dir.endsWith("/thumbnails")
-      ? dir
-      : `${dir}/thumbnails`;
-    return `${thumbnailDir}/${filename}`;
-  };
 
   const loadGalleryItems = async (manifestPath) => {
     if (!manifestPath) return [];
@@ -388,6 +394,55 @@ const initPoolHeroLightbox = (ctx = document, lightbox = initLightbox(ctx)) => {
   });
 };
 
+const initInlineGalleryLightbox = (
+  ctx = document,
+  lightbox = initLightbox(ctx)
+) => {
+  const galleries = Array.from(ctx.querySelectorAll(".lodging-gallery"));
+  if (!lightbox || !galleries.length) return;
+
+  galleries.forEach((gallery) => {
+    const images = Array.from(gallery.querySelectorAll("img"));
+    if (!images.length) return;
+
+    const title =
+      gallery.closest(".lodging-card")?.querySelector("h3")?.textContent?.trim() ||
+      "Lodging";
+    const label = `${title} photo`;
+
+    const items = images
+      .map((img) => {
+        const dataFull = img.getAttribute("data-full-src");
+        const baseSrc = dataFull || img.getAttribute("src") || "";
+        const fullSrc = getFullSizeSrc(baseSrc);
+        if (!fullSrc) return null;
+
+        const thumbnailSrc = getThumbnailSrc(fullSrc);
+        if (thumbnailSrc && img.getAttribute("src") !== thumbnailSrc) {
+          img.setAttribute("src", thumbnailSrc);
+        }
+
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+        img.setAttribute("aria-label", `Open ${label.toLowerCase()}`);
+        return fullSrc;
+      })
+      .filter(Boolean);
+
+    images.forEach((img, index) => {
+      const openLightbox = () => lightbox.open(items, index, label);
+
+      img.addEventListener("click", openLightbox);
+      img.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox();
+        }
+      });
+    });
+  });
+};
+
 injectPartial("[data-header]", headerUrl, (slot) => {
   applyRelativePaths(slot);
   initNavigation(slot);
@@ -406,3 +461,4 @@ setYear();
 const lightbox = initLightbox();
 initMediaGalleries(document, lightbox);
 initPoolHeroLightbox(document, lightbox);
+initInlineGalleryLightbox(document, lightbox);
