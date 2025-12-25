@@ -1205,7 +1205,20 @@ body {
   scroll-margin-top: calc(var(--header-height) + 1.5rem);
 }
 
+.lodging-options {
+  display: grid;
+  gap: 1.25rem;
+  max-width: min(1100px, 100% - 2.5rem);
+  margin: 0 auto;
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+
 .pool-section + .pool-section {
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+.lodging-options + .pool-section,
+.pool-section + .lodging-options {
   margin-top: clamp(1.75rem, 4vw, 3rem);
 }
 
