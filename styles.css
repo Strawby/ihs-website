@@ -384,6 +384,8 @@ body {
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   align-items: start;
+  max-width: min(1100px, 100% - 2.5rem);
+  margin: 0 auto;
 }
 
 .history-card {
