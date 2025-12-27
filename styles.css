@@ -381,37 +381,30 @@ body {
 
 .history-story {
   display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   align-items: start;
 }
 
-.history-story-text {
+.history-card {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1rem;
 }
 
-.history-story-text h2 {
-  margin-bottom: 0.35rem;
-}
-
-.history-story-text p {
-  color: var(--muted);
-}
-
-.history-gallery {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.history-gallery .pool-card {
-  padding: 0;
-  overflow: hidden;
-}
-
-.history-gallery img {
+.history-card img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 16px;
+}
+
+.history-card h2 {
+  margin-bottom: 0.35rem;
+}
+
+.history-card p {
+  color: var(--muted);
 }
 
 .history-timeline {
